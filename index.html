@@ -1,0 +1,906 @@
+<!DOCTYPE html>
+<html lang="en-GB">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<script>document.documentElement.classList.add('js')</script>
+<title>James Wheeler | Product Manager (Compliance & AI)</title>
+<meta name="description" content="A curious builder using AI to find out what’s possible. Two live products: Guardian Compliance (950 sites) and RBW Atlas, an AI-native internal operating system.">
+<meta name="theme-color" content="#ECEEE8">
+<meta property="og:type" content="website">
+<meta property="og:title" content="James Wheeler | Product Manager (Compliance & AI)">
+<meta property="og:description" content="A curious builder using AI to find out what’s possible. Two live products: Guardian Compliance (950 sites) and RBW Atlas, an AI-native internal operating system.">
+<!-- Replace YOUR-DOMAIN with your real domain; LinkedIn and Slack need absolute URLs for previews. og.png sits next to index.html. -->
+<meta property="og:image" content="https://YOUR-DOMAIN/og.png">
+<meta property="og:url" content="https://YOUR-DOMAIN/">
+<meta name="twitter:card" content="summary_large_image">
+<link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32'%3E%3Crect width='32' height='32' fill='%231A2420'/%3E%3Ctext x='16' y='21.5' font-family='Georgia,serif' font-size='14' font-weight='700' text-anchor='middle' fill='%23ECEEE8'%3EJW%3C/text%3E%3C/svg%3E">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Besley:wght@600;700&family=Source+Sans+3:wght@400;500;600&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="assets/site.css">
+<style>
+/* Home page layout. Tokens, type, buttons, chips and nav live in assets/site.css. */
+
+/* ───────── Hero ───────── */
+.hero{ position:relative; display:flex; align-items:center; min-height:100svh; padding:6rem 0 2.5rem; }
+.hero-in{ display:grid; grid-template-columns:minmax(0,1fr); align-items:center; gap:2.5rem; }
+@media (min-width:1024px){ .hero-in{ grid-template-columns:minmax(0,7fr) minmax(0,5fr); gap:2rem; } }
+.hero-field{ position:relative; width:100%; max-width:30rem; height:18.75rem; justify-self:start; }
+@media (min-width:1024px){ .hero-field{ height:27.5rem; justify-self:end; } }
+.hn{
+  position:absolute; left:var(--x); top:var(--y); width:14px; height:14px; margin:-7px 0 0 -7px;
+  border-radius:50%; border:2px solid var(--ink); background:var(--ink); transition:background-color .3s ease;
+}
+.hn span{ position:absolute; white-space:nowrap; font-size:.9375rem; line-height:1.2; color:var(--ink); transition:color .3s ease; }
+.hn .lt-l{ bottom:calc(100% + 8px); left:-6px; }
+.hn .lt-r{ bottom:calc(100% + 8px); right:-6px; }
+.hn .lb-l{ top:calc(100% + 8px); left:-6px; }
+.hn .lb-r{ top:calc(100% + 8px); right:-6px; }
+.hn .lr{ left:calc(100% + 8px); top:50%; transform:translateY(-50%); }
+.hn.n1{ --x:15%; --y:14%; } .hn.n2{ --x:81%; --y:18%; } .hn.n3{ --x:85%; --y:48%; }
+.hn.n4{ --x:12%; --y:49%; } .hn.n5{ --x:73%; --y:74%; } .hn.n6{ --x:23%; --y:90%; }
+@media (max-width:1023px){
+  .hn.n1{ --x:14%; --y:13%; } .hn.n2{ --x:80%; --y:20%; } .hn.n3{ --x:84%; --y:50%; }
+  .hn.n4{ --x:15%; --y:46%; } .hn.n5{ --x:54%; --y:70%; } .hn.n6{ --x:22%; --y:86%; }
+}
+.hero-static{ position:absolute; inset:0; width:100%; height:100%; }
+.hero-static path{ fill:none; stroke:var(--ink); stroke-width:2; vector-effect:non-scaling-stroke; }
+html.js .hero-static{ display:none; }
+
+/* ───────── Thread: behind the content, one matte ink line ───────── */
+#threadWrap{ position:relative; }
+#thread{ position:absolute; left:0; top:0; width:100%; height:100%; pointer-events:none; z-index:0; overflow:visible; }
+#threadContent{ position:relative; z-index:1; }
+.th-ghost{ fill:none; stroke:var(--ink); stroke-opacity:.28; stroke-width:2; stroke-dasharray:1.5 7; stroke-linecap:round; }
+.th-live{ fill:none; stroke:var(--ink); stroke-width:2; stroke-linecap:round; stroke-linejoin:round; }
+.th-node{ fill:var(--paper); stroke:var(--ink); stroke-width:2; transition:fill .3s ease; }
+.th-node.reached{ fill:var(--ink); }
+.tgap{ height:clamp(150px,22vh,230px); }
+.tgap-sm{ height:clamp(120px,16vh,170px); }
+@media (max-width:1279px){ .tpad{ padding-left:2.75rem!important; } }
+
+/* ───────── Reveal hooks: lit by the thread, never by scroll position ───────── */
+.rule-in{ position:relative; }
+.rule-in::before{ content:""; position:absolute; left:0; right:0; top:0; height:1px; background:var(--rule); transform-origin:left; transition:transform .6s ease-out; }
+.lit-h{ transition:color .35s ease-out, transform .35s ease-out; }
+@media (prefers-reduced-motion:no-preference){
+  html.js .lit-h:not(.is-lit){ color:var(--muted); transform:translateY(8px); }
+  html.js .rule-in:not(.is-lit)::before{ transform:scaleX(0); }
+  html.js .hn:not(.is-done){ background:var(--paper); border-style:dotted; }
+  html.js .hn.is-near:not(.is-done){ border-style:solid; }
+  html.js .hn:not(.is-done) span{ color:var(--muted); }
+}
+
+/* ───────── About ───────── */
+.role-lines{ margin-top:.75rem; font-size:1.0625rem; font-weight:600; color:var(--muted); }
+.role-lines span{ display:block; }
+.about-grid{ display:grid; grid-template-columns:minmax(0,1fr); gap:2.5rem; margin-top:2rem; }
+@media (min-width:1024px){ .about-grid{ grid-template-columns:minmax(0,7fr) minmax(0,5fr); gap:3rem; } }
+.fact-list{ margin:0; display:grid; align-content:start; }
+.fact-list > div{ padding:1.1rem 0 1.25rem; }
+.fact-list dt{ font-family:var(--font-display); font-size:clamp(1.6rem,2.6vw,2.1rem); line-height:1.15; font-weight:600; color:var(--ink); }
+.fact-list dd{ margin:.35rem 0 0; font-size:1rem; line-height:1.5; color:var(--muted); }
+
+/* ───────── Projects: title, chips, narrative flow ───────── */
+.flow{ display:grid; align-content:start; margin-top:0; }
+.stage{ display:grid; grid-template-columns:minmax(0,1fr); gap:.5rem; align-items:start; padding:1.25rem 0 1.5rem; }
+@media (min-width:768px){ .stage{ grid-template-columns:140px minmax(0,1fr); gap:1.5rem; } }
+.stage-label{ display:flex; align-items:center; gap:.6rem; margin:0; font-family:var(--font-display); font-size:1.125rem; font-weight:600; color:var(--ink); }
+.stage p{ margin:0; font-size:1.0625rem; line-height:1.6; color:var(--ink); }
+.mk{ flex:none; width:14px; height:14px; border-radius:50%; border:2px solid var(--ink); background:var(--paper); }
+.mk-dotted{ border-style:dotted; }
+.mk-disc{ background:var(--ink); }
+@media (prefers-reduced-motion:no-preference){
+  html.js .stage:not(.is-lit) .mk{ border-color:var(--muted); }
+  html.js .stage:not(.is-lit) .mk-disc{ background:var(--paper); }
+}
+.flow-solo{ margin-top:2rem; }
+
+.atlas-grid{ display:grid; grid-template-columns:minmax(0,1fr); gap:2rem; margin-top:2rem; }
+@media (min-width:1024px){ .atlas-grid{ grid-template-columns:minmax(0,5fr) minmax(0,7fr); gap:2.5rem; align-items:stretch; } }
+.atlas-panel{ padding:1rem; display:grid; place-items:center; min-height:20rem; }
+.atlas-wide, .atlas-narrow{ width:100%; }
+.atlas-panel svg{ width:100%; height:auto; max-width:44rem; }
+.atlas-narrow{ display:none; }
+@media (max-width:699px){ .atlas-wide{ display:none; } .atlas-narrow{ display:block; } .atlas-panel{ min-height:0; } }
+.at-edge{ fill:none; stroke:var(--ink); stroke-width:1.5; stroke-linecap:round; stroke-dasharray:1; stroke-dashoffset:0; transition:stroke-dashoffset .9s ease-in-out; }
+.at-node{ fill:var(--paper); stroke:var(--ink); stroke-width:2; transition:stroke-dasharray .3s; }
+.at-hub{ fill:var(--ink); }
+.at-hub-label{ fill:var(--paper); font-family:var(--font-display); font-weight:600; text-anchor:middle; }
+.at-label{ font-size:15px; fill:var(--ink); }
+@media (prefers-reduced-motion:no-preference){
+  html.js .atlas-panel:not(.is-lit) .at-edge{ stroke-dashoffset:1; }
+  html.js .atlas-panel:not(.is-lit) .at-node{ stroke-dasharray:2 3; }
+  html.js .atlas-panel:not(.is-lit) .at-hub{ fill:var(--paper); stroke:var(--ink); stroke-width:2; stroke-dasharray:2 3; }
+  html.js .atlas-panel:not(.is-lit) .at-hub-label{ fill:var(--ink); }
+}
+
+/* ───────── How I work: a true sequence on the thread ───────── */
+.steps2{ display:grid; grid-template-columns:minmax(0,1fr); gap:1.5rem; margin:2.25rem 0 0; padding:0; list-style:none; }
+@media (min-width:768px){ .steps2{ grid-template-columns:repeat(4,minmax(0,1fr)); gap:1.5rem; } }
+.stp{ display:grid; grid-template-columns:auto minmax(0,1fr); column-gap:1rem; align-items:start; }
+@media (min-width:768px){ .stp{ display:block; } }
+.step-node{
+  display:grid; place-items:center; width:1.75rem; height:1.75rem; border-radius:50%; border:2px solid var(--ink);
+  background:var(--ink); color:var(--paper); font-family:var(--font-display); font-size:.875rem; font-weight:700; line-height:1;
+  transition:background-color .3s ease, color .3s ease;
+}
+.stp.per .step-node{ background:var(--amber); color:var(--ink); }
+.stp-text{ min-width:0; }
+@media (min-width:768px){ .stp-text{ margin-top:.85rem; } }
+.stp b{ display:block; font-family:var(--font-display); font-size:1.25rem; font-weight:600; line-height:1.2; color:var(--ink); }
+.stp span.d{ display:block; margin-top:.25rem; font-size:1rem; color:var(--muted); }
+@media (prefers-reduced-motion:no-preference){
+  html.js .stp:not(.is-lit) .step-node{ background:var(--paper); color:var(--ink); }
+}
+
+/* ───────── Experience: dates beside roles; the rail is the spine ───────── */
+.tl-entry{ display:grid; grid-template-columns:minmax(0,1fr); gap:.5rem; padding:1.5rem 0 1.75rem; }
+@media (min-width:768px){ .tl-entry{ grid-template-columns:11rem minmax(0,1fr); gap:2rem; } }
+.tl-date{ margin:0; font-size:1rem; font-weight:600; color:var(--muted); }
+.role{ margin:0; font-size:1.5rem; line-height:1.2; font-weight:600; color:var(--ink); }
+.tl-org{ margin:.25rem 0 0; font-size:1rem; font-weight:600; color:var(--ink); }
+.bullets{ margin:1rem 0 0; padding:0; list-style:none; display:grid; gap:.6rem; }
+.bullets li{ position:relative; padding-left:1.25rem; font-size:1.0625rem; line-height:1.55; }
+.bullets li::before{ content:""; position:absolute; left:0; top:.6em; width:.375rem; height:.375rem; border-radius:50%; background:var(--ink); }
+.edu{ margin:1.5rem 0 0; padding:1.25rem 0 0; border-top:1px solid var(--rule); list-style:none; display:grid; gap:.35rem; font-size:1rem; color:var(--ink); }
+
+/* ───────── Contact ───────── */
+.end-group{ display:inline-flex; flex-wrap:wrap; align-items:center; gap:.75rem; }
+
+/* Typed greeting: hold the text back until the fonts are in, so wrapping never changes mid-typing */
+@media (prefers-reduced-motion:no-preference){
+  html.js .tw-h1:not(.tw-ready) .tw-line{ visibility:hidden; }
+}
+
+#work > article:first-of-type{ margin-top:3.5rem; }
+</style>
+<!-- ═══════════════════════════════════════════════════════════════
+     EDIT ME: every link on the page is set here (same block on all three pages).
+     cv       empty = visible, disabled "Add CV link" button until you set it
+     calendly empty = hidden
+     ═══════════════════════════════════════════════════════════════ -->
+<script>
+  window.SITE = {
+    links: {
+      linkedin: "https://www.linkedin.com/in/jameswheeler092/",
+      email:    "mailto:jameswheeler092@gmail.com",
+      cv:       "",   // e.g. "/James-Wheeler-CV.pdf"
+      calendly: ""    // optional booking link
+    }
+  };
+</script>
+</head>
+<body>
+<a href="#main" class="sr-only skip-link">Skip to content</a>
+<svg width="0" height="0" style="position:absolute" aria-hidden="true" focusable="false">
+  <defs><path id="ah" d="M0 0 L-10 -5.5 L-10 5.5 Z"/></defs>
+</svg>
+
+<header id="nav" class="fixed inset-x-0 top-0 z-50 border-b border-transparent">
+  <div class="mx-auto flex h-16 max-w-6xl items-center justify-between px-5 sm:px-8">
+    <a href="#top" class="wordmark flex items-center" aria-label="James Wheeler, home"><span>James Wheeler</span>
+    </a>
+    <nav class="hidden items-center gap-1 md:flex" aria-label="Primary">
+      <a class="nav-link" href="#about">About</a>
+      <a class="nav-link" href="#work">Projects</a>
+      <a class="nav-link" href="#process">How I work</a>
+      <a class="nav-link" href="#experience">Experience</a>
+      <a class="nav-link" href="#contact">Contact</a>
+    </nav>
+    <div class="flex items-center gap-2">
+      <a data-link="cv" data-required data-soon="Add CV link" class="btn btn-ghost btn-sm nav-cv"><span data-label>CV</span></a>
+      <a data-link="email" class="btn btn-ghost btn-sm">Email</a>
+      <button id="menuBtn" type="button" class="grid h-9 w-9 place-items-center rounded-lg border transition md:hidden menu-btn" aria-expanded="false" aria-controls="mobileMenu" aria-label="Open menu">
+        <span data-icon="menu"></span>
+      </button>
+    </div>
+  </div>
+  <div id="mobileMenu" class="is-off border-t border-rule bg-paper md:hidden">
+    <nav class="mx-auto grid max-w-6xl px-5 py-2 sm:px-8" aria-label="Mobile">
+      <a class="nav-link py-3 text-base" href="#about">About</a>
+      <a class="nav-link py-3 text-base" href="#work">Projects</a>
+      <a class="nav-link py-3 text-base" href="#process">How I work</a>
+      <a class="nav-link py-3 text-base" href="#experience">Experience</a>
+      <a class="nav-link py-3 text-base" href="#contact">Contact</a>
+    </nav>
+  </div>
+</header>
+<main id="main">
+<div id="threadWrap">
+<svg id="thread" aria-hidden="true" focusable="false">
+  <path class="th-ghost"/><path class="th-live"/><g class="th-nodes"></g>
+</svg>
+<div id="threadContent">
+<!-- ═════════ HERO: the greeting, typed out, and the things it connects ═════════ -->
+<section id="top" class="hero">
+  <div class="tpad hero-in mx-auto w-full max-w-6xl px-5 sm:px-8">
+    <div class="hero-copy">
+      <h1 id="heroTitle" class="h1-statement tw-h1" aria-label="Hi! I’m James. I’m a curious builder, using AI to find out what’s possible.">
+        <span class="tw-line" data-type aria-hidden="true">Hi! I’m James.</span>
+        <span class="tw-line" data-type aria-hidden="true">I’m a curious builder, using AI to find out what’s possible.</span>
+      </h1>
+      <div class="mt-9 flex flex-wrap items-center gap-3">
+        <a href="#work" class="btn btn-primary btn-lg">See the projects</a>
+        <a data-link="cv" data-required data-soon="Download CV" class="btn btn-ghost btn-lg"><span data-icon="file-text"></span><span data-label>Download CV</span></a>
+        <a data-link="linkedin" class="btn btn-ghost btn-lg"><span data-icon="linkedin"></span>LinkedIn</a>
+      </div>
+    </div>
+    <div id="heroField" class="hero-field" aria-hidden="true">
+      <svg class="hero-static" viewBox="0 0 480 440" preserveAspectRatio="none" focusable="false"><path d="M72 62 L389 79 L408 211 L58 216 L350 326 L110 396"/></svg>
+      <div class="hn n1"><span class="lt-l">Paper</span></div>
+      <div class="hn n2"><span class="lt-r">Memory</span></div>
+      <div class="hn n3"><span class="lb-r">Excel sheets</span></div>
+      <div class="hn n4"><span class="lt-l">Personal devices</span></div>
+      <div class="hn n5"><span class="lr">Legacy systems</span></div>
+      <div class="hn n6"><span class="lb-l">Third-party software</span></div>
+    </div>
+  </div>
+</section>
+
+<div class="tgap" aria-hidden="true"></div>
+
+<!-- ═════════ ABOUT ═════════ -->
+<section id="about" class="relative">
+  <div class="tpad mx-auto max-w-6xl px-5 sm:px-8">
+    <h2 class="h2 lit-h" data-thread-node data-thread-hit>What I do.</h2>
+    <p class="role-lines"><span>Product Manager (Compliance &amp; AI)</span><span>RBW Systems, London</span></p>
+    <div class="about-grid">
+      <div>
+        <p class="lead">I work at RBW Systems, a gaming-technology company. I took a compliance product from first build to 950 live sites, and built the company’s internal operating system with AI coding agents.</p>
+        <p class="lead mt-4">I like questions that start with “could we?” Could an agent answer our support questions? Could one system replace paper and memory? I build the smallest thing that finds out, measure it honestly, and keep a person in the loop where it matters.</p>
+      </div>
+      <dl class="fact-list">
+        <div class="rule-in" data-thread-hit><dt>950 live sites</dt><dd>Guardian Compliance, 35% of the sites in the market.</dd></div>
+        <div class="rule-in" data-thread-hit><dt>One system</dt><dd>Atlas brings CRM, support, QBRs and server telemetry into one place.</dd></div>
+        <div class="rule-in" data-thread-hit><dt>One agent</dt><dd>An AI agent with custom knowledge bases, multiple models and observability; the Teams version is in development.</dd></div>
+      </dl>
+    </div>
+  </div>
+</section>
+
+<div class="tgap" aria-hidden="true"></div>
+
+<!-- ═════════ PROJECTS ═════════ -->
+<section id="work" class="relative">
+  <div class="tpad mx-auto max-w-6xl px-5 sm:px-8"><h2 class="h2 lit-h" data-thread-node data-thread-hit>Projects</h2></div>
+
+  <article id="atlas" class="tpad mx-auto mt-10 max-w-6xl px-5 sm:px-8">
+    <div class="flex flex-wrap gap-2"><span class="chip chip-live"><span class="dot"></span>Live</span><span class="chip chip-solid">Teams agent in development</span></div>
+    <h3 class="proj-title lit-h mt-4" data-thread-node="atlas" data-thread-hit>RBW Atlas</h3>
+    <p class="proj-tag">Internal AI Native company operating system</p>
+    <div class="atlas-grid" data-atlas-grid>
+      <div class="flow">
+        <section class="stage rule-in" data-thread-hit><h4 class="stage-label"><i class="mk mk-dotted" aria-hidden="true"></i>Problem</h4>
+          <p>RBW ran on paper and memory. Data sat on personal devices, in Excel sheets and in third-party software, with no single source of truth to build on as we grew.</p></section>
+        <section class="stage rule-in" data-thread-hit><h4 class="stage-label"><i class="mk" aria-hidden="true"></i>Build</h4>
+          <p>Foundation first, AI second. I built one system for the company’s core functions and data with AI coding agents, then put the AI workflows on top.</p></section>
+        <section class="stage rule-in" data-thread-hit><h4 class="stage-label"><i class="mk mk-disc" aria-hidden="true"></i>Outcome</h4>
+          <div><p>One system now covers CRM, onboarding, installations and inventory, customer support, QBRs, the employee hub and server telemetry, plus an AI agent with custom knowledge bases, telemetry, multiple models and observability.</p>
+          <p class="mt-3 flex flex-wrap gap-2"><span class="tbc">add: one adoption or before/after number</span><span class="tbc">add: what the agent gets wrong and when it hands over to a person</span><span class="tbc">add: my role (what I decided, what the agents built, who reviewed)</span></p></div></section>
+      </div>
+      <div class="atlas-panel panel" data-atlas-panel data-thread-hit>
+<div class="atlas-wide"><svg class="" viewBox="0 0 680 460" role="img" aria-label="RBW Atlas at the centre, joined to eight modules: CRM, Onboarding, Installations and inventory, Customer support, QBRs, Employee hub, Server telemetry and an AI agent." focusable="false">
+  <path class="at-edge" pathLength="1" d="M340.0 176.0 L340.0 68.0"/>
+  <path class="at-edge" pathLength="1" d="M380.7 194.5 L468.0 118.3"/>
+  <path class="at-edge" pathLength="1" d="M394.0 230.0 L522.0 230.0"/>
+  <path class="at-edge" pathLength="1" d="M380.7 265.5 L468.0 341.7"/>
+  <path class="at-edge" pathLength="1" d="M340.0 284.0 L340.0 392.0"/>
+  <path class="at-edge" pathLength="1" d="M299.3 265.5 L212.0 341.7"/>
+  <path class="at-edge" pathLength="1" d="M286.0 230.0 L158.0 230.0"/>
+  <path class="at-edge" pathLength="1" d="M299.3 194.5 L212.0 118.3"/>
+  <circle class="at-hub" data-atlas-hub cx="340" cy="230" r="54"/><text class="at-hub-label" style="font-size:16px" x="340" y="235">RBW Atlas</text>
+  <circle class="at-node" cx="340" cy="60" r="8"/>
+  <text class="at-label" style="font-size:15px" x="340" y="42" text-anchor="middle">CRM</text>
+  <circle class="at-node" cx="474" cy="113" r="8"/>
+  <text class="at-label" style="font-size:15px" x="488" y="119" text-anchor="start">Onboarding</text>
+  <circle class="at-node" cx="530" cy="230" r="8"/>
+  <text class="at-label" style="font-size:15px" text-anchor="start"><tspan x="544" y="228">Installations &amp;</tspan><tspan x="544" y="246">inventory</tspan></text>
+  <circle class="at-node" cx="474" cy="347" r="8"/>
+  <text class="at-label" style="font-size:15px" x="488" y="353" text-anchor="start">Customer support</text>
+  <circle class="at-node" cx="340" cy="400" r="8"/>
+  <text class="at-label" style="font-size:15px" x="340" y="431" text-anchor="middle">QBRs</text>
+  <circle class="at-node" cx="206" cy="347" r="8"/>
+  <text class="at-label" style="font-size:15px" x="192" y="353" text-anchor="end">Employee hub</text>
+  <circle class="at-node" cx="150" cy="230" r="8"/>
+  <text class="at-label" style="font-size:15px" x="136" y="236" text-anchor="end">Server telemetry</text>
+  <circle class="at-node" cx="206" cy="113" r="8"/>
+  <text class="at-label" style="font-size:15px" x="192" y="119" text-anchor="end">AI agent</text>
+</svg></div>
+<div class="atlas-narrow"><svg class="" viewBox="0 0 480 560" role="img" aria-label="RBW Atlas at the centre, joined to eight modules: CRM, Onboarding, Installations and inventory, Customer support, QBRs, Employee hub, Server telemetry and an AI agent." focusable="false">
+  <path class="at-edge" pathLength="1" d="M240.0 234.0 L240.0 78.0"/>
+  <path class="at-edge" pathLength="1" d="M264.9 241.3 L325.7 146.7"/>
+  <path class="at-edge" pathLength="1" d="M286.0 280.0 L360.0 280.0"/>
+  <path class="at-edge" pathLength="1" d="M264.9 318.7 L325.7 413.3"/>
+  <path class="at-edge" pathLength="1" d="M240.0 326.0 L240.0 482.0"/>
+  <path class="at-edge" pathLength="1" d="M215.1 318.7 L154.3 413.3"/>
+  <path class="at-edge" pathLength="1" d="M194.0 280.0 L120.0 280.0"/>
+  <path class="at-edge" pathLength="1" d="M215.1 241.3 L154.3 146.7"/>
+  <circle class="at-hub" data-atlas-hub cx="240" cy="280" r="46"/><text class="at-hub-label" style="font-size:16px" x="240" y="285">RBW Atlas</text>
+  <circle class="at-node" cx="240" cy="70" r="8"/>
+  <text class="at-label" style="font-size:18px" x="240" y="52" text-anchor="middle">CRM</text>
+  <circle class="at-node" cx="330" cy="140" r="8"/>
+  <text class="at-label" style="font-size:18px" x="344" y="147" text-anchor="start">Onboarding</text>
+  <circle class="at-node" cx="368" cy="280" r="8"/>
+  <text class="at-label" style="font-size:18px" text-anchor="start"><tspan x="382" y="278">Installations</tspan><tspan x="382" y="299">&amp; inventory</tspan></text>
+  <circle class="at-node" cx="330" cy="420" r="8"/>
+  <text class="at-label" style="font-size:18px" text-anchor="start"><tspan x="344" y="418">Customer</tspan><tspan x="344" y="439">support</tspan></text>
+  <circle class="at-node" cx="240" cy="490" r="8"/>
+  <text class="at-label" style="font-size:18px" x="240" y="524" text-anchor="middle">QBRs</text>
+  <circle class="at-node" cx="150" cy="420" r="8"/>
+  <text class="at-label" style="font-size:18px" text-anchor="end"><tspan x="136" y="418">Employee</tspan><tspan x="136" y="439">hub</tspan></text>
+  <circle class="at-node" cx="112" cy="280" r="8"/>
+  <text class="at-label" style="font-size:18px" text-anchor="end"><tspan x="98" y="278">Server</tspan><tspan x="98" y="299">telemetry</tspan></text>
+  <circle class="at-node" cx="150" cy="140" r="8"/>
+  <text class="at-label" style="font-size:18px" x="136" y="147" text-anchor="end">AI agent</text>
+</svg></div>
+      </div>
+    </div>
+    <div class="mt-6"><a href="atlas/" class="btn btn-primary">View the case study</a></div>
+  </article>
+
+  <div class="tgap tgap-sm" aria-hidden="true"></div>
+
+  <article id="guardian" class="tpad mx-auto max-w-6xl px-5 sm:px-8">
+    <h3 class="proj-title lit-h" data-thread-node data-thread-hit>Guardian Compliance</h3>
+    <p class="proj-tag max-w-3xl">A purpose-built compliance solution for the land-based gambling industry. The system handled sensitive personal data, regulatory returns, and compliance requirements for the regulated sector.</p>
+    <div class="stats">
+      <div class="stat">
+        <p class="stat-num" data-thread-hit data-count="950">950</p>
+        <p class="stat-cap">sites live as of <time datetime="2026-10-19">19 October 2026</time><!-- UPDATE: as-of date --></p>
+      </div>
+      <div class="stat stat-sm">
+        <p class="stat-num" data-thread-hit data-count="35" data-suffix="%">35%</p>
+        <p class="stat-cap">of the sites in the market</p>
+      </div>
+    </div>
+    <div class="flow flow-solo">
+      <section class="stage rule-in" data-thread-hit><h4 class="stage-label"><i class="mk mk-dotted" aria-hidden="true"></i>Problem</h4>
+        <p>Operators kept customer records on paper or in legacy systems that weren’t fit for purpose. They needed a quick, affordable way to talk to customers, review behaviour, escalate potential vulnerability and show an audit trail across venues.</p></section>
+      <section class="stage rule-in" data-thread-hit><h4 class="stage-label"><i class="mk" aria-hidden="true"></i>Build</h4>
+        <p>I was the end-to-end product manager, shaping it with the trade association and pilot customers as regulation evolved. One customer record spans every venue. It connects to facial recognition, self-exclusion schemes and our machine management system, so gameplay alerts prompt staff to step in on AML, fraud and safer gambling.</p></section>
+      <section class="stage rule-in" data-thread-hit><h4 class="stage-label"><i class="mk mk-disc" aria-hidden="true"></i>Outcome</h4>
+        <p>Unseated the market incumbent’s largest customer, and sub-licensed the solution to the trade body for use across its membership base.</p></section>
+    </div>
+    <div class="mt-6"><a href="guardian/" class="btn btn-primary">View the case study</a></div>
+  </article>
+
+  <div class="tgap tgap-sm" aria-hidden="true"></div>
+
+  <article id="project3" class="tpad mx-auto max-w-6xl px-5 sm:px-8">
+    <div class="flex flex-wrap gap-2"><span class="chip chip-dotted">Building now</span></div>
+    <h3 class="proj-title lit-h mt-4" data-thread-node data-thread-hit>Project three</h3>
+    <p class="proj-tag"><span class="tbc">add: one line</span></p>
+    <div class="flow flow-solo">
+      <section class="stage rule-in" data-thread-hit><h4 class="stage-label"><i class="mk mk-dotted" aria-hidden="true"></i>Problem</h4><p><span class="tbc">add: the problem</span></p></section>
+      <section class="stage rule-in" data-thread-hit><h4 class="stage-label"><i class="mk" aria-hidden="true"></i>Build</h4><p><span class="tbc">add: the build</span></p></section>
+      <section class="stage rule-in" data-thread-hit><h4 class="stage-label"><i class="mk mk-disc" aria-hidden="true"></i>Outcome</h4><p><span class="tbc">add: the outcome</span></p></section>
+    </div>
+    <div class="mt-6"><span class="btn btn-ghost is-soon">Case study, coming</span></div>
+  </article>
+</section>
+
+<div class="tgap" aria-hidden="true"></div>
+
+<!-- ═════════ HOW I WORK ═════════ -->
+<section id="process" class="relative">
+  <div class="tpad mx-auto max-w-6xl px-5 sm:px-8" data-process>
+    <h2 class="h2 lit-h" data-thread-node="steps" data-thread-hit>Delegate the grunt work. Keep the planning and the control.</h2>
+    <p class="lead mt-4">Everything I build has a point where a person takes over. I work with coding agents the same way: plan first, have the plan reviewed, let agents build, then review what comes back. Amber marks where a person decides.</p>
+    <ol class="steps2" data-steps>
+      <li class="stp per" data-step data-thread-hit><span class="step-node" aria-hidden="true">1</span><div class="stp-text"><b>Plan</b><span class="d">with the people who’ll use it</span></div></li>
+      <li class="stp" data-step data-thread-hit><span class="step-node" aria-hidden="true">2</span><div class="stp-text"><b>Review</b><span class="d">Claude as the quality gate</span></div></li>
+      <li class="stp" data-step data-thread-hit><span class="step-node" aria-hidden="true">3</span><div class="stp-text"><b>Build</b><span class="d">Claude Code and Codex</span></div></li>
+      <li class="stp per" data-step data-thread-hit><span class="step-node" aria-hidden="true">4</span><div class="stp-text"><b>Critique</b><span class="d">before it ships</span></div></li>
+    </ol>
+    <p class="mt-8" data-steps-after><span class="tbc">add: link a sanitised plan and its review</span></p>
+  </div>
+</section>
+
+<div class="tgap" aria-hidden="true"></div>
+
+<!-- ═════════ EXPERIENCE ═════════ -->
+<section id="experience" class="relative">
+  <div class="tpad mx-auto max-w-6xl px-5 sm:px-8">
+    <h2 class="h2 lit-h" data-thread-node data-thread-hit>From trade shows to AI products in under three years.</h2>
+    <div class="mt-8">
+      <article class="tl-entry rule-in" data-thread-hit>
+        <p class="tl-date">May 2024 – now</p>
+        <div>
+          <h3 class="role lit-h" data-thread-node data-thread-hit>Product Manager (Compliance &amp; AI)</h3>
+          <p class="tl-org">RBW Systems</p>
+          <ul class="bullets">
+            <li>Guardian Compliance: product manager from first build to 950 live sites</li>
+            <li>Merkur account owner through the trial</li>
+            <li>RBW Atlas: built the company’s internal operating system with AI coding agents</li>
+            <li>£2.5m, 10-year contract: my buy-back idea, negotiated by our MD and a non-executive director</li>
+          </ul>
+        </div>
+      </article>
+      <article class="tl-entry rule-in" data-thread-hit>
+        <p class="tl-date">Dec 2023 – May 2024</p>
+        <div>
+          <h3 class="role lit-h" data-thread-node data-thread-hit>Marketing Projects Lead</h3>
+          <p class="tl-org">RBW Systems</p>
+          <ul class="bullets">
+            <li>Rebrand and website relaunch</li>
+            <li>Trade shows, end to end: stand design, logistics, meetings and demos</li>
+          </ul>
+        </div>
+      </article>
+    </div>
+    <ul class="edu">
+      <li>BSc Business Management (First Class Honours), Lancaster University</li>
+      <li>Generative AI Automation, Vanderbilt University</li>
+      <li>Data Analytics Professional, Google</li>
+      <li>Advisory panel member, Heal Rewilding</li>
+    </ul>
+  </div>
+</section>
+
+<div class="tgap" aria-hidden="true"></div>
+
+<!-- ═════════ CONTACT ═════════ -->
+<section id="contact" class="relative pb-28">
+  <div class="tpad mx-auto max-w-6xl px-5 sm:px-8">
+    <h2 class="h2 lit-h" data-thread-node data-thread-hit>Building AI products? Let’s compare notes.</h2>
+    <p class="lead mt-4">I’m always curious what others are trying to find out with AI, and where they put the person in the loop.</p>
+    <div class="mt-9">
+      <div class="end-group" data-thread-end data-thread-hit>
+        <a data-link="email" class="btn btn-primary btn-lg"><span data-icon="mail"></span>Email me</a>
+        <a data-link="linkedin" class="btn btn-ghost btn-lg"><span data-icon="linkedin"></span>LinkedIn</a>
+        <a data-link="cv" data-required data-soon="Add CV link" class="btn btn-ghost btn-lg"><span data-icon="file-text"></span><span data-label>CV</span></a>
+      </div>
+    </div>
+  </div>
+</section>
+
+</div>
+</div>
+</main>
+
+<footer class="border-t border-rule">
+  <div class="mx-auto flex max-w-6xl flex-col items-center justify-between gap-4 px-5 py-8 text-sm c-muted sm:flex-row sm:px-8">
+    <p>© <span id="year">2026</span> James Wheeler, London</p>
+    <div class="flex items-center gap-6">
+      <a data-link="linkedin" class="foot-link">LinkedIn</a>
+      <a data-link="email" class="foot-link">Email</a>
+      <a href="#top" class="foot-link">Back to top</a>
+    </div>
+  </div>
+</footer>
+<button id="draftToggle" type="button" class="draft-pill" aria-pressed="true">Draft markers: on</button>
+<script>
+(() => {
+  'use strict';
+  const $  = (s, r = document) => r.querySelector(s);
+  const $$ = (s, r = document) => Array.from(r.querySelectorAll(s));
+
+  /* 1 ── Icons: Lucide-style inline SVG, so nothing loads from the network */
+  const ICONS = {
+    'menu': '<path d="M4 12h16"/><path d="M4 6h16"/><path d="M4 18h16"/>',
+    'x': '<path d="M18 6 6 18"/><path d="m6 6 12 12"/>',
+    'mail': '<path d="m22 7-8.991 5.727a2 2 0 0 1-2.009 0L2 7"/><rect x="2" y="4" width="20" height="16" rx="2"/>',
+    'linkedin': '<path d="M16 8a6 6 0 0 1 6 6v7h-4v-7a2 2 0 0 0-2-2 2 2 0 0 0-2 2v7h-4v-7a6 6 0 0 1 6-6z"/><rect width="4" height="12" x="2" y="9"/><circle cx="4" cy="4" r="2"/>',
+    'file-text': '<path d="M15 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V7Z"/><path d="M14 2v4a2 2 0 0 0 2 2h4"/><path d="M10 9H8"/><path d="M16 13H8"/><path d="M16 17H8"/>'
+  };
+  const svg = name => ICONS[name]
+    ? `<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" focusable="false">${ICONS[name]}</svg>`
+    : '';
+  $$('[data-icon]').forEach(el => { el.innerHTML = svg(el.dataset.icon); });
+
+  /* 2 ── Links from window.SITE.links. Empty + data-required = visible disabled state; empty otherwise = hidden */
+  const LINKS = (window.SITE && window.SITE.links) || {};
+  $$('[data-link]').forEach(a => {
+    const url = LINKS[a.dataset.link];
+    if (url) {
+      a.href = url;
+      if (a.dataset.link === 'cv' && /\.pdf($|[?#])/i.test(url)) a.setAttribute('download', '');
+      if (/^https?:/i.test(url)) { a.target = '_blank'; a.rel = 'noopener noreferrer'; }
+      return;
+    }
+    if (a.hasAttribute('data-required')) {
+      a.removeAttribute('href');
+      a.setAttribute('aria-disabled', 'true');
+      a.classList.add('is-soon');
+      const label = $('[data-label]', a);
+      if (label && a.dataset.soon) label.textContent = a.dataset.soon;
+      return;
+    }
+    a.classList.add('is-off');
+  });
+
+  /* 3 ── Navigation */
+  const nav = $('#nav'), menu = $('#mobileMenu'), menuBtn = $('#menuBtn');
+  const navLinks = $$('.nav-link[href^="#"]');
+  if (nav) {
+    const onScroll = () => {
+      nav.classList.toggle('is-scrolled', window.scrollY > 8);
+      if (window.scrollY < 320) navLinks.forEach(l => { l.dataset.active = 'false'; });
+    };
+    onScroll();
+    window.addEventListener('scroll', onScroll, { passive: true });
+  }
+  if (menu && menuBtn) {
+    const setMenu = open => {
+      menu.classList.toggle('is-off', !open);
+      nav.classList.toggle('menu-open', open);
+      menuBtn.setAttribute('aria-expanded', String(open));
+      menuBtn.setAttribute('aria-label', open ? 'Close menu' : 'Open menu');
+      menuBtn.firstElementChild.innerHTML = svg(open ? 'x' : 'menu');
+    };
+    menuBtn.addEventListener('click', () => setMenu(menu.classList.contains('is-off')));
+    $$('a', menu).forEach(a => a.addEventListener('click', () => setMenu(false)));
+    document.addEventListener('keydown', e => { if (e.key === 'Escape') setMenu(false); });
+  }
+  if (navLinks.length && 'IntersectionObserver' in window) {
+    const spy = new IntersectionObserver(entries => {
+      entries.forEach(e => {
+        if (!e.isIntersecting || window.scrollY < 320) return;
+        navLinks.forEach(l => { l.dataset.active = String(l.getAttribute('href') === '#' + e.target.id); });
+      });
+    }, { rootMargin: '-40% 0px -55% 0px' });
+    new Set(navLinks.map(l => $(l.getAttribute('href'))).filter(Boolean)).forEach(t => spy.observe(t));
+  }
+
+  /* 4 ── Draft markers on/off, footer year */
+  const pill = $('#draftToggle');
+  if (pill) pill.addEventListener('click', () => {
+    const off = document.body.classList.toggle('hide-tbc');
+    pill.setAttribute('aria-pressed', String(!off));
+    pill.textContent = off ? 'Draft markers: off' : 'Draft markers: on';
+  });
+  const year = $('#year');
+  if (year) year.textContent = new Date().getFullYear();
+})();
+
+/* ───────── Hero: the greeting types itself (about 2.5 s), once the fonts are in ───────── */
+(() => {
+  'use strict';
+  const h1 = document.getElementById('heroTitle');
+  if (!h1) return;
+  const lines = Array.from(h1.querySelectorAll('[data-type]'));
+  const reduce = window.matchMedia && window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+  const typed = () => { window.__heroTyped = true; window.dispatchEvent(new Event('hero:typed')); };
+  if (reduce || !lines.length) { typed(); return; }
+
+  const fontsIn = Promise.race([
+    Promise.all([document.fonts.load('600 1em Besley'), document.fonts.load('400 1em "Source Sans 3"')]),
+    new Promise(r => setTimeout(r, 1000))
+  ]).catch(() => {});
+
+  fontsIn.then(() => {
+    const chars = [];
+    lines.forEach((line, li) => {
+      const words = line.textContent.split(' ');
+      line.textContent = '';
+      words.forEach((w, wi) => {
+        const ws = document.createElement('span');
+        ws.className = 'tw-w';
+        Array.from(w).forEach(ch => {
+          const c = document.createElement('span');
+          c.className = 'tw-c'; c.textContent = ch;
+          ws.appendChild(c); chars.push({ el: c, li });
+        });
+        line.appendChild(ws);
+        if (wi < words.length - 1) line.appendChild(document.createTextNode(' '));
+      });
+    });
+    h1.classList.add('tw-ready');
+
+    const caret = document.createElement('span');
+    caret.className = 'tw-caret'; caret.setAttribute('aria-hidden', 'true');
+    h1.appendChild(caret);
+    const place = (el, atStart) => {
+      const r = el.getBoundingClientRect(), p = h1.getBoundingClientRect();
+      caret.style.left = ((atStart ? r.left : r.right) - p.left + 2) + 'px';
+      caret.style.top = (r.top - p.top + r.height * 0.06) + 'px';
+      caret.style.height = (r.height * 0.88) + 'px';
+    };
+    place(chars[0].el, true);
+
+    let i = 0;
+    const step = () => {
+      if (i >= chars.length) { typed(); setTimeout(() => caret.classList.add('done'), 1200); return; }
+      const { el, li } = chars[i];
+      el.classList.add('on');
+      place(el, false);
+      i++;
+      const next = chars[i];
+      let delay = (li === 0 ? 55 : 22) + Math.random() * 10;
+      if (next && next.li !== li) delay = 350;
+      setTimeout(step, delay);
+    };
+    setTimeout(step, 250);
+  });
+})();
+
+/* ───────── The thread: one ink line that joins the hero nodes to the closing buttons ─────────
+   Path: cubic Béziers built from DOM anchors. Scroll: piecewise-linear map from scroll to length, so each
+   section's segment completes over its own scroll distance. Lighting: precomputed length per element. */
+(() => {
+  'use strict';
+  const wrap = document.getElementById('threadWrap'), svg = document.getElementById('thread');
+  if (!wrap || !svg) return;
+  const $ = (s, r = document) => r.querySelector(s), $$ = (s, r = document) => Array.from(r.querySelectorAll(s));
+  const reduce = window.matchMedia && window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+  const NS = 'http://www.w3.org/2000/svg';
+  const ghost = $('.th-ghost', svg), live = $('.th-live', svg), nodeG = $('.th-nodes', svg);
+  const STEP = 2, MAX_RATIO = 3.2, LERP = 0.18, HERO_MS = 1600, LOOP_MS = 900, MAX_SEGS = 60;
+  const T = { total: 0, scale: 1, ls: null, sig: '', xs: null, ys: null, knots: [], hits: [], nodes: [], heroNodes: [], heroLens: [], Lh: 0, Lloop: 0, wrapTop: 0,
+              tgt: 0, cur: 0, litN: 0, heroT0: 0, heroDone: reduce, loopT0: 0, typed: reduce || !!window.__heroTyped, raf: 0, rt: 0, segs: 0 };
+  const ease = u => u < .5 ? 2 * u * u : 1 - Math.pow(-2 * u + 2, 2) / 2;
+  const easeOut = u => 1 - Math.pow(1 - u, 3);
+  const fmtCount = (el, v) => Math.round(v) + (el.dataset.suffix || '');
+
+  /* Elements that sit 8px low until lit report their resting position */
+  const lift = el => {
+    if (!el.classList.contains('lit-h') || el.classList.contains('is-lit')) return 0;
+    try { return new DOMMatrixReadOnly(getComputedStyle(el).transform).m42 || 0; } catch (e) { return 0; }
+  };
+  const rel = el => {
+    const r = el.getBoundingClientRect(), w = wrap.getBoundingClientRect();
+    return { x: r.left - w.left, y: r.top - w.top - lift(el), w: r.width, h: r.height };
+  };
+
+  /* Catmull-Rom through the points, as cubic segments */
+  function seg(p0, p1, p2, p3) {
+    return [p1[0] + (p2[0] - p0[0]) / 6, p1[1] + (p2[1] - p0[1]) / 6, p2[0] - (p3[0] - p1[0]) / 6, p2[1] - (p3[1] - p1[1]) / 6, p2[0], p2[1]];
+  }
+  function spline(pts) {
+    const out = [];
+    for (let i = 0; i < pts.length - 1; i++) out.push(seg(pts[i - 1] || pts[i], pts[i], pts[i + 1], pts[i + 2] || pts[i + 1]));
+    return out;
+  }
+  const fmt = n => n.toFixed(1);
+  const cubic = s => 'C' + s.map(fmt).join(' ');
+  const lineN = (a, b) => [a[0] + (b[0] - a[0]) / 3, a[1] + (b[1] - a[1]) / 3, a[0] + 2 * (b[0] - a[0]) / 3, a[1] + 2 * (b[1] - a[1]) / 3, b[0], b[1]];
+
+  /* Rounded rectangle, clockwise on screen from the bottom edge, so it closes on its own start */
+  function loopSegs(l, t, r, b, rad) {
+    const k = .5523 * rad, cxR = r - rad, cxL = l + rad, cyT = t + rad, cyB = b - rad, out = [];
+    out.push(lineN([cxL, b], [cxR, b]));
+    out.push([cxR + k, b, r, cyB + k, r, cyB]);
+    if (cyB - cyT > 1) out.push(lineN([r, cyB], [r, cyT]));
+    out.push([r, cyT - k, cxR + k, t, cxR, t]);
+    out.push(lineN([cxR, t], [cxL, t]));
+    out.push([cxL - k, t, l, cyT - k, l, cyT]);
+    if (cyB - cyT > 1) out.push(lineN([l, cyT], [l, cyB]));
+    out.push([l, cyB + k, cxL - k, b, cxL, b]);
+    return out;
+  }
+
+  function build() {
+    const W = wrap.clientWidth, H = wrap.clientHeight, narrow = W < 700, wide = W >= 1024, mid = W >= 768;
+    svg.setAttribute('viewBox', `0 0 ${W} ${H}`); svg.setAttribute('width', W); svg.setAttribute('height', H);
+    T.wrapTop = wrap.getBoundingClientRect().top + window.scrollY;
+    const heroEls = $$('.hn');
+    const railEls = $$('[data-thread-node]');
+    if (heroEls.length < 6 || !railEls.length) return;
+    const sigEls = [...railEls, heroEls[5], $('[data-atlas-panel]'), $('.step-node'), $('[data-steps-after]'), $('[data-thread-end]')].filter(Boolean);
+    const sig = [W, H, window.innerHeight, ...sigEls.map(e => { const r = rel(e); return Math.round(r.x) + ',' + Math.round(r.y) + ',' + Math.round(r.w) + ',' + Math.round(r.h); })].join('|');
+    if (sig === T.sig) return;
+    T.sig = sig;
+    const ctr = el => { const r = rel(el); return [r.x + r.w / 2, r.y + r.h / 2]; };
+
+    const H6 = heroEls.map(ctr);
+    const first = rel(railEls[0]);
+    const xL = Math.max(14, first.x - (narrow ? 26 : 54));
+    const rail = railEls.map(el => { const b = rel(el); return { y: b.y + Math.min(b.h / 2, 24), tag: el.dataset.threadNode || '' }; });
+
+    /* hero exit: below the buttons, never across the headline */
+    const field = rel($('#heroField'));
+    let heroBottom = field.y + field.h;
+    $$('.hero-copy .btn').forEach(b => { const r = rel(b); heroBottom = Math.max(heroBottom, r.y + r.h); });
+    let yB = Math.min(heroBottom + 46, rail[0].y - 100);
+    yB = Math.max(yB, H6[5][1] + 56);
+
+    const endEl = $('[data-thread-end]');
+    /* assemble(sway): every anchor the line visits, in order */
+    const assemble = sway => {
+      const knotsSpec = [];       /* {y: wrap-relative y the knot is read at, at: [x,y] on the path} */
+      const pts = H6.slice();
+      pts.push([H6[5][0] - 64, H6[5][1] + 64], [Math.max(xL + 70, H6[5][0] - 300), yB]);
+      rail.forEach((n, i) => {
+        const next = rail[i + 1];
+        pts.push([xL, n.y]);
+        knotsSpec.push({ y: n.y, at: [xL, n.y] });
+        if (n.tag === 'atlas' && $('[data-atlas-panel]')) {
+          /* in the gap above the panel, behind it through the hub, out below it, and back along the gap beneath */
+          const p = rel($('[data-atlas-panel]')), hb = ctr($$('[data-atlas-hub]').find(h => h.getBoundingClientRect().width > 0)), lane1 = p.y - 14, lane2 = p.y + p.h + 14;
+          const le = Math.max(xL + 110, p.x - 30), lx = Math.max(xL + 90, hb[0] - 100);
+          pts.push([xL + 4, lane1 - 70], [xL + 14, lane1 - 8], [xL + 60, lane1], [le, lane1], [le + 40, lane1 + 36], [le + 70, p.y + 56], hb,
+                   [hb[0] + 20, p.y + p.h - 34], [hb[0] - 16, lane2 - 2]);
+          if (lx < hb[0] - 40) pts.push([lx, lane2]);
+          pts.push([xL + 46, lane2 + 6], [xL + 8, lane2 + 26]);
+          knotsSpec.push({ y: hb[1], at: hb }, { y: lane2, at: [xL + 46, lane2 + 6] });
+        } else if (n.tag === 'steps' && $('[data-steps]')) {
+          const discs = $$('[data-step] .step-node').map(ctr), cont = rel($('[data-process]'));
+          const after = rel($('[data-steps-after]')), yAfter = after.y + after.h + 34, yD = discs[0][1];
+          if (mid) {
+            const rightX = Math.min(W - 18, cont.x + cont.w + 22);
+            pts.push([xL + 6, yD - 100], [xL + 26, yD - 36], ...discs, [discs[3][0] + 60, yD], [rightX, (yD + yAfter) / 2], [rightX - 140, yAfter],
+                     [xL + 170, yAfter], [xL + 24, yAfter + 8]);
+            knotsSpec.push({ y: yD, at: discs[0] }, { y: yD + 40, at: discs[3] }, { y: yAfter, at: [xL + 160, yAfter] });
+          } else {
+            /* stacked steps: down the disc column, then back to the rail before the draft marker */
+            pts.push([xL + 8, discs[0][1] - 52], ...discs, [discs[3][0] - 10, discs[3][1] + 22], [xL + 8, discs[3][1] + 46], [xL + 10, yAfter + 8]);
+            knotsSpec.push({ y: discs[0][1], at: discs[0] }, { y: discs[3][1], at: discs[3] }, { y: yAfter, at: [xL + 10, yAfter + 8] });
+          }
+        } else if (next && sway && next.y - n.y > 300) {
+          pts.push([xL + (i % 2 ? 9 : -9), (n.y + next.y) / 2]);
+        }
+      });
+
+      /* the closing loop: rounded rectangle around the buttons, 24px either side */
+      let arrive = null, loopD = [];
+      if (endEl) {
+        const lastRail = rail[rail.length - 1];
+        const e = rel(endEl), padX = 24, padY = 7;
+        const l = Math.max(xL + 22, e.x - padX), r = Math.min(W - 12, e.x + e.w + padX), t = e.y - padY, b = e.y + e.h + padY;
+        const rad = (e.x - l) >= 20 ? Math.min((b - t) / 2, 32) : Math.min((b - t) / 2, 16);   /* a stadium only where the padding clears the button corners */
+        arrive = [l + rad, b];
+        pts.push([xL + 5, (lastRail.y + b) / 2], [xL + 10, b - 50], [xL + 26, b + 8], [arrive[0] - 12, b + 2], arrive);
+        loopD = loopSegs(l, t, r, b, rad);
+      }
+      return { pts, knotsSpec, arrive, loopD };
+    };
+    let A = assemble(true), sp = spline(A.pts);
+    if (sp.length + A.loopD.length > MAX_SEGS) { A = assemble(false); sp = spline(A.pts); }
+    const { pts, knotsSpec, arrive, loopD } = A;
+    T.segs = sp.length + loopD.length;
+    const head = 'M' + fmt(pts[0][0]) + ' ' + fmt(pts[0][1]) + ' ';
+    const d = head + sp.concat(loopD).map(cubic).join(' ');
+    ghost.setAttribute('d', d); live.setAttribute('d', d);
+
+    /* sample every STEP px straight from the Béziers: no DOM calls, positions and running length */
+    const xs = [pts[0][0]], ys = [pts[0][1]], ls = [0];
+    let px = pts[0][0], py = pts[0][1], acc = 0, Lloop = -1;
+    sp.concat(loopD).forEach((sg, k) => {
+      if (k === sp.length) Lloop = acc;
+      const poly = Math.hypot(sg[0] - px, sg[1] - py) + Math.hypot(sg[2] - sg[0], sg[3] - sg[1]) + Math.hypot(sg[4] - sg[2], sg[5] - sg[3]);
+      const m = Math.max(4, Math.ceil(poly / STEP));
+      for (let i = 1; i <= m; i++) {
+        const t = i / m, u = 1 - t, a0 = u * u * u, a1 = 3 * u * u * t, a2 = 3 * u * t * t, a3 = t * t * t;
+        const x = a0 * px + a1 * sg[0] + a2 * sg[2] + a3 * sg[4], y = a0 * py + a1 * sg[1] + a2 * sg[3] + a3 * sg[5];
+        acc += Math.hypot(x - xs[xs.length - 1], y - ys[ys.length - 1]); xs.push(x); ys.push(y); ls.push(acc);
+      }
+      px = sg[4]; py = sg[5];
+    });
+    if (Lloop < 0) Lloop = acc;
+    const n = xs.length;
+    T.xs = Float32Array.from(xs); T.ys = Float32Array.from(ys); T.ls = Float32Array.from(ls);
+    T.total = acc; T.Lloop = Lloop;
+    T.scale = live.getTotalLength() / acc;     /* one DOM read per build; maps sampled length onto the drawn path */
+    live.style.strokeDasharray = `${acc * T.scale} ${acc * T.scale}`;
+    const lenNear = (x, y) => {
+      let best = 0, bd = 1e12;
+      for (let i = 0; i < n; i++) { const dx = T.xs[i] - x, dy = T.ys[i] - y, dd = dx * dx + dy * dy; if (dd < bd) { bd = dd; best = i; } }
+      return T.ls[best];
+    };
+
+    /* rail nodes */
+    nodeG.textContent = ''; T.nodes = [];
+    rail.forEach(rn => {
+      const c = document.createElementNS(NS, 'circle');
+      c.setAttribute('class', 'th-node'); c.setAttribute('cx', xL); c.setAttribute('cy', rn.y); c.setAttribute('r', 7);
+      nodeG.appendChild(c); T.nodes.push({ el: c, len: lenNear(xL, rn.y) });
+    });
+    T.heroLens = H6.map(p => lenNear(p[0], p[1]));
+    T.heroNodes = heroEls;
+    T.Lh = T.heroLens[5] + 6;
+
+    /* lighting lengths: first entry into the element's box (+12px), else first point at or below its top */
+    T.hits = $$('[data-thread-hit]').map(el => {
+      const r = rel(el), x0 = r.x - 12, x1 = r.x + r.w + 12, y0 = r.y - 12, y1 = r.y + r.h + 12;
+      let idx = -1;
+      for (let i = 0; i < n; i++) if (T.xs[i] >= x0 && T.xs[i] <= x1 && T.ys[i] >= y0 && T.ys[i] <= y1) { idx = i; break; }
+      if (idx < 0) for (let i = 0; i < n; i++) if (T.ys[i] >= r.y) { idx = i; break; }
+      return { el, len: T.ls[idx < 0 ? n - 1 : idx] };
+    }).sort((a, b) => a.len - b.len);
+    T.litN = 0;
+    T.hits.forEach(h => { h.el.classList.remove('is-lit'); });
+
+    /* scroll knots: [scrollY, length]; scroll 0 = hero drawn */
+    const vh = window.innerHeight, maxS = Math.max(1, document.documentElement.scrollHeight - vh);
+    const sY = y => Math.max(0, T.wrapTop + y - vh * 0.55);
+    let K = [[0, T.Lh]];
+    knotsSpec.forEach(k => K.push([sY(k.y), lenNear(k.at[0], k.at[1])]));
+    if (endEl && arrive) K.push([sY(arrive[1]), T.Lloop]);
+    for (let i = 1; i < K.length; i++) { K[i][1] = Math.max(K[i][1], K[i - 1][1]); K[i][0] = Math.max(K[i][0], K[i - 1][0] + 1); }
+    /* the loop must be reachable: nothing may sit beyond the last scroll position */
+    for (let i = K.length - 1; i >= 0; i--) K[i][0] = Math.min(K[i][0], maxS - 2 - (K.length - 1 - i));
+    /* pacing: no stretch may draw more than MAX_RATIO px of line per px of scroll; borrow scroll from earlier knots */
+    for (let i = K.length - 1; i > 0; i--) {
+      const need = (K[i][1] - K[i - 1][1]) / MAX_RATIO;
+      if (K[i][0] - K[i - 1][0] < need) K[i - 1][0] = Math.max(0, K[i][0] - need);
+    }
+    for (let i = 1; i < K.length; i++) K[i][0] = Math.max(K[i][0], K[i - 1][0] + 0.5);
+    T.knots = K;
+    T.cur = T.tgt = mapScroll(window.scrollY);
+    if (T.segs > MAX_SEGS) console.warn('thread: ' + T.segs + ' segments (limit ' + MAX_SEGS + ')');
+    frame(performance.now());
+  }
+
+  function mapScroll(s) {
+    const K = T.knots; if (!K.length) return 0;
+    if (s <= K[0][0]) return K[0][1];
+    if (s >= K[K.length - 1][0]) return K[K.length - 1][1];
+    let lo = 0, hi = K.length - 1;
+    while (hi - lo > 1) { const m = (lo + hi) >> 1; if (K[m][0] <= s) lo = m; else hi = m; }
+    const u = (s - K[lo][0]) / (K[hi][0] - K[lo][0]);
+    return K[lo][1] + (K[hi][1] - K[lo][1]) * u;
+  }
+
+  function countUp(el) {
+    if (el.dataset.counted) return;
+    el.dataset.counted = '1';
+    const to = parseFloat(el.dataset.count), t0 = performance.now(), dur = 900;
+    const tick = now => {
+      const p = Math.min(1, (now - t0) / dur);
+      el.textContent = fmtCount(el, to * easeOut(p));
+      if (p < 1) requestAnimationFrame(tick);
+    };
+    requestAnimationFrame(tick);
+  }
+
+  function frame(now) {
+    T.raf = 0;
+    if (!T.total) return;
+    let busy = false, L;
+    if (reduce) { L = T.total; }
+    else {
+      T.tgt = mapScroll(window.scrollY);
+      const d = T.tgt - T.cur;
+      if (Math.abs(d) < 0.3) T.cur = T.tgt; else { T.cur += d * LERP; busy = true; }
+      L = T.cur;
+      if (!T.heroDone) {
+        if (!T.typed) L = 0;
+        else {
+          if (!T.heroT0) T.heroT0 = now;
+          const u = Math.min(1, (now - T.heroT0) / HERO_MS);
+          L = Math.min(L, T.Lh * ease(u));
+          if (u >= 1) T.heroDone = true; else busy = true;
+        }
+      }
+      if (L >= T.Lloop - 1 && T.total > T.Lloop) {
+        if (!T.loopT0) T.loopT0 = now;
+        const u = Math.min(1, (now - T.loopT0) / LOOP_MS);
+        L = T.Lloop + (T.total - T.Lloop) * ease(u);
+        if (u < 1) busy = true;
+      } else T.loopT0 = 0;
+    }
+    live.style.strokeDashoffset = String((T.total - L) * T.scale);
+    T.nodes.forEach(n => n.el.classList.toggle('reached', L >= n.len));
+    T.heroNodes.forEach((el, i) => {
+      el.classList.toggle('is-near', reduce || L >= T.heroLens[i] - 36);
+      el.classList.toggle('is-done', reduce || L >= T.heroLens[i] + 4);
+    });
+    while (T.litN < T.hits.length && L >= T.hits[T.litN].len) {
+      const el = T.hits[T.litN++].el;
+      el.classList.add('is-lit');
+      if (el.dataset.count !== undefined && !reduce) countUp(el);
+    }
+    while (T.litN > 0 && L < T.hits[T.litN - 1].len) T.hits[--T.litN].el.classList.remove('is-lit');
+    if (busy && !T.raf) T.raf = requestAnimationFrame(frame);
+  }
+
+  const schedule = () => { if (!T.raf) T.raf = requestAnimationFrame(frame); };
+  const rebuild = () => { clearTimeout(T.rt); T.rt = setTimeout(build, 120); };
+
+  /* numerals start at zero only when they will be counted up */
+  if (!reduce) $$('[data-count]').forEach(el => { el.textContent = fmtCount(el, 0); });
+
+  window.addEventListener('scroll', schedule, { passive: true });
+  window.addEventListener('resize', rebuild);
+  window.addEventListener('hero:typed', () => { T.typed = true; schedule(); });
+  window.addEventListener('load', build);
+  if (document.fonts && document.fonts.ready) document.fonts.ready.then(build);
+  if ('ResizeObserver' in window) new ResizeObserver(rebuild).observe(wrap);
+  window.__thread = T;
+  build();
+})();
+</script>
+</body>
+</html>
