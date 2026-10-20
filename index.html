@@ -211,6 +211,9 @@ html.js .hero-static{ display:none; }
 </header>
 <main id="main">
 <div id="threadWrap">
+<svg id="thread" aria-hidden="true" focusable="false">
+  <path class="th-ghost"/><path class="th-live"/><g class="th-nodes"></g>
+</svg>
 <div id="threadContent">
 <!-- ═════════ HERO: the greeting, typed out, and the things it connects ═════════ -->
 <section id="top" class="hero">
@@ -536,6 +539,267 @@ html.js .hero-static{ display:none; }
     };
     setTimeout(step, 250);
   });
+})();
+
+/* ───────── The thread: one ink line that joins the hero nodes to the closing buttons ─────────
+   Path: cubic Béziers built from DOM anchors. Scroll: piecewise-linear map from scroll to length, so each
+   section's segment completes over its own scroll distance. Lighting: precomputed length per element. */
+(() => {
+  'use strict';
+  const wrap = document.getElementById('threadWrap'), svg = document.getElementById('thread');
+  if (!wrap || !svg) return;
+  const $ = (s, r = document) => r.querySelector(s), $$ = (s, r = document) => Array.from(r.querySelectorAll(s));
+  const reduce = window.matchMedia && window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+  const NS = 'http://www.w3.org/2000/svg';
+  const ghost = $('.th-ghost', svg), live = $('.th-live', svg), nodeG = $('.th-nodes', svg);
+  const STEP = 2, MAX_RATIO = 3.2, LERP = 0.18, HERO_MS = 1600, LOOP_MS = 900, MAX_SEGS = 60;
+  const T = { total: 0, xs: null, ys: null, knots: [], hits: [], nodes: [], heroNodes: [], heroLens: [], Lh: 0, Lloop: 0, wrapTop: 0,
+              tgt: 0, cur: 0, litN: 0, heroT0: 0, heroDone: reduce, loopT0: 0, typed: reduce || !!window.__heroTyped, raf: 0, rt: 0, segs: 0 };
+  const ease = u => u < .5 ? 2 * u * u : 1 - Math.pow(-2 * u + 2, 2) / 2;
+  const easeOut = u => 1 - Math.pow(1 - u, 3);
+  const fmtCount = (el, v) => Math.round(v) + (el.dataset.suffix || '');
+
+  /* Elements that sit 8px low until lit report their resting position */
+  const lift = el => {
+    if (!el.classList.contains('lit-h') || el.classList.contains('is-lit')) return 0;
+    try { return new DOMMatrixReadOnly(getComputedStyle(el).transform).m42 || 0; } catch (e) { return 0; }
+  };
+  const rel = el => {
+    const r = el.getBoundingClientRect(), w = wrap.getBoundingClientRect();
+    return { x: r.left - w.left, y: r.top - w.top - lift(el), w: r.width, h: r.height };
+  };
+
+  /* Catmull-Rom through the points, as cubic segments */
+  function seg(p0, p1, p2, p3) {
+    return [p1[0] + (p2[0] - p0[0]) / 6, p1[1] + (p2[1] - p0[1]) / 6, p2[0] - (p3[0] - p1[0]) / 6, p2[1] - (p3[1] - p1[1]) / 6, p2[0], p2[1]];
+  }
+  function spline(pts) {
+    const out = [];
+    for (let i = 0; i < pts.length - 1; i++) out.push(seg(pts[i - 1] || pts[i], pts[i], pts[i + 1], pts[i + 2] || pts[i + 1]));
+    return out;
+  }
+  const fmt = n => n.toFixed(1);
+  const cubic = s => 'C' + s.map(fmt).join(' ');
+  const line = (a, b) => cubic([a[0] + (b[0] - a[0]) / 3, a[1] + (b[1] - a[1]) / 3, a[0] + 2 * (b[0] - a[0]) / 3, a[1] + 2 * (b[1] - a[1]) / 3, b[0], b[1]]);
+
+  /* Rounded rectangle, clockwise on screen from the bottom edge, so it closes on its own start */
+  function loopSegs(l, t, r, b, rad) {
+    const k = .5523 * rad, cxR = r - rad, cxL = l + rad, cyT = t + rad, cyB = b - rad, out = [];
+    out.push(line([cxL, b], [cxR, b]));
+    out.push(cubic([cxR + k, b, r, cyB + k, r, cyB]));
+    if (cyB - cyT > 1) out.push(line([r, cyB], [r, cyT]));
+    out.push(cubic([r, cyT - k, cxR + k, t, cxR, t]));
+    out.push(line([cxR, t], [cxL, t]));
+    out.push(cubic([cxL - k, t, l, cyT - k, l, cyT]));
+    if (cyB - cyT > 1) out.push(line([l, cyT], [l, cyB]));
+    out.push(cubic([l, cyB + k, cxL - k, b, cxL, b]));
+    return out;
+  }
+
+  function build() {
+    const W = wrap.clientWidth, H = wrap.clientHeight, narrow = W < 700, wide = W >= 1024, mid = W >= 768;
+    svg.setAttribute('viewBox', `0 0 ${W} ${H}`); svg.setAttribute('width', W); svg.setAttribute('height', H);
+    T.wrapTop = wrap.getBoundingClientRect().top + window.scrollY;
+    const heroEls = $$('.hn');
+    const railEls = $$('[data-thread-node]');
+    if (heroEls.length < 6 || !railEls.length) return;
+    const ctr = el => { const r = rel(el); return [r.x + r.w / 2, r.y + r.h / 2]; };
+
+    const H6 = heroEls.map(ctr);
+    const first = rel(railEls[0]);
+    const xL = Math.max(14, first.x - (narrow ? 26 : 54));
+    const rail = railEls.map(el => { const b = rel(el); return { y: b.y + Math.min(b.h / 2, 24), tag: el.dataset.threadNode || '' }; });
+
+    /* hero exit: below the buttons, never across the headline */
+    const field = rel($('#heroField'));
+    let heroBottom = field.y + field.h;
+    $$('.hero-copy .btn').forEach(b => { const r = rel(b); heroBottom = Math.max(heroBottom, r.y + r.h); });
+    let yB = Math.min(heroBottom + 46, rail[0].y - 100);
+    yB = Math.max(yB, H6[5][1] + 56);
+
+    const knotsSpec = [];       /* {y: wrap-relative y the knot is read at, at: [x,y] on the path} */
+    const pts = H6.slice();
+    pts.push([H6[5][0] - 30, H6[5][1] + 26], [Math.max(xL + 90, H6[5][0] - 120), yB - 6], [xL + 36, yB + 20]);
+
+    const SWAY = true;
+    rail.forEach((n, i) => {
+      const next = rail[i + 1];
+      pts.push([xL, n.y]);
+      knotsSpec.push({ y: n.y, at: [xL, n.y] });
+      if (n.tag === 'atlas' && $('[data-atlas-panel]')) {
+        const p = rel($('[data-atlas-panel]')), hb = ctr($('[data-atlas-hub]')), lane1 = p.y - 14, lane2 = p.y + p.h + 14;
+        pts.push([xL + 10, (n.y + lane1) / 2], [xL + 46, lane1], [(xL + p.x) / 2, lane1], [p.x - 30, lane1], [p.x + 60, lane1 + 36],
+                 [p.x + 90, p.y + 50], hb, [hb[0] + 24, p.y + p.h - 34], [hb[0] - 20, lane2 - 4], [hb[0] - 110, lane2], [xL + 150, lane2], [xL + 24, lane2 + 6]);
+        knotsSpec.push({ y: hb[1], at: hb }, { y: lane2, at: [xL + 150, lane2] });
+      } else if (n.tag === 'steps' && $('[data-steps]')) {
+        const discs = $$('[data-step] .step-node').map(ctr), cont = rel($('[data-process]'));
+        const after = rel($('[data-steps-after]')), yAfter = after.y + after.h + 34, yD = discs[0][1];
+        if (mid) {
+          const rightX = Math.min(W - 18, cont.x + cont.w + 22);
+          pts.push([xL + 10, yD - 70], [xL + 46, yD], ...discs, [discs[3][0] + 70, yD], [rightX - 12, yD + 26], [rightX, yD + 92],
+                   [rightX, yAfter - 70], [rightX - 50, yAfter], [xL + 160, yAfter], [xL + 24, yAfter + 8]);
+          knotsSpec.push({ y: yD, at: discs[0] }, { y: yD + 40, at: discs[3] }, { y: yAfter, at: [xL + 160, yAfter] });
+        } else {
+          pts.push([xL + 8, discs[0][1] - 52], ...discs, [discs[3][0], yAfter - 24], [xL + 12, yAfter + 8]);
+          knotsSpec.push({ y: discs[0][1], at: discs[0] }, { y: discs[3][1], at: discs[3] }, { y: yAfter, at: [xL + 12, yAfter + 8] });
+        }
+      } else if (next && SWAY && next.y - n.y > 300) {
+        pts.push([xL + (i % 2 ? 9 : -9), (n.y + next.y) / 2]);
+      }
+    });
+
+    /* the closing loop: rounded rectangle around the buttons, 24px either side */
+    const endEl = $('[data-thread-end]');
+    let arrive = null, loopD = [], lastRail = rail[rail.length - 1];
+    if (endEl) {
+      const e = rel(endEl), padX = 24, padY = 7;
+      const l = Math.max(xL + 22, e.x - padX), r = Math.min(W - 12, e.x + e.w + padX), t = e.y - padY, b = e.y + e.h + padY;
+      const rad = Math.min((b - t) / 2, 44);
+      arrive = [l + rad, b];
+      pts.push([xL + 5, (lastRail.y + b) / 2], [xL + 16, b - 56], [l - 4, b - 6], [arrive[0] - 14, b], arrive);
+      loopD = loopSegs(l, t, r, b, rad);
+    }
+
+    const sp = spline(pts);
+    T.segs = sp.length + loopD.length;
+    const head = 'M' + fmt(pts[0][0]) + ' ' + fmt(pts[0][1]) + ' ';
+    const mainD = head + sp.map(cubic).join(' ');
+    const d = mainD + ' ' + loopD.join(' ');
+    ghost.setAttribute('d', d); live.setAttribute('d', d);
+    const probe = document.createElementNS(NS, 'path'); probe.setAttribute('d', mainD); svg.appendChild(probe);
+    T.Lloop = probe.getTotalLength(); svg.removeChild(probe);
+    T.total = live.getTotalLength();
+    live.style.strokeDasharray = `${T.total} ${T.total}`;
+
+    /* sample once: positions every STEP px */
+    const n = Math.ceil(T.total / STEP) + 1;
+    T.xs = new Float32Array(n); T.ys = new Float32Array(n);
+    for (let i = 0; i < n; i++) { const p = live.getPointAtLength(Math.min(T.total, i * STEP)); T.xs[i] = p.x; T.ys[i] = p.y; }
+    const lenNear = (x, y) => {
+      let best = 0, bd = 1e12;
+      for (let i = 0; i < n; i++) { const dx = T.xs[i] - x, dy = T.ys[i] - y, dd = dx * dx + dy * dy; if (dd < bd) { bd = dd; best = i; } }
+      return best * STEP;
+    };
+
+    /* rail nodes */
+    nodeG.textContent = ''; T.nodes = [];
+    rail.forEach(rn => {
+      const c = document.createElementNS(NS, 'circle');
+      c.setAttribute('class', 'th-node'); c.setAttribute('cx', xL); c.setAttribute('cy', rn.y); c.setAttribute('r', 7);
+      nodeG.appendChild(c); T.nodes.push({ el: c, len: lenNear(xL, rn.y) });
+    });
+    T.heroLens = H6.map(p => lenNear(p[0], p[1]));
+    T.heroNodes = heroEls;
+    T.Lh = T.heroLens[5] + 6;
+
+    /* lighting lengths: first entry into the element's box (+12px), else first point at or below its top */
+    T.hits = $$('[data-thread-hit]').map(el => {
+      const r = rel(el), x0 = r.x - 12, x1 = r.x + r.w + 12, y0 = r.y - 12, y1 = r.y + r.h + 12;
+      let idx = -1;
+      for (let i = 0; i < n; i++) if (T.xs[i] >= x0 && T.xs[i] <= x1 && T.ys[i] >= y0 && T.ys[i] <= y1) { idx = i; break; }
+      if (idx < 0) for (let i = 0; i < n; i++) if (T.ys[i] >= r.y) { idx = i; break; }
+      return { el, len: (idx < 0 ? n - 1 : idx) * STEP };
+    }).sort((a, b) => a.len - b.len);
+    T.litN = 0;
+    T.hits.forEach(h => { h.el.classList.remove('is-lit'); });
+
+    /* scroll knots: [scrollY, length]; scroll 0 = hero drawn */
+    const vh = window.innerHeight, maxS = Math.max(1, document.documentElement.scrollHeight - vh);
+    const sY = y => Math.max(0, T.wrapTop + y - vh * 0.55);
+    let K = [[0, T.Lh]];
+    knotsSpec.forEach(k => K.push([sY(k.y), lenNear(k.at[0], k.at[1])]));
+    if (endEl && arrive) K.push([sY(arrive[1]), T.Lloop]);
+    K[K.length - 1][0] = Math.min(K[K.length - 1][0], maxS - 2);
+    for (let i = 1; i < K.length; i++) { K[i][1] = Math.max(K[i][1], K[i - 1][1]); K[i][0] = Math.max(K[i][0], K[i - 1][0] + 1); }
+    /* pacing: no stretch may draw more than MAX_RATIO px of line per px of scroll; borrow scroll from earlier knots */
+    for (let i = K.length - 1; i > 0; i--) {
+      const need = (K[i][1] - K[i - 1][1]) / MAX_RATIO;
+      if (K[i][0] - K[i - 1][0] < need) K[i - 1][0] = Math.max(0, K[i][0] - need);
+    }
+    for (let i = 1; i < K.length; i++) K[i][0] = Math.max(K[i][0], K[i - 1][0] + 1);
+    T.knots = K;
+    T.cur = T.tgt = mapScroll(window.scrollY);
+    if (T.segs > MAX_SEGS) console.warn('thread: ' + T.segs + ' segments (limit ' + MAX_SEGS + ')');
+    frame(performance.now());
+  }
+
+  function mapScroll(s) {
+    const K = T.knots; if (!K.length) return 0;
+    if (s <= K[0][0]) return K[0][1];
+    if (s >= K[K.length - 1][0]) return K[K.length - 1][1];
+    let lo = 0, hi = K.length - 1;
+    while (hi - lo > 1) { const m = (lo + hi) >> 1; if (K[m][0] <= s) lo = m; else hi = m; }
+    const u = (s - K[lo][0]) / (K[hi][0] - K[lo][0]);
+    return K[lo][1] + (K[hi][1] - K[lo][1]) * u;
+  }
+
+  function countUp(el) {
+    if (el.dataset.counted) return;
+    el.dataset.counted = '1';
+    const to = parseFloat(el.dataset.count), t0 = performance.now(), dur = 900;
+    const tick = now => {
+      const p = Math.min(1, (now - t0) / dur);
+      el.textContent = fmtCount(el, to * easeOut(p));
+      if (p < 1) requestAnimationFrame(tick);
+    };
+    requestAnimationFrame(tick);
+  }
+
+  function frame(now) {
+    T.raf = 0;
+    if (!T.total) return;
+    let busy = false, L;
+    if (reduce) { L = T.total; }
+    else {
+      T.tgt = mapScroll(window.scrollY);
+      const d = T.tgt - T.cur;
+      if (Math.abs(d) < 0.3) T.cur = T.tgt; else { T.cur += d * LERP; busy = true; }
+      L = T.cur;
+      if (!T.heroDone) {
+        if (!T.typed) L = 0;
+        else {
+          if (!T.heroT0) T.heroT0 = now;
+          const u = Math.min(1, (now - T.heroT0) / HERO_MS);
+          L = Math.min(L, T.Lh * ease(u));
+          if (u >= 1) T.heroDone = true; else busy = true;
+        }
+      }
+      if (L >= T.Lloop - 1 && T.total > T.Lloop) {
+        if (!T.loopT0) T.loopT0 = now;
+        const u = Math.min(1, (now - T.loopT0) / LOOP_MS);
+        L = T.Lloop + (T.total - T.Lloop) * ease(u);
+        if (u < 1) busy = true;
+      } else T.loopT0 = 0;
+    }
+    live.style.strokeDashoffset = String(T.total - L);
+    T.nodes.forEach(n => n.el.classList.toggle('reached', L >= n.len));
+    T.heroNodes.forEach((el, i) => {
+      el.classList.toggle('is-near', reduce || L >= T.heroLens[i] - 36);
+      el.classList.toggle('is-done', reduce || L >= T.heroLens[i] + 4);
+    });
+    while (T.litN < T.hits.length && L >= T.hits[T.litN].len) {
+      const el = T.hits[T.litN++].el;
+      el.classList.add('is-lit');
+      if (el.dataset.count !== undefined && !reduce) countUp(el);
+    }
+    while (T.litN > 0 && L < T.hits[T.litN - 1].len) T.hits[--T.litN].el.classList.remove('is-lit');
+    if (busy && !T.raf) T.raf = requestAnimationFrame(frame);
+  }
+
+  const schedule = () => { if (!T.raf) T.raf = requestAnimationFrame(frame); };
+  const rebuild = () => { clearTimeout(T.rt); T.rt = setTimeout(build, 120); };
+
+  /* numerals start at zero only when they will be counted up */
+  if (!reduce) $$('[data-count]').forEach(el => { el.textContent = fmtCount(el, 0); });
+
+  window.addEventListener('scroll', schedule, { passive: true });
+  window.addEventListener('resize', rebuild);
+  window.addEventListener('hero:typed', () => { T.typed = true; schedule(); });
+  window.addEventListener('load', build);
+  if (document.fonts && document.fonts.ready) document.fonts.ready.then(build);
+  if ('ResizeObserver' in window) new ResizeObserver(rebuild).observe(wrap);
+  window.__thread = T;
+  build();
 })();
 </script>
 </body>
