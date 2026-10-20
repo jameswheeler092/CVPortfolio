@@ -157,6 +157,8 @@ html.js .hero-static{ display:none; }
 @media (prefers-reduced-motion:no-preference){
   html.js .tw-h1:not(.tw-ready) .tw-line{ visibility:hidden; }
 }
+
+#work > article:first-of-type{ margin-top:3.5rem; }
 </style>
 <!-- ═══════════════════════════════════════════════════════════════
      EDIT ME: every link on the page is set here (same block on all three pages).
@@ -246,19 +248,18 @@ html.js .hero-static{ display:none; }
 <!-- ═════════ ABOUT ═════════ -->
 <section id="about" class="relative">
   <div class="tpad mx-auto max-w-6xl px-5 sm:px-8">
-    <p class="eyebrow">About</p>
-    <h2 class="h2 mt-3" data-thread-node>What I do.</h2>
-    <p class="mt-3 text-[15px] font-medium c-muted">Product Manager (Compliance &amp; AI) at RBW Systems · London</p>
-    <div class="mt-8 grid grid-cols-1 gap-10 lg:grid-cols-12">
-      <div class="lg:col-span-7">
+    <h2 class="h2 lit-h" data-thread-node data-thread-hit>What I do.</h2>
+    <p class="role-lines"><span>Product Manager (Compliance &amp; AI)</span><span>RBW Systems, London</span></p>
+    <div class="about-grid">
+      <div>
         <p class="lead">I work at RBW Systems, a gaming-technology company. I took a compliance product from first build to 950 live sites, and built the company’s internal operating system with AI coding agents.</p>
         <p class="lead mt-4">I like questions that start with “could we?” Could an agent answer our support questions? Could one system replace paper and memory? I build the smallest thing that finds out, measure it honestly, and keep a person in the loop where it matters.</p>
       </div>
-      <ul class="dolist grid grid-cols-1 content-start gap-5 lg:col-span-5">
-        <li><b>Product</b><span>From first idea to live in the market.</span></li>
-        <li><b>AI</b><span>Agents and systems, built with coding agents.</span></li>
-        <li><b>Judgement</b><span>Measured honestly, with a person in the loop.</span></li>
-      </ul>
+      <dl class="fact-list">
+        <div class="rule-in" data-thread-hit><dt>950 live sites</dt><dd>Guardian Compliance, 35% of the sites in the market.</dd></div>
+        <div class="rule-in" data-thread-hit><dt>One system</dt><dd>Atlas brings CRM, support, QBRs and server telemetry into one place.</dd></div>
+        <div class="rule-in" data-thread-hit><dt>One agent</dt><dd>An AI agent with custom knowledge bases, multiple models and observability; the Teams version is in development.</dd></div>
+      </dl>
     </div>
   </div>
 </section>
@@ -267,19 +268,51 @@ html.js .hero-static{ display:none; }
 
 <!-- ═════════ PROJECTS ═════════ -->
 <section id="work" class="relative">
-  <div class="tpad mx-auto max-w-6xl px-5 sm:px-8"><p class="eyebrow">Projects</p></div>
+  <div class="tpad mx-auto max-w-6xl px-5 sm:px-8"><h2 class="h2 lit-h" data-thread-node data-thread-hit>Projects</h2></div>
 
-  <article id="atlas" class="tpad mx-auto mt-4 max-w-6xl px-5 sm:px-8">
-    <div class="flex flex-wrap gap-2"><span class="chip chip-mint"><span class="dot"></span>Live</span><span class="chip chip-dev">Teams agent in development</span></div>
-    <h3 class="proj-title mt-4" data-thread-node>RBW Atlas</h3>
+  <article id="atlas" class="tpad mx-auto mt-10 max-w-6xl px-5 sm:px-8">
+    <div class="flex flex-wrap gap-2"><span class="chip chip-live"><span class="dot"></span>Live</span><span class="chip chip-solid">Teams agent in development</span></div>
+    <h3 class="proj-title lit-h mt-4" data-thread-node="atlas" data-thread-hit>RBW Atlas</h3>
     <p class="proj-tag">Internal AI Native company operating system</p>
-    <div class="pgrid">
-      <section class="pcol problem"><h4>The problem</h4>
-        <p>RBW ran on paper and memory. Data was scattered across personal devices, Excel sheets, third-party software, and pretty much any place you could imagine. The team had no central source of truth or foundations to evolve the business as we scaled.</p></section>
-      <section class="pcol build"><h4>The build</h4>
-        <p>As we looked at the rapid advancements in AI, we recognised the need to evolve our business, the first stage being creating a single system to centralise core functions and data. We opted to create a solid foundation of data and functionality before implementing AI workflows over the top.</p></section>
-      <section class="pcol outcome"><h4>The outcome</h4>
-        <p>A single system covering CRM, onboarding, installations &amp; inventory, customer support, QBRs, employee hub, server telemetry, and an AI agent with custom knowledge bases, telemetry, multiple models, and observability.</p></section>
+    <div class="atlas-grid" data-atlas-grid>
+      <div class="flow">
+        <section class="stage rule-in" data-thread-hit><h4 class="stage-label"><i class="mk mk-dotted" aria-hidden="true"></i>Problem</h4>
+          <p>RBW ran on paper and memory. Data sat on personal devices, in Excel sheets and in third-party software, with no single source of truth to build on as we grew.</p></section>
+        <section class="stage rule-in" data-thread-hit><h4 class="stage-label"><i class="mk" aria-hidden="true"></i>Build</h4>
+          <p>Foundation first, AI second. I built one system for the company’s core functions and data with AI coding agents, then put the AI workflows on top.</p></section>
+        <section class="stage rule-in" data-thread-hit><h4 class="stage-label"><i class="mk mk-disc" aria-hidden="true"></i>Outcome</h4>
+          <div><p>One system now covers CRM, onboarding, installations and inventory, customer support, QBRs, the employee hub and server telemetry, plus an AI agent with custom knowledge bases, telemetry, multiple models and observability.</p>
+          <p class="mt-3 flex flex-wrap gap-2"><span class="tbc">add: one adoption or before/after number</span><span class="tbc">add: what the agent gets wrong and when it hands over to a person</span><span class="tbc">add: my role (what I decided, what the agents built, who reviewed)</span></p></div></section>
+      </div>
+      <div class="atlas-panel panel" data-atlas-panel data-thread-hit>
+<svg viewBox="0 0 680 460" role="img" aria-label="RBW Atlas at the centre, joined to eight modules: CRM, Onboarding, Installations and inventory, Customer support, QBRs, Employee hub, Server telemetry and an AI agent." focusable="false">
+  <path class="at-edge" pathLength="1" d="M340.0 182.0 L340.0 68.0"/>
+  <path class="at-edge" pathLength="1" d="M376.2 198.4 L468.0 118.3"/>
+  <path class="at-edge" pathLength="1" d="M388.0 230.0 L522.0 230.0"/>
+  <path class="at-edge" pathLength="1" d="M376.2 261.6 L468.0 341.7"/>
+  <path class="at-edge" pathLength="1" d="M340.0 278.0 L340.0 392.0"/>
+  <path class="at-edge" pathLength="1" d="M303.8 261.6 L212.0 341.7"/>
+  <path class="at-edge" pathLength="1" d="M292.0 230.0 L158.0 230.0"/>
+  <path class="at-edge" pathLength="1" d="M303.8 198.4 L212.0 118.3"/>
+  <circle class="at-hub" data-atlas-hub cx="340" cy="230" r="48"/><text class="at-hub-label" x="340" y="236">RBW Atlas</text>
+  <circle class="at-node" cx="340" cy="60" r="8"/>
+  <text class="at-label" x="340" y="42" text-anchor="middle">CRM</text>
+  <circle class="at-node" cx="474" cy="113" r="8"/>
+  <text class="at-label" x="488" y="118" text-anchor="start">Onboarding</text>
+  <circle class="at-node" cx="530" cy="230" r="8"/>
+  <text class="at-label" text-anchor="start"><tspan x="544" y="227">Installations &amp;</tspan><tspan x="544" y="245">inventory</tspan></text>
+  <circle class="at-node" cx="474" cy="347" r="8"/>
+  <text class="at-label" x="488" y="352" text-anchor="start">Customer support</text>
+  <circle class="at-node" cx="340" cy="400" r="8"/>
+  <text class="at-label" x="340" y="430" text-anchor="middle">QBRs</text>
+  <circle class="at-node" cx="206" cy="347" r="8"/>
+  <text class="at-label" x="192" y="352" text-anchor="end">Employee hub</text>
+  <circle class="at-node" cx="150" cy="230" r="8"/>
+  <text class="at-label" x="136" y="235" text-anchor="end">Server telemetry</text>
+  <circle class="at-node" cx="206" cy="113" r="8"/>
+  <text class="at-label" x="192" y="118" text-anchor="end">AI agent</text>
+</svg>
+      </div>
     </div>
     <div class="mt-6"><a href="atlas/" class="btn btn-primary">View the case study</a></div>
   </article>
@@ -287,15 +320,25 @@ html.js .hero-static{ display:none; }
   <div class="tgap tgap-sm" aria-hidden="true"></div>
 
   <article id="guardian" class="tpad mx-auto max-w-6xl px-5 sm:px-8">
-    <h3 class="proj-title" data-thread-node>Guardian Compliance</h3>
+    <h3 class="proj-title lit-h" data-thread-node data-thread-hit>Guardian Compliance</h3>
     <p class="proj-tag max-w-3xl">A purpose-built compliance solution for the land-based gambling industry. The system handled sensitive personal data, regulatory returns, and compliance requirements for the regulated sector.</p>
-    <div class="pgrid wide-build">
-      <section class="pcol problem"><h4>The problem</h4>
+    <div class="stats">
+      <div class="stat">
+        <p class="stat-num" data-thread-hit data-count="950">950</p>
+        <p class="stat-cap">sites live as of <time datetime="2026-10-19">19 October 2026</time><!-- UPDATE: as-of date --></p>
+      </div>
+      <div class="stat stat-sm">
+        <p class="stat-num" data-thread-hit data-count="35" data-suffix="%">35%</p>
+        <p class="stat-cap">of the sites in the market</p>
+      </div>
+    </div>
+    <div class="flow flow-solo">
+      <section class="stage rule-in" data-thread-hit><h4 class="stage-label"><i class="mk mk-dotted" aria-hidden="true"></i>Problem</h4>
         <p>Operators kept customer records on paper or in legacy systems that weren’t fit for purpose. They needed a quick, affordable way to talk to customers, review behaviour, escalate potential vulnerability and show an audit trail across venues.</p></section>
-      <section class="pcol build"><h4>The build</h4>
-        <p>I was the end-to-end product manager; working with stakeholders from the industry trade association, and pilot customers to shape the product around the evolving regulatory landscape and business needs. The system was architected around a singular customer record across every venue, where staff can record interactions, KYC checks, and escalate vulnerability where needed. Integrated the system with facial recognition solutions, self-exclusion schemes, and our own machine management system to prompt staff intervention based on automatic gameplay alerts, covering both AML and fraud, and safer gambling concerns.</p></section>
-      <section class="pcol outcome"><h4>The outcome</h4>
-        <p><b>950 sites live</b> as of 19 October 2026, 35% of the sites in the market. Unseated the market incumbent’s largest customer, and sub-licensed the solution to the trade body for use across its membership base.</p></section>
+      <section class="stage rule-in" data-thread-hit><h4 class="stage-label"><i class="mk" aria-hidden="true"></i>Build</h4>
+        <p>I was the end-to-end product manager, shaping it with the trade association and pilot customers as regulation evolved. One customer record spans every venue. It connects to facial recognition, self-exclusion schemes and our machine management system, so gameplay alerts prompt staff to step in on AML, fraud and safer gambling.</p></section>
+      <section class="stage rule-in" data-thread-hit><h4 class="stage-label"><i class="mk mk-disc" aria-hidden="true"></i>Outcome</h4>
+        <p>Unseated the market incumbent’s largest customer, and sub-licensed the solution to the trade body for use across its membership base.</p></section>
     </div>
     <div class="mt-6"><a href="guardian/" class="btn btn-primary">View the case study</a></div>
   </article>
@@ -303,13 +346,13 @@ html.js .hero-static{ display:none; }
   <div class="tgap tgap-sm" aria-hidden="true"></div>
 
   <article id="project3" class="tpad mx-auto max-w-6xl px-5 sm:px-8">
-    <div class="flex flex-wrap gap-2"><span class="chip chip-dev">Building now</span></div>
-    <h3 class="proj-title mt-4" data-thread-node>Project three</h3>
+    <div class="flex flex-wrap gap-2"><span class="chip chip-dotted">Building now</span></div>
+    <h3 class="proj-title lit-h mt-4" data-thread-node data-thread-hit>Project three</h3>
     <p class="proj-tag"><span class="tbc">add: one line</span></p>
-    <div class="pgrid is-tbc">
-      <section class="pcol problem"><h4>The problem</h4><p><span class="tbc">add: the problem</span></p></section>
-      <section class="pcol build"><h4>The build</h4><p><span class="tbc">add: the build</span></p></section>
-      <section class="pcol outcome"><h4>The outcome</h4><p><span class="tbc">add: the outcome</span></p></section>
+    <div class="flow flow-solo">
+      <section class="stage rule-in" data-thread-hit><h4 class="stage-label"><i class="mk mk-dotted" aria-hidden="true"></i>Problem</h4><p><span class="tbc">add: the problem</span></p></section>
+      <section class="stage rule-in" data-thread-hit><h4 class="stage-label"><i class="mk" aria-hidden="true"></i>Build</h4><p><span class="tbc">add: the build</span></p></section>
+      <section class="stage rule-in" data-thread-hit><h4 class="stage-label"><i class="mk mk-disc" aria-hidden="true"></i>Outcome</h4><p><span class="tbc">add: the outcome</span></p></section>
     </div>
     <div class="mt-6"><span class="btn btn-ghost is-soon">Case study, coming</span></div>
   </article>
@@ -319,17 +362,16 @@ html.js .hero-static{ display:none; }
 
 <!-- ═════════ HOW I WORK ═════════ -->
 <section id="process" class="relative">
-  <div class="tpad mx-auto max-w-6xl px-5 sm:px-8">
-    <p class="eyebrow">How I work</p>
-    <h2 class="h2 mt-3" data-thread-node>Delegate the grunt work. Keep the planning and the control.</h2>
-    <p class="mt-4 text-lg leading-relaxed">Everything I build has a point where a person takes over. I work with coding agents the same way: plan first, have the plan reviewed, let agents build, then review what comes back. Amber marks where a person decides.</p>
-    <ol class="steps">
-      <li class="step per"><b>Plan</b><span>with the people who’ll use it</span></li>
-      <li class="step"><b>Review</b><span>Claude as the quality gate</span></li>
-      <li class="step"><b>Build</b><span>Claude Code and Codex</span></li>
-      <li class="step per"><b>Critique</b><span>before it ships</span></li>
+  <div class="tpad mx-auto max-w-6xl px-5 sm:px-8" data-process>
+    <h2 class="h2 lit-h" data-thread-node="steps" data-thread-hit>Delegate the grunt work. Keep the planning and the control.</h2>
+    <p class="lead mt-4">Everything I build has a point where a person takes over. I work with coding agents the same way: plan first, have the plan reviewed, let agents build, then review what comes back. Amber marks where a person decides.</p>
+    <ol class="steps2" data-steps>
+      <li class="stp per" data-step data-thread-hit><span class="step-node" aria-hidden="true">1</span><div class="stp-text"><b>Plan</b><span class="d">with the people who’ll use it</span></div></li>
+      <li class="stp" data-step data-thread-hit><span class="step-node" aria-hidden="true">2</span><div class="stp-text"><b>Review</b><span class="d">Claude as the quality gate</span></div></li>
+      <li class="stp" data-step data-thread-hit><span class="step-node" aria-hidden="true">3</span><div class="stp-text"><b>Build</b><span class="d">Claude Code and Codex</span></div></li>
+      <li class="stp per" data-step data-thread-hit><span class="step-node" aria-hidden="true">4</span><div class="stp-text"><b>Critique</b><span class="d">before it ships</span></div></li>
     </ol>
-    <p class="mt-6"><span class="tbc">add: link a sanitised plan and its review</span></p>
+    <p class="mt-8" data-steps-after><span class="tbc">add: link a sanitised plan and its review</span></p>
   </div>
 </section>
 
@@ -338,29 +380,39 @@ html.js .hero-static{ display:none; }
 <!-- ═════════ EXPERIENCE ═════════ -->
 <section id="experience" class="relative">
   <div class="tpad mx-auto max-w-6xl px-5 sm:px-8">
-    <p class="eyebrow">Experience</p>
-    <h2 class="h2 mt-3" data-thread-node>From trade shows to AI products in under three years.</h2>
-    <div class="mt-8 grid grid-cols-1 gap-5 lg:grid-cols-12">
-      <article class="card p-6 sm:p-7 lg:col-span-7">
-        <p class="text-sm c-muted">RBW Systems · May 2024 – now</p>
-        <h3 class="mt-1 text-xl font-semibold tracking-tight">Product Manager (Compliance &amp; AI)</h3>
-        <ul class="mt-5 grid gap-3 text-[15px] leading-relaxed">
-          <li class="flex gap-3"><span class="mt-2 h-1.5 w-1.5 flex-none rounded-full bg-ink"></span>Guardian Compliance: product manager from first build to 950 live sites</li>
-          <li class="flex gap-3"><span class="mt-2 h-1.5 w-1.5 flex-none rounded-full bg-ink"></span>Merkur account owner through the trial</li>
-          <li class="flex gap-3"><span class="mt-2 h-1.5 w-1.5 flex-none rounded-full bg-ink"></span>RBW Atlas: built the company’s internal operating system with AI coding agents</li>
-          <li class="flex gap-3"><span class="mt-2 h-1.5 w-1.5 flex-none rounded-full bg-ink"></span>£2.5m, 10-year contract: my buy-back idea, negotiated by our MD and a non-executive director</li>
-        </ul>
+    <h2 class="h2 lit-h" data-thread-node data-thread-hit>From trade shows to AI products in under three years.</h2>
+    <div class="mt-8">
+      <article class="tl-entry rule-in" data-thread-hit>
+        <p class="tl-date">May 2024 – now</p>
+        <div>
+          <h3 class="role lit-h" data-thread-node data-thread-hit>Product Manager (Compliance &amp; AI)</h3>
+          <p class="tl-org">RBW Systems</p>
+          <ul class="bullets">
+            <li>Guardian Compliance: product manager from first build to 950 live sites</li>
+            <li>Merkur account owner through the trial</li>
+            <li>RBW Atlas: built the company’s internal operating system with AI coding agents</li>
+            <li>£2.5m, 10-year contract: my buy-back idea, negotiated by our MD and a non-executive director</li>
+          </ul>
+        </div>
       </article>
-      <article class="card p-6 sm:p-7 lg:col-span-5">
-        <p class="text-sm c-muted">RBW Systems · Dec 2023 – May 2024</p>
-        <h3 class="mt-1 text-xl font-semibold tracking-tight">Marketing Projects Lead</h3>
-        <ul class="mt-5 grid gap-3 text-[15px] leading-relaxed">
-          <li class="flex gap-3"><span class="mt-2 h-1.5 w-1.5 flex-none rounded-full bg-muted"></span>Rebrand and website relaunch</li>
-          <li class="flex gap-3"><span class="mt-2 h-1.5 w-1.5 flex-none rounded-full bg-muted"></span>Trade shows, end to end: stand design, logistics, meetings and demos</li>
-        </ul>
+      <article class="tl-entry rule-in" data-thread-hit>
+        <p class="tl-date">Dec 2023 – May 2024</p>
+        <div>
+          <h3 class="role lit-h" data-thread-node data-thread-hit>Marketing Projects Lead</h3>
+          <p class="tl-org">RBW Systems</p>
+          <ul class="bullets">
+            <li>Rebrand and website relaunch</li>
+            <li>Trade shows, end to end: stand design, logistics, meetings and demos</li>
+          </ul>
+        </div>
       </article>
     </div>
-    <p class="mt-6 max-w-3xl text-[15px] leading-relaxed c-muted">BSc Business Management (First Class Honours), Lancaster University · Generative AI Automation, Vanderbilt University · Data Analytics Professional, Google · Advisory panel member, Heal Rewilding</p>
+    <ul class="edu">
+      <li>BSc Business Management (First Class Honours), Lancaster University</li>
+      <li>Generative AI Automation, Vanderbilt University</li>
+      <li>Data Analytics Professional, Google</li>
+      <li>Advisory panel member, Heal Rewilding</li>
+    </ul>
   </div>
 </section>
 
@@ -369,17 +421,17 @@ html.js .hero-static{ display:none; }
 <!-- ═════════ CONTACT ═════════ -->
 <section id="contact" class="relative pb-28">
   <div class="tpad mx-auto max-w-6xl px-5 sm:px-8">
-    <p class="eyebrow">Contact</p>
-    <h2 class="h2 mt-3" data-thread-node>Building AI products? Let’s compare notes.</h2>
-    <p class="mt-4 max-w-xl text-lg leading-relaxed">I’m always curious what others are trying to find out with AI, and where they put the person in the loop.</p>
-    <div class="mt-9 flex flex-wrap items-center gap-3" data-thread-end>
-      <a data-link="email" class="btn btn-primary btn-lg"><span data-icon="mail"></span>Email me</a>
-      <a data-link="linkedin" class="btn btn-ghost btn-lg"><span data-icon="linkedin"></span>LinkedIn</a>
-      <a data-link="cv" data-required data-soon="Add CV link" class="btn btn-ghost btn-lg"><span data-icon="file-text"></span><span data-label>CV</span></a>
+    <h2 class="h2 lit-h" data-thread-node data-thread-hit>Building AI products? Let’s compare notes.</h2>
+    <p class="lead mt-4">I’m always curious what others are trying to find out with AI, and where they put the person in the loop.</p>
+    <div class="mt-9">
+      <div class="end-group" data-thread-end data-thread-hit>
+        <a data-link="email" class="btn btn-primary btn-lg"><span data-icon="mail"></span>Email me</a>
+        <a data-link="linkedin" class="btn btn-ghost btn-lg"><span data-icon="linkedin"></span>LinkedIn</a>
+        <a data-link="cv" data-required data-soon="Add CV link" class="btn btn-ghost btn-lg"><span data-icon="file-text"></span><span data-label>CV</span></a>
+      </div>
     </div>
   </div>
 </section>
-
 
 </div>
 </div>
@@ -617,50 +669,59 @@ html.js .hero-static{ display:none; }
     let yB = Math.min(heroBottom + 46, rail[0].y - 100);
     yB = Math.max(yB, H6[5][1] + 56);
 
-    const knotsSpec = [];       /* {y: wrap-relative y the knot is read at, at: [x,y] on the path} */
-    const pts = H6.slice();
-    pts.push([H6[5][0] - 30, H6[5][1] + 26], [Math.max(xL + 90, H6[5][0] - 120), yB - 6], [xL + 36, yB + 20]);
-
-    const SWAY = true;
-    rail.forEach((n, i) => {
-      const next = rail[i + 1];
-      pts.push([xL, n.y]);
-      knotsSpec.push({ y: n.y, at: [xL, n.y] });
-      if (n.tag === 'atlas' && $('[data-atlas-panel]')) {
-        const p = rel($('[data-atlas-panel]')), hb = ctr($('[data-atlas-hub]')), lane1 = p.y - 14, lane2 = p.y + p.h + 14;
-        pts.push([xL + 10, (n.y + lane1) / 2], [xL + 46, lane1], [(xL + p.x) / 2, lane1], [p.x - 30, lane1], [p.x + 60, lane1 + 36],
-                 [p.x + 90, p.y + 50], hb, [hb[0] + 24, p.y + p.h - 34], [hb[0] - 20, lane2 - 4], [hb[0] - 110, lane2], [xL + 150, lane2], [xL + 24, lane2 + 6]);
-        knotsSpec.push({ y: hb[1], at: hb }, { y: lane2, at: [xL + 150, lane2] });
-      } else if (n.tag === 'steps' && $('[data-steps]')) {
-        const discs = $$('[data-step] .step-node').map(ctr), cont = rel($('[data-process]'));
-        const after = rel($('[data-steps-after]')), yAfter = after.y + after.h + 34, yD = discs[0][1];
-        if (mid) {
-          const rightX = Math.min(W - 18, cont.x + cont.w + 22);
-          pts.push([xL + 10, yD - 70], [xL + 46, yD], ...discs, [discs[3][0] + 70, yD], [rightX - 12, yD + 26], [rightX, yD + 92],
-                   [rightX, yAfter - 70], [rightX - 50, yAfter], [xL + 160, yAfter], [xL + 24, yAfter + 8]);
-          knotsSpec.push({ y: yD, at: discs[0] }, { y: yD + 40, at: discs[3] }, { y: yAfter, at: [xL + 160, yAfter] });
-        } else {
-          pts.push([xL + 8, discs[0][1] - 52], ...discs, [discs[3][0], yAfter - 24], [xL + 12, yAfter + 8]);
-          knotsSpec.push({ y: discs[0][1], at: discs[0] }, { y: discs[3][1], at: discs[3] }, { y: yAfter, at: [xL + 12, yAfter + 8] });
-        }
-      } else if (next && SWAY && next.y - n.y > 300) {
-        pts.push([xL + (i % 2 ? 9 : -9), (n.y + next.y) / 2]);
-      }
-    });
-
-    /* the closing loop: rounded rectangle around the buttons, 24px either side */
     const endEl = $('[data-thread-end]');
-    let arrive = null, loopD = [], lastRail = rail[rail.length - 1];
-    if (endEl) {
-      const e = rel(endEl), padX = 24, padY = 7;
-      const l = Math.max(xL + 22, e.x - padX), r = Math.min(W - 12, e.x + e.w + padX), t = e.y - padY, b = e.y + e.h + padY;
-      const rad = Math.min((b - t) / 2, 44);
-      arrive = [l + rad, b];
-      pts.push([xL + 5, (lastRail.y + b) / 2], [xL + 16, b - 56], [l - 4, b - 6], [arrive[0] - 14, b], arrive);
-      loopD = loopSegs(l, t, r, b, rad);
-    }
+    /* assemble(sway): every anchor the line visits, in order */
+    const assemble = sway => {
+      const knotsSpec = [];       /* {y: wrap-relative y the knot is read at, at: [x,y] on the path} */
+      const pts = H6.slice();
+      pts.push([H6[5][0] - 30, H6[5][1] + 26], [Math.max(xL + 90, H6[5][0] - 120), yB - 6], [xL + 36, yB + 20]);
+      rail.forEach((n, i) => {
+        const next = rail[i + 1];
+        pts.push([xL, n.y]);
+        knotsSpec.push({ y: n.y, at: [xL, n.y] });
+        if (n.tag === 'atlas' && $('[data-atlas-panel]')) {
+          /* in the gap above the panel, behind it through the hub, out below it, and back along the gap beneath */
+          const p = rel($('[data-atlas-panel]')), hb = ctr($('[data-atlas-hub]')), lane1 = p.y - 14, lane2 = p.y + p.h + 14;
+          const le = Math.max(xL + 110, p.x - 30), lx = Math.max(xL + 90, hb[0] - 100);
+          pts.push([xL + 4, lane1 - 70], [xL + 14, lane1 - 8], [xL + 60, lane1], [le, lane1], [le + 40, lane1 + 36], [le + 70, p.y + 56], hb,
+                   [hb[0] + 20, p.y + p.h - 34], [hb[0] - 16, lane2 - 2]);
+          if (lx < hb[0] - 40) pts.push([lx, lane2]);
+          pts.push([xL + 46, lane2 + 6], [xL + 8, lane2 + 26]);
+          knotsSpec.push({ y: hb[1], at: hb }, { y: lane2, at: [xL + 46, lane2 + 6] });
+        } else if (n.tag === 'steps' && $('[data-steps]')) {
+          const discs = $$('[data-step] .step-node').map(ctr), cont = rel($('[data-process]'));
+          const after = rel($('[data-steps-after]')), yAfter = after.y + after.h + 34, yD = discs[0][1];
+          if (mid) {
+            const rightX = Math.min(W - 18, cont.x + cont.w + 22);
+            pts.push([xL + 10, yD - 70], [xL + 46, yD], ...discs, [discs[3][0] + 70, yD], [rightX - 12, yD + 26], [rightX, yD + 92],
+                     [rightX, yAfter - 70], [rightX - 50, yAfter], [xL + 160, yAfter], [xL + 24, yAfter + 8]);
+            knotsSpec.push({ y: yD, at: discs[0] }, { y: yD + 40, at: discs[3] }, { y: yAfter, at: [xL + 160, yAfter] });
+          } else {
+            /* stacked steps: down the disc column, then back to the rail before the draft marker */
+            pts.push([xL + 8, discs[0][1] - 52], ...discs, [discs[3][0] - 10, discs[3][1] + 22], [xL + 8, discs[3][1] + 46], [xL + 10, yAfter + 8]);
+            knotsSpec.push({ y: discs[0][1], at: discs[0] }, { y: discs[3][1], at: discs[3] }, { y: yAfter, at: [xL + 10, yAfter + 8] });
+          }
+        } else if (next && sway && next.y - n.y > 300) {
+          pts.push([xL + (i % 2 ? 9 : -9), (n.y + next.y) / 2]);
+        }
+      });
 
-    const sp = spline(pts);
+      /* the closing loop: rounded rectangle around the buttons, 24px either side */
+      let arrive = null, loopD = [];
+      if (endEl) {
+        const lastRail = rail[rail.length - 1];
+        const e = rel(endEl), padX = 24, padY = 7;
+        const l = Math.max(xL + 22, e.x - padX), r = Math.min(W - 12, e.x + e.w + padX), t = e.y - padY, b = e.y + e.h + padY;
+        const rad = (e.x - l) >= 20 ? Math.min((b - t) / 2, 32) : Math.min((b - t) / 2, 16);   /* a stadium only where the padding clears the button corners */
+        arrive = [l + rad, b];
+        pts.push([xL + 5, (lastRail.y + b) / 2], [xL + 10, b - 50], [xL + 26, b + 8], [arrive[0] - 12, b + 2], arrive);
+        loopD = loopSegs(l, t, r, b, rad);
+      }
+      return { pts, knotsSpec, arrive, loopD };
+    };
+    let A = assemble(true), sp = spline(A.pts);
+    if (sp.length + A.loopD.length > MAX_SEGS) { A = assemble(false); sp = spline(A.pts); }
+    const { pts, knotsSpec, arrive, loopD } = A;
     T.segs = sp.length + loopD.length;
     const head = 'M' + fmt(pts[0][0]) + ' ' + fmt(pts[0][1]) + ' ';
     const mainD = head + sp.map(cubic).join(' ');
@@ -717,6 +778,8 @@ html.js .hero-static{ display:none; }
       if (K[i][0] - K[i - 1][0] < need) K[i - 1][0] = Math.max(0, K[i][0] - need);
     }
     for (let i = 1; i < K.length; i++) K[i][0] = Math.max(K[i][0], K[i - 1][0] + 1);
+    /* the loop must be reachable: nothing may sit beyond the last scroll position */
+    for (let i = K.length - 1; i >= 0; i--) K[i][0] = Math.min(K[i][0], maxS - 2 - (K.length - 1 - i));
     T.knots = K;
     T.cur = T.tgt = mapScroll(window.scrollY);
     if (T.segs > MAX_SEGS) console.warn('thread: ' + T.segs + ' segments (limit ' + MAX_SEGS + ')');
