@@ -84,7 +84,7 @@ html.js .hero-static{ display:none; }
 
 /* ───────── Projects: title, chips, narrative flow ───────── */
 .flow{ display:grid; align-content:start; margin-top:0; }
-.stage{ display:grid; grid-template-columns:minmax(0,1fr); gap:.5rem; padding:1.25rem 0 1.5rem; }
+.stage{ display:grid; grid-template-columns:minmax(0,1fr); gap:.5rem; align-items:start; padding:1.25rem 0 1.5rem; }
 @media (min-width:768px){ .stage{ grid-template-columns:140px minmax(0,1fr); gap:1.5rem; } }
 .stage-label{ display:flex; align-items:center; gap:.6rem; margin:0; font-family:var(--font-display); font-size:1.125rem; font-weight:600; color:var(--ink); }
 .stage p{ margin:0; font-size:1.0625rem; line-height:1.6; color:var(--ink); }
@@ -100,11 +100,14 @@ html.js .hero-static{ display:none; }
 .atlas-grid{ display:grid; grid-template-columns:minmax(0,1fr); gap:2rem; margin-top:2rem; }
 @media (min-width:1024px){ .atlas-grid{ grid-template-columns:minmax(0,5fr) minmax(0,7fr); gap:2.5rem; align-items:stretch; } }
 .atlas-panel{ padding:1rem; display:grid; place-items:center; min-height:20rem; }
+.atlas-wide, .atlas-narrow{ width:100%; }
 .atlas-panel svg{ width:100%; height:auto; max-width:44rem; }
+.atlas-narrow{ display:none; }
+@media (max-width:699px){ .atlas-wide{ display:none; } .atlas-narrow{ display:block; } .atlas-panel{ min-height:0; } }
 .at-edge{ fill:none; stroke:var(--ink); stroke-width:1.5; stroke-linecap:round; stroke-dasharray:1; stroke-dashoffset:0; transition:stroke-dashoffset .9s ease-in-out; }
 .at-node{ fill:var(--paper); stroke:var(--ink); stroke-width:2; transition:stroke-dasharray .3s; }
 .at-hub{ fill:var(--ink); }
-.at-hub-label{ fill:var(--paper); font-family:var(--font-display); font-size:17px; font-weight:600; text-anchor:middle; }
+.at-hub-label{ fill:var(--paper); font-family:var(--font-display); font-weight:600; text-anchor:middle; }
 .at-label{ font-size:15px; fill:var(--ink); }
 @media (prefers-reduced-motion:no-preference){
   html.js .atlas-panel:not(.is-lit) .at-edge{ stroke-dashoffset:1; }
@@ -278,33 +281,60 @@ html.js .hero-static{ display:none; }
           <p class="mt-3 flex flex-wrap gap-2"><span class="tbc">add: one adoption or before/after number</span><span class="tbc">add: what the agent gets wrong and when it hands over to a person</span><span class="tbc">add: my role (what I decided, what the agents built, who reviewed)</span></p></div></section>
       </div>
       <div class="atlas-panel panel" data-atlas-panel data-thread-hit>
-<svg viewBox="0 0 680 460" role="img" aria-label="RBW Atlas at the centre, joined to eight modules: CRM, Onboarding, Installations and inventory, Customer support, QBRs, Employee hub, Server telemetry and an AI agent." focusable="false">
-  <path class="at-edge" pathLength="1" d="M340.0 182.0 L340.0 68.0"/>
-  <path class="at-edge" pathLength="1" d="M376.2 198.4 L468.0 118.3"/>
-  <path class="at-edge" pathLength="1" d="M388.0 230.0 L522.0 230.0"/>
-  <path class="at-edge" pathLength="1" d="M376.2 261.6 L468.0 341.7"/>
-  <path class="at-edge" pathLength="1" d="M340.0 278.0 L340.0 392.0"/>
-  <path class="at-edge" pathLength="1" d="M303.8 261.6 L212.0 341.7"/>
-  <path class="at-edge" pathLength="1" d="M292.0 230.0 L158.0 230.0"/>
-  <path class="at-edge" pathLength="1" d="M303.8 198.4 L212.0 118.3"/>
-  <circle class="at-hub" data-atlas-hub cx="340" cy="230" r="48"/><text class="at-hub-label" x="340" y="236">RBW Atlas</text>
+<div class="atlas-wide"><svg class="" viewBox="0 0 680 460" role="img" aria-label="RBW Atlas at the centre, joined to eight modules: CRM, Onboarding, Installations and inventory, Customer support, QBRs, Employee hub, Server telemetry and an AI agent." focusable="false">
+  <path class="at-edge" pathLength="1" d="M340.0 176.0 L340.0 68.0"/>
+  <path class="at-edge" pathLength="1" d="M380.7 194.5 L468.0 118.3"/>
+  <path class="at-edge" pathLength="1" d="M394.0 230.0 L522.0 230.0"/>
+  <path class="at-edge" pathLength="1" d="M380.7 265.5 L468.0 341.7"/>
+  <path class="at-edge" pathLength="1" d="M340.0 284.0 L340.0 392.0"/>
+  <path class="at-edge" pathLength="1" d="M299.3 265.5 L212.0 341.7"/>
+  <path class="at-edge" pathLength="1" d="M286.0 230.0 L158.0 230.0"/>
+  <path class="at-edge" pathLength="1" d="M299.3 194.5 L212.0 118.3"/>
+  <circle class="at-hub" data-atlas-hub cx="340" cy="230" r="54"/><text class="at-hub-label" style="font-size:16px" x="340" y="235">RBW Atlas</text>
   <circle class="at-node" cx="340" cy="60" r="8"/>
-  <text class="at-label" x="340" y="42" text-anchor="middle">CRM</text>
+  <text class="at-label" style="font-size:15px" x="340" y="42" text-anchor="middle">CRM</text>
   <circle class="at-node" cx="474" cy="113" r="8"/>
-  <text class="at-label" x="488" y="118" text-anchor="start">Onboarding</text>
+  <text class="at-label" style="font-size:15px" x="488" y="119" text-anchor="start">Onboarding</text>
   <circle class="at-node" cx="530" cy="230" r="8"/>
-  <text class="at-label" text-anchor="start"><tspan x="544" y="227">Installations &amp;</tspan><tspan x="544" y="245">inventory</tspan></text>
+  <text class="at-label" style="font-size:15px" text-anchor="start"><tspan x="544" y="228">Installations &amp;</tspan><tspan x="544" y="246">inventory</tspan></text>
   <circle class="at-node" cx="474" cy="347" r="8"/>
-  <text class="at-label" x="488" y="352" text-anchor="start">Customer support</text>
+  <text class="at-label" style="font-size:15px" x="488" y="353" text-anchor="start">Customer support</text>
   <circle class="at-node" cx="340" cy="400" r="8"/>
-  <text class="at-label" x="340" y="430" text-anchor="middle">QBRs</text>
+  <text class="at-label" style="font-size:15px" x="340" y="431" text-anchor="middle">QBRs</text>
   <circle class="at-node" cx="206" cy="347" r="8"/>
-  <text class="at-label" x="192" y="352" text-anchor="end">Employee hub</text>
+  <text class="at-label" style="font-size:15px" x="192" y="353" text-anchor="end">Employee hub</text>
   <circle class="at-node" cx="150" cy="230" r="8"/>
-  <text class="at-label" x="136" y="235" text-anchor="end">Server telemetry</text>
+  <text class="at-label" style="font-size:15px" x="136" y="236" text-anchor="end">Server telemetry</text>
   <circle class="at-node" cx="206" cy="113" r="8"/>
-  <text class="at-label" x="192" y="118" text-anchor="end">AI agent</text>
-</svg>
+  <text class="at-label" style="font-size:15px" x="192" y="119" text-anchor="end">AI agent</text>
+</svg></div>
+<div class="atlas-narrow"><svg class="" viewBox="0 0 480 560" role="img" aria-label="RBW Atlas at the centre, joined to eight modules: CRM, Onboarding, Installations and inventory, Customer support, QBRs, Employee hub, Server telemetry and an AI agent." focusable="false">
+  <path class="at-edge" pathLength="1" d="M240.0 234.0 L240.0 78.0"/>
+  <path class="at-edge" pathLength="1" d="M264.9 241.3 L325.7 146.7"/>
+  <path class="at-edge" pathLength="1" d="M286.0 280.0 L360.0 280.0"/>
+  <path class="at-edge" pathLength="1" d="M264.9 318.7 L325.7 413.3"/>
+  <path class="at-edge" pathLength="1" d="M240.0 326.0 L240.0 482.0"/>
+  <path class="at-edge" pathLength="1" d="M215.1 318.7 L154.3 413.3"/>
+  <path class="at-edge" pathLength="1" d="M194.0 280.0 L120.0 280.0"/>
+  <path class="at-edge" pathLength="1" d="M215.1 241.3 L154.3 146.7"/>
+  <circle class="at-hub" data-atlas-hub cx="240" cy="280" r="46"/><text class="at-hub-label" style="font-size:16px" x="240" y="285">RBW Atlas</text>
+  <circle class="at-node" cx="240" cy="70" r="8"/>
+  <text class="at-label" style="font-size:18px" x="240" y="52" text-anchor="middle">CRM</text>
+  <circle class="at-node" cx="330" cy="140" r="8"/>
+  <text class="at-label" style="font-size:18px" x="344" y="147" text-anchor="start">Onboarding</text>
+  <circle class="at-node" cx="368" cy="280" r="8"/>
+  <text class="at-label" style="font-size:18px" text-anchor="start"><tspan x="382" y="278">Installations</tspan><tspan x="382" y="299">&amp; inventory</tspan></text>
+  <circle class="at-node" cx="330" cy="420" r="8"/>
+  <text class="at-label" style="font-size:18px" text-anchor="start"><tspan x="344" y="418">Customer</tspan><tspan x="344" y="439">support</tspan></text>
+  <circle class="at-node" cx="240" cy="490" r="8"/>
+  <text class="at-label" style="font-size:18px" x="240" y="524" text-anchor="middle">QBRs</text>
+  <circle class="at-node" cx="150" cy="420" r="8"/>
+  <text class="at-label" style="font-size:18px" text-anchor="end"><tspan x="136" y="418">Employee</tspan><tspan x="136" y="439">hub</tspan></text>
+  <circle class="at-node" cx="112" cy="280" r="8"/>
+  <text class="at-label" style="font-size:18px" text-anchor="end"><tspan x="98" y="278">Server</tspan><tspan x="98" y="299">telemetry</tspan></text>
+  <circle class="at-node" cx="150" cy="140" r="8"/>
+  <text class="at-label" style="font-size:18px" x="136" y="147" text-anchor="end">AI agent</text>
+</svg></div>
       </div>
     </div>
     <div class="mt-6"><a href="atlas/" class="btn btn-primary">View the case study</a></div>
@@ -671,14 +701,14 @@ html.js .hero-static{ display:none; }
     const assemble = sway => {
       const knotsSpec = [];       /* {y: wrap-relative y the knot is read at, at: [x,y] on the path} */
       const pts = H6.slice();
-      pts.push([H6[5][0] - 30, H6[5][1] + 26], [Math.max(xL + 90, H6[5][0] - 120), yB - 6], [xL + 36, yB + 20]);
+      pts.push([H6[5][0] - 64, H6[5][1] + 64], [Math.max(xL + 70, H6[5][0] - 300), yB]);
       rail.forEach((n, i) => {
         const next = rail[i + 1];
         pts.push([xL, n.y]);
         knotsSpec.push({ y: n.y, at: [xL, n.y] });
         if (n.tag === 'atlas' && $('[data-atlas-panel]')) {
           /* in the gap above the panel, behind it through the hub, out below it, and back along the gap beneath */
-          const p = rel($('[data-atlas-panel]')), hb = ctr($('[data-atlas-hub]')), lane1 = p.y - 14, lane2 = p.y + p.h + 14;
+          const p = rel($('[data-atlas-panel]')), hb = ctr($$('[data-atlas-hub]').find(h => h.getBoundingClientRect().width > 0)), lane1 = p.y - 14, lane2 = p.y + p.h + 14;
           const le = Math.max(xL + 110, p.x - 30), lx = Math.max(xL + 90, hb[0] - 100);
           pts.push([xL + 4, lane1 - 70], [xL + 14, lane1 - 8], [xL + 60, lane1], [le, lane1], [le + 40, lane1 + 36], [le + 70, p.y + 56], hb,
                    [hb[0] + 20, p.y + p.h - 34], [hb[0] - 16, lane2 - 2]);
@@ -690,8 +720,8 @@ html.js .hero-static{ display:none; }
           const after = rel($('[data-steps-after]')), yAfter = after.y + after.h + 34, yD = discs[0][1];
           if (mid) {
             const rightX = Math.min(W - 18, cont.x + cont.w + 22);
-            pts.push([xL + 10, yD - 70], [xL + 46, yD], ...discs, [discs[3][0] + 70, yD], [rightX - 12, yD + 26], [rightX, yD + 92],
-                     [rightX, yAfter - 70], [rightX - 50, yAfter], [xL + 160, yAfter], [xL + 24, yAfter + 8]);
+            pts.push([xL + 6, yD - 100], [xL + 26, yD - 36], ...discs, [discs[3][0] + 60, yD], [rightX, (yD + yAfter) / 2], [rightX - 140, yAfter],
+                     [xL + 170, yAfter], [xL + 24, yAfter + 8]);
             knotsSpec.push({ y: yD, at: discs[0] }, { y: yD + 40, at: discs[3] }, { y: yAfter, at: [xL + 160, yAfter] });
           } else {
             /* stacked steps: down the disc column, then back to the rail before the draft marker */
