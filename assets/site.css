@@ -10,8 +10,8 @@
   --moss:#2F5D46;    /* links, focus ring, live or healthy */
   --amber:#F2A900;   /* fill only: a person decides */
   --clay:#B04A2F;    /* problem or volatile */
-  --font-display:Inter,ui-sans-serif,system-ui,-apple-system,"Segoe UI",Roboto,Arial,sans-serif;
-  --font-body:Inter,ui-sans-serif,system-ui,-apple-system,"Segoe UI",Roboto,Arial,sans-serif;
+  --font-display:Besley,Rockwell,Clarendon,Georgia,serif;
+  --font-body:"Source Sans 3",system-ui,-apple-system,"Segoe UI",Roboto,Arial,sans-serif;
   --radius:2px;
   --border:1px solid var(--rule);
   --focus:2px solid var(--moss);
@@ -185,10 +185,14 @@ body{
 .fill-clay{ fill:var(--clay); } .fill-amber{ fill:var(--amber); } .fill-paper{ fill:var(--paper); } .fill-paper-2{ fill:var(--paper-2); }
 .stroke-ink{ stroke:var(--ink); } .stroke-moss{ stroke:var(--moss); } .stroke-clay{ stroke:var(--clay); } .stroke-muted{ stroke:var(--muted); }
 
-/* ───────── Type ───────── */
-.h1-statement{ font-size:clamp(2.25rem,5vw,3.75rem); line-height:1.04; font-weight:600; text-wrap:balance; }
-.h1-case{ font-size:clamp(2.5rem,6vw,4.25rem); line-height:1; font-weight:600; }
-.h2{ font-size:clamp(1.9rem,3.8vw,2.75rem); line-height:1.06; font-weight:600; color:var(--ink); text-wrap:balance; }
+/* ───────── Type: Besley for headlines and numerals, Source Sans 3 for everything else ───────── */
+h1,h2,h3,.h1-statement,.h1-case,.h2,.proj-title,.wordmark,.display,.stat-num,.dgc h3{ font-family:var(--font-display); font-weight:600; text-wrap:balance; }
+.h1-statement{ font-size:clamp(2.25rem,5vw,3.75rem); line-height:1.08; letter-spacing:-.01em; }
+.h1-case{ font-size:clamp(2.5rem,6vw,4.25rem); line-height:1.08; letter-spacing:-.01em; }
+.h2{ font-size:clamp(1.9rem,3.8vw,2.75rem); line-height:1.12; letter-spacing:-.005em; color:var(--ink); }
+.stat-num{ font-size:clamp(4rem,11vw,8rem); line-height:.95; font-weight:700; letter-spacing:0; font-variant-numeric:tabular-nums; }
+.val{ font-family:var(--font-display); }
+main p, main li{ max-width:68ch; }
 .inline-link{ color:var(--moss); text-decoration:underline; text-underline-offset:3px; }
 .inline-link:hover{ color:var(--ink); }
 
@@ -286,7 +290,7 @@ body.hide-tbc .tbc{ display:none!important; }
 
 /* diagram cards */
 .dgc{ border:var(--border); border-radius:var(--radius); background:var(--paper-2); padding:1.25rem 1.25rem 1rem; }
-.dgc h3{ font-size:1.125rem; font-weight:600; color:var(--ink); }
+.dgc h3{ font-size:1.375rem; line-height:1.2; color:var(--ink); }
 .dgc .dg-cap{ margin-top:.2rem; font-size:.9375rem; color:var(--muted); }
 .dg .tip{
   margin-top:.8rem; min-height:3.1em; padding:.55rem .8rem; border-left:2px solid var(--ink);
@@ -299,7 +303,7 @@ body.hide-tbc .tbc{ display:none!important; }
 @media (min-width:1024px){ .proof{ grid-template-columns:repeat(4,minmax(0,1fr)); } }
 .pt{ background:var(--paper-2); padding:1.25rem 1.25rem 1.15rem; min-width:0; }
 .pt-viz{ height:4.75rem; display:flex; align-items:center; }
-.pt-num{ margin-top:.8rem; font-size:clamp(1.5rem,2.7vw,2.35rem); font-weight:600; color:var(--ink); line-height:1.05; font-variant-numeric:tabular-nums; }
+.pt-num{ margin-top:.8rem; font-family:var(--font-display); font-size:clamp(1.5rem,2.7vw,2.35rem); font-weight:700; color:var(--ink); line-height:1.05; font-variant-numeric:tabular-nums; }
 .pt-num small{ font-size:.42em; font-weight:500; color:var(--muted); margin-left:.2rem; }
 .pt-num .arr{ color:var(--ink); margin:0 .1em; font-weight:400; }
 .pt-cap{ margin-top:.55rem; font-size:.875rem; font-weight:500; color:var(--ink); }
@@ -534,7 +538,7 @@ body.hide-tbc .tbc{ display:none!important; }
 
 /* ───────── Shared lede and lists ───────── */
 .lead{ font-size:1.1875rem; line-height:1.6; color:var(--ink); max-width:36rem; }
-.proj-title{ font-size:clamp(2rem,4vw,3rem); font-weight:600; color:var(--ink); line-height:1.1; }
+.proj-title{ font-size:clamp(2rem,4vw,3rem); color:var(--ink); line-height:1.1; letter-spacing:0; }
 .proj-tag{ margin-top:.45rem; font-size:1.125rem; color:var(--ink); }
 
 /* ───────── Hero: typed greeting ───────── */
