@@ -190,6 +190,7 @@ h1,h2,h3,.h1-statement,.h1-case,.h2,.proj-title,.wordmark,.display,.stat-num,.dg
 .h1-statement{ font-size:clamp(2.25rem,5vw,3.75rem); line-height:1.08; letter-spacing:-.01em; }
 .h1-case{ font-size:clamp(2.5rem,6vw,4.25rem); line-height:1.08; letter-spacing:-.01em; }
 .h2{ font-size:clamp(1.9rem,3.8vw,2.75rem); line-height:1.12; letter-spacing:-.005em; color:var(--ink); }
+.wordmark{ font-size:1.1875rem; line-height:1; letter-spacing:0; color:var(--ink); }
 .stat-num{ font-size:clamp(4rem,11vw,8rem); line-height:.95; font-weight:700; letter-spacing:0; font-variant-numeric:tabular-nums; }
 .val{ font-family:var(--font-display); }
 main p, main li{ max-width:68ch; }
