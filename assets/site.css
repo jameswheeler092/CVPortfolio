@@ -193,7 +193,7 @@ h1,h2,h3,.h1-statement,.h1-case,.h2,.proj-title,.wordmark,.display,.stat-num,.dg
 .wordmark{ font-size:1.1875rem; line-height:1; letter-spacing:0; color:var(--ink); }
 .stat-num{ font-size:clamp(4rem,11vw,8rem); line-height:.95; font-weight:700; letter-spacing:0; font-variant-numeric:tabular-nums; }
 .val{ font-family:var(--font-display); }
-main p, main li{ max-width:68ch; }
+main p, main li{ max-width:68ch; text-wrap:pretty; }
 .inline-link{ color:var(--moss); text-decoration:underline; text-underline-offset:3px; }
 .inline-link:hover{ color:var(--ink); }
 
@@ -211,7 +211,7 @@ main p, main li{ max-width:68ch; }
 .btn-primary:hover{ transform:translateY(-1px); background:var(--ink-hover); border-color:var(--ink-hover); }
 .btn-ghost{ color:var(--ink); border:1px solid var(--ink); background:transparent; }
 .btn-ghost:hover{ transform:translateY(-1px); background:var(--paper-2); }
-.is-soon{ opacity:.55; pointer-events:none; cursor:default; border-style:dashed; }
+.is-soon{ color:var(--muted); border-color:var(--muted); border-style:dashed; background:transparent; pointer-events:none; cursor:default; }
 .link-ext{ display:inline-flex; align-items:center; gap:.45rem; font-size:.9375rem; font-weight:600; color:var(--moss); text-decoration:underline; text-underline-offset:3px; transition:color .2s ease; }
 .link-ext:hover{ color:var(--ink); }
 .link-back{ display:inline-flex; align-items:center; gap:.45rem; font-size:.9375rem; font-weight:500; color:var(--moss); text-decoration:underline; text-underline-offset:3px; transition:color .2s ease; }
@@ -227,7 +227,7 @@ main p, main li{ max-width:68ch; }
 
 /* ───────── Draft markers: dashed = still to confirm ───────── */
 .tbc{
-  display:inline-block; padding:.05em .5em; border-radius:var(--radius); font-size:.78em; font-weight:500; line-height:1.55;
+  display:inline-block; padding:.3em .8em; border-radius:var(--radius); font-size:.8125rem; font-weight:500; line-height:1.55;
   color:var(--ink); background:var(--paper-2); border:1px dashed var(--muted);
 }
 body.hide-tbc .tbc{ display:none!important; }
@@ -296,8 +296,8 @@ body.hide-tbc .tbc{ display:none!important; }
 .dgc h3{ font-size:1.375rem; line-height:1.2; color:var(--ink); }
 .dgc .dg-cap{ margin-top:.2rem; font-size:.9375rem; color:var(--muted); }
 .dg .tip{
-  margin-top:.8rem; min-height:3.1em; padding:.55rem .8rem; border-left:2px solid var(--ink);
-  background:var(--paper); border-radius:0 var(--radius) var(--radius) 0; font-size:.9375rem; line-height:1.5; color:var(--ink);
+  margin-top:.8rem; min-height:3.1em; padding:.7rem .9rem; border:var(--border);
+  background:var(--paper); border-radius:var(--radius); font-size:.9375rem; line-height:1.5; color:var(--ink);
 }
 .dg .tip.is-hint{ color:var(--muted); }
 
@@ -341,7 +341,7 @@ body.hide-tbc .tbc{ display:none!important; }
 .morph-bar button{ padding:.4rem .95rem; border-radius:var(--radius); font-size:.875rem; font-weight:600; color:var(--ink); cursor:pointer; transition:color .2s, background-color .2s; }
 .morph-bar button[aria-pressed="true"]{ color:var(--paper); background:var(--ink); }
 .morph-stage{ position:relative; margin-top:.9rem; aspect-ratio:16/11; border:var(--border); border-radius:var(--radius); background:var(--paper-2); overflow:hidden; }
-.morph-lines{ position:absolute; inset:0; width:100%; height:100%; }
+.morph-lines{ position:absolute; inset:0; z-index:1; width:100%; height:100%; pointer-events:none; }
 .morph-lines path{ fill:none; stroke:var(--ink); stroke-width:1.5; vector-effect:non-scaling-stroke; opacity:0; transition:opacity .7s ease .45s; }
 .is-after .morph-lines path{ opacity:1; }
 .mhub{
@@ -421,14 +421,14 @@ body.hide-tbc .tbc{ display:none!important; }
 
 /* ───────── Chains and pipelines ───────── */
 .chain{ display:flex; flex-wrap:wrap; align-items:center; gap:.5rem; }
-.cn{ padding:.6rem .9rem; border:1px solid var(--ink); border-radius:var(--radius); background:var(--paper); font-size:1rem; font-weight:600; color:var(--ink); cursor:pointer; transition:background-color .2s, border-color .2s; }
+.cn{ padding:.7rem 1rem; border:1px solid var(--ink); border-radius:var(--radius); background:var(--paper); font-size:1rem; font-weight:600; color:var(--ink); cursor:pointer; transition:background-color .2s, border-color .2s; }
 .cn small{ display:block; font-size:.8125rem; font-weight:400; color:var(--muted); }
 .cn.per{ background:var(--amber); }
 .cn.per small{ color:var(--ink); }
-.cn.ok{ border-color:var(--moss); border-width:2px; padding:calc(.6rem - 1px) calc(.9rem - 1px); }
+.cn.ok{ border-color:var(--moss); border-width:2px; padding:calc(.7rem - 1px) calc(1rem - 1px); }
 .cn:hover, .cn:focus-visible{ background:var(--paper-2); }
 .cn.per:hover, .cn.per:focus-visible{ background:var(--amber); }
-.cn.is-sel{ border-color:var(--moss); border-width:2px; padding:calc(.6rem - 1px) calc(.9rem - 1px); }
+.cn.is-sel{ border-color:var(--moss); border-width:2px; padding:calc(.7rem - 1px) calc(1rem - 1px); }
 .cc{ flex:none; width:2.2rem; height:2px; background:var(--ink); }
 @media (max-width:640px){
   .chain{ flex-direction:column; align-items:stretch; gap:.35rem; }
