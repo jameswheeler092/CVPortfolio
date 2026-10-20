@@ -455,6 +455,14 @@ body.hide-tbc .tbc{ display:none!important; }
 .facts dd{ margin:0; font-size:1.0625rem; font-weight:600; line-height:1.4; color:var(--ink); }
 .facts dd small{ display:block; font-size:.9375rem; font-weight:400; color:var(--muted); }
 
+/* ───────── Stat numerals: 950 and 35% ───────── */
+.stats{ display:grid; grid-template-columns:minmax(0,1fr); gap:1.5rem; margin-top:2rem; }
+@media (min-width:768px){ .stats{ grid-template-columns:minmax(0,7fr) minmax(0,5fr); gap:3rem; align-items:start; } .stat-sm{ padding-top:3.5rem; } }
+.stat-num{ margin:0; min-width:3.1ch; display:inline-block; }
+.stat-sm .stat-num{ font-size:clamp(2.75rem,6.5vw,5rem); line-height:1; }
+.stat-cap{ margin:.5rem 0 0; font-size:1.0625rem; color:var(--ink); }
+.stat-cap time{ white-space:nowrap; }
+
 /* ───────── Threshold simulator ───────── */
 .sim{ display:grid; gap:1.25rem; }
 @media (min-width:900px){ .sim{ grid-template-columns:1fr 1.15fr; align-items:start; } }

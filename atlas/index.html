@@ -79,13 +79,13 @@
     <div class="mt-6 flex flex-wrap gap-2"><span class="chip chip-live"><span class="dot"></span>Live</span><span class="chip chip-solid">Teams agent in development</span></div>
     <h1 class="h1-case mt-4">RBW Atlas</h1>
     <p class="mt-3 max-w-2xl text-xl">One system of record, and an agent that knows when to ask a person.</p>
-    <ul class="tldr mt-8">
-      <li><span class="ico"><span data-icon="alert-triangle"></span></span><b>Problem</b><span class="t">Paper, scattered data, no field alerts</span></li>
-      <li><span class="ico"><span data-icon="layers"></span></span><b>Move</b><span class="t">One system of record, AI on top</span></li>
-      <li><span class="ico"><span data-icon="bot"></span></span><b>Agent</b><span class="t">80% benchmark, ~70% live</span></li>
-      <li><span class="ico"><span data-icon="server"></span></span><b>Ops</b><span class="t">1,200 locations watched 24/7</span></li>
-      <li><span class="ico"><span data-icon="user"></span></span><b>Role</b><span class="t">Solo build with AI coding agents</span></li>
-    </ul>
+    <dl class="facts mt-8">
+      <div><dt>Problem</dt><dd>Paper, scattered data, no field alerts</dd></div>
+      <div><dt>Move</dt><dd>One system of record, AI on top</dd></div>
+      <div><dt>Agent</dt><dd>80% benchmark, ~70% live</dd></div>
+      <div><dt>Ops</dt><dd>1,200 locations watched 24/7</dd></div>
+      <div><dt>Role</dt><dd>Solo build with AI coding agents</dd></div>
+    </dl>
   </div>
 </header>
 
@@ -118,7 +118,7 @@
     </div>
     <div class="lg:col-span-8">
 <figure class="demo" data-demo data-kinds="list,chat,board,form">
-  <div class="demo-bar"><span class="dots" aria-hidden="true"><i></i><i></i><i></i></span><span class="demo-url">atlas · sanitised demo · fictional data</span><span class="chip chip-dotted">Placeholder</span></div>
+  <div class="demo-bar"><span class="dots" aria-hidden="true"><i></i><i></i><i></i></span><span class="demo-url">atlas, sanitised demo, fictional data</span><span class="chip chip-dotted">Placeholder</span></div>
   <div class="demo-screen" role="tabpanel" aria-live="polite">
     <div class="demo-intro">
       <button type="button" class="demo-play" aria-label="Start the Atlas click-through (placeholder)"><span data-icon="play"></span></button>
@@ -149,14 +149,14 @@
   <path class="ln" d="M520 104 V160"/>
   <circle cx="120" cy="160" r="5" fill="var(--muted)"/><circle cx="320" cy="160" r="5" fill="var(--muted)"/><circle cx="520" cy="160" r="5" fill="var(--ink)"/>
 
-  <text class="cap" x="120" y="48" text-anchor="middle">ticketing · email · git links</text>
-  <g class="nd sys lp-fade" style="--d:.5s" data-tip="Already in use. The service desk links tickets to Bitbucket commits, so rebuilding ticketing, email scraping and git integration would have cost a lot for little commercial gain."><rect class="bx" x="20" y="60" width="200" height="44" rx="10"/><text x="120" y="87" text-anchor="middle">Jira + Bitbucket</text></g>
+  <text class="cap" x="120" y="48" text-anchor="middle">ticketing, email, git links</text>
+  <g class="nd sys lp-fade" style="--d:.5s" data-tip="Already in use. The service desk links tickets to Bitbucket commits, so rebuilding ticketing, email scraping and git integration would have cost a lot for little commercial gain."><rect class="bx" x="20" y="60" width="200" height="44" rx="2"/><text x="120" y="87" text-anchor="middle">Jira + Bitbucket</text></g>
 
   <text class="cap" x="320" y="48" text-anchor="middle">rejected</text>
-  <g class="nd no lp-fade" style="--d:.7s" data-tip="Atlassian’s Rovo for support agents. It lacked the flexibility, configurability and observability we needed."><rect class="bx" x="265" y="60" width="110" height="44" rx="10"/><text x="320" y="87" text-anchor="middle" text-decoration="line-through">Rovo</text></g>
+  <g class="nd no lp-fade" style="--d:.7s" data-tip="Atlassian’s Rovo for support agents. It lacked the flexibility, configurability and observability we needed."><rect class="bx" x="265" y="60" width="110" height="44" rx="2"/><text x="320" y="87" text-anchor="middle" text-decoration="line-through">Rovo</text></g>
 
   <text class="cap" x="520" y="48" text-anchor="middle">built</text>
-  <g class="nd sys lp-fade" style="--d:.9s" data-tip="Built in Atlas, because flexibility, configurability and observability mattered most here."><rect class="bx" x="420" y="60" width="200" height="44" rx="10"/><text x="520" y="87" text-anchor="middle">Our support agent</text></g>
+  <g class="nd sys lp-fade" style="--d:.9s" data-tip="Built in Atlas, because flexibility, configurability and observability mattered most here."><rect class="bx" x="420" y="60" width="200" height="44" rx="2"/><text x="520" y="87" text-anchor="middle">Our support agent</text></g>
 
   <text class="cap" x="20" y="192">Buy the commodity</text>
   <text class="cap" x="620" y="192" text-anchor="end">Build where you need control</text>
@@ -177,17 +177,17 @@
 
   <g class="nd sys" data-tip="Baseline: 37% of past ‘User Training issue’ tickets could be resolved from the existing documentation, scored by an evaluation agent.">
     <rect class="hit" x="90" y="110" width="120" height="120" fill="transparent"/>
-    <rect class="grow" style="--d:.2s" x="100" y="146" width="100" height="74" rx="6" fill="var(--muted)"/>
+    <rect class="grow" style="--d:.2s" x="100" y="146" width="100" height="74" rx="2" fill="var(--muted)"/>
     <text class="val" x="150" y="138" text-anchor="middle">37%</text>
   </g>
   <g class="nd sys" data-tip="After four rounds: the evaluation agent listed the gaps, the team wrote articles for them, and I re-ran the benchmark.">
     <rect class="hit" x="260" y="40" width="120" height="190" fill="transparent"/>
-    <rect class="grow" style="--d:.5s" x="270" y="60" width="100" height="160" rx="6" fill="var(--ink)"/>
+    <rect class="grow" style="--d:.5s" x="270" y="60" width="100" height="160" rx="2" fill="var(--ink)"/>
     <text class="val" x="320" y="52" text-anchor="middle">80%</text>
   </g>
   <g class="nd ok" data-tip="Early production trial: live questions rather than past tickets. Same agent, different yardstick.">
     <rect class="hit" x="430" y="60" width="120" height="170" fill="transparent"/>
-    <rect class="grow" style="--d:.8s" x="440" y="80" width="100" height="140" rx="6" fill="var(--paper)" stroke="var(--moss)" stroke-width="2"/>
+    <rect class="grow" style="--d:.8s" x="440" y="80" width="100" height="140" rx="2" fill="var(--paper)" stroke="var(--moss)" stroke-width="2"/>
     <text class="val" x="490" y="72" text-anchor="middle">~70%</text>
   </g>
 
@@ -201,7 +201,7 @@
 
   <path class="ln per lp-line" style="--d:1.3s" pathLength="1" d="M544 60 H550 V80 H544"/>
   <g class="nd per" data-tip="Why is live lower? My leading hypothesis: people ask more questions when the answer is instant than they ever raised as tickets. A hypothesis, not a finding.">
-    <rect class="bx" x="558" y="57" width="68" height="26" rx="8"/>
+    <rect class="bx" x="558" y="57" width="68" height="26" rx="2"/>
     <text x="592" y="75" text-anchor="middle" style="font-size:13px">−10 pts</text>
   </g>
 
@@ -219,17 +219,17 @@
 
   <g class="nd sys" data-tip="Baseline: 37% of past ‘User Training issue’ tickets could be resolved from the existing documentation, scored by an evaluation agent.">
     <rect class="hit" x="30" y="150" width="90" height="100" fill="transparent"/>
-    <rect class="grow" style="--d:.2s" x="40" y="166" width="70" height="74" rx="6" fill="var(--muted)"/>
+    <rect class="grow" style="--d:.2s" x="40" y="166" width="70" height="74" rx="2" fill="var(--muted)"/>
     <text class="val" x="75" y="196" text-anchor="middle" style="font-size:18px">37%</text>
   </g>
   <g class="nd sys" data-tip="After four rounds: the evaluation agent listed the gaps, the team wrote articles for them, and I re-ran the benchmark.">
     <rect class="hit" x="135" y="70" width="90" height="180" fill="transparent"/>
-    <rect class="grow" style="--d:.5s" x="145" y="80" width="70" height="160" rx="6" fill="var(--ink)"/>
+    <rect class="grow" style="--d:.5s" x="145" y="80" width="70" height="160" rx="2" fill="var(--ink)"/>
     <text class="val" x="180" y="108" text-anchor="middle" style="font-size:18px">80%</text>
   </g>
   <g class="nd ok" data-tip="Early production trial: live questions rather than past tickets. Same agent, different yardstick.">
     <rect class="hit" x="240" y="90" width="90" height="160" fill="transparent"/>
-    <rect class="grow" style="--d:.8s" x="250" y="100" width="70" height="140" rx="6" fill="var(--paper)" stroke="var(--moss)" stroke-width="2"/>
+    <rect class="grow" style="--d:.8s" x="250" y="100" width="70" height="140" rx="2" fill="var(--paper)" stroke="var(--moss)" stroke-width="2"/>
     <text class="val" x="285" y="128" text-anchor="middle" style="font-size:18px">~70%</text>
   </g>
 
@@ -244,7 +244,7 @@
   <path class="ln per lp-line" style="--d:1.3s" pathLength="1" d="M302 62 V96" stroke-dasharray="4 4"/>
   <g class="lp-fade" style="--d:1.8s"><use href="#ah" transform="translate(302 100) rotate(90)" fill="var(--ink)"/></g>
   <g class="nd per" data-tip="Why is live lower? My leading hypothesis: people ask more questions when the answer is instant than they ever raised as tickets. A hypothesis, not a finding.">
-    <rect class="bx" x="268" y="36" width="68" height="26" rx="8"/>
+    <rect class="bx" x="268" y="36" width="68" height="26" rx="2"/>
     <text x="302" y="54" text-anchor="middle" style="font-size:13px">−10 pts</text>
   </g>
 
@@ -284,7 +284,7 @@
   <path class="ln lp-line" style="--d:1.2s" pathLength="1" d="M548 150 V104"/>
   <g class="lp-fade" style="--d:1.7s"><use href="#ah" transform="translate(548 102) rotate(-90)" fill="var(--ink)"/></g>
   <g class="nd sys" data-tip="Roughly two extra seconds waiting on the model provider. Predictability mattered more than the best average. Chart is illustrative; measured figures to be added.">
-    <rect class="bx" x="562" y="116" width="64" height="28" rx="8"/>
+    <rect class="bx" x="562" y="116" width="64" height="28" rx="2"/>
     <text x="594" y="135" text-anchor="middle" style="font-size:13px">≈ +2 s</text>
   </g>
 
@@ -298,7 +298,7 @@
       <article class="dgc dg lg:col-span-2" data-reveal>
         <h3>Alert on the servers</h3>
         <p class="dg-cap">Telemetry in every five minutes. Alerts out in under 200 ms after ingest.</p>
-        <div class="dg-scroll mx-auto mt-3 max-w-[720px]"><svg class="dgsvg" viewBox="0 0 640 274" role="img" aria-label="Five central servers, which hold data for 1,200 locations, send telemetry to Atlas every five minutes. Alerts reach Teams and email in under 200 milliseconds after ingest, and severity escalates automatically."><text class="cap" x="46" y="14" text-anchor="middle">1,200 locations</text><circle class="lp-fade" style="--d:0.00s" cx="49.7" cy="40.0" r="1.7" fill="var(--ink)"/><circle class="lp-fade" style="--d:0.02s" cx="41.5" cy="42.0" r="1.7" fill="var(--ink)"/><circle class="lp-fade" style="--d:0.04s" cx="46.7" cy="36.3" r="1.7" fill="var(--ink)"/><circle class="lp-fade" style="--d:0.06s" cx="51.5" cy="43.5" r="1.7" fill="var(--ink)"/><circle class="lp-fade" style="--d:0.08s" cx="35.9" cy="39.1" r="1.7" fill="var(--ink)"/><circle class="lp-fade" style="--d:0.10s" cx="55.6" cy="37.1" r="1.7" fill="var(--ink)"/><circle class="lp-fade" style="--d:0.12s" cx="42.8" cy="45.7" r="1.7" fill="var(--ink)"/><circle class="lp-fade" style="--d:0.14s" cx="39.9" cy="34.4" r="1.7" fill="var(--ink)"/><circle class="lp-fade" style="--d:0.16s" cx="59.2" cy="42.3" r="1.7" fill="var(--ink)"/><circle class="lp-fade" style="--d:0.18s" cx="32.3" cy="42.7" r="1.7" fill="var(--ink)"/><circle class="lp-fade" style="--d:0.20s" cx="52.6" cy="33.2" r="1.7" fill="var(--ink)"/><circle class="lp-fade" style="--d:0.22s" cx="50.9" cy="47.5" r="1.7" fill="var(--ink)"/><circle class="lp-fade" style="--d:0.24s" cx="31.3" cy="35.9" r="1.7" fill="var(--ink)"/><circle class="lp-fade" style="--d:0.26s" cx="63.3" cy="38.2" r="1.7" fill="var(--ink)"/><circle class="lp-fade" style="--d:0.28s" cx="35.5" cy="47.2" r="1.7" fill="var(--ink)"/><circle class="lp-fade" style="--d:0.30s" cx="43.6" cy="31.0" r="1.7" fill="var(--ink)"/><circle class="lp-fade" style="--d:0.32s" cx="61.0" cy="46.0" r="1.7" fill="var(--ink)"/><circle class="lp-fade" style="--d:0.34s" cx="25.9" cy="40.4" r="1.7" fill="var(--ink)"/><path class="ln dim" d="M74 40 H100"/><g class="nd sys lp-fade" style="--d:.6s" data-tip="Five central servers hold the data for 1,200 locations. Larger operators want their own database and server."><rect class="bx" x="100" y="26" width="60" height="28" rx="8"/><text x="130" y="45" text-anchor="middle" style="font-size:12px">S1</text></g><path class="ln lp-line" style="--d:0.90s" pathLength="1" d="M160 40 C215 40 215 138 266 138"/><circle class="lp-fade" style="--d:0.36s" cx="49.7" cy="90.0" r="1.7" fill="var(--ink)"/><circle class="lp-fade" style="--d:0.38s" cx="41.5" cy="92.0" r="1.7" fill="var(--ink)"/><circle class="lp-fade" style="--d:0.40s" cx="46.7" cy="86.3" r="1.7" fill="var(--ink)"/><circle class="lp-fade" style="--d:0.42s" cx="51.5" cy="93.5" r="1.7" fill="var(--ink)"/><circle class="lp-fade" style="--d:0.44s" cx="35.9" cy="89.1" r="1.7" fill="var(--ink)"/><circle class="lp-fade" style="--d:0.46s" cx="55.6" cy="87.1" r="1.7" fill="var(--ink)"/><circle class="lp-fade" style="--d:0.48s" cx="42.8" cy="95.7" r="1.7" fill="var(--ink)"/><circle class="lp-fade" style="--d:0.50s" cx="39.9" cy="84.4" r="1.7" fill="var(--ink)"/><circle class="lp-fade" style="--d:0.52s" cx="59.2" cy="92.3" r="1.7" fill="var(--ink)"/><circle class="lp-fade" style="--d:0.54s" cx="32.3" cy="92.7" r="1.7" fill="var(--ink)"/><circle class="lp-fade" style="--d:0.56s" cx="52.6" cy="83.2" r="1.7" fill="var(--ink)"/><circle class="lp-fade" style="--d:0.58s" cx="50.9" cy="97.5" r="1.7" fill="var(--ink)"/><circle class="lp-fade" style="--d:0.60s" cx="31.3" cy="85.9" r="1.7" fill="var(--ink)"/><circle class="lp-fade" style="--d:0.62s" cx="63.3" cy="88.2" r="1.7" fill="var(--ink)"/><circle class="lp-fade" style="--d:0.64s" cx="35.5" cy="97.2" r="1.7" fill="var(--ink)"/><circle class="lp-fade" style="--d:0.66s" cx="43.6" cy="81.0" r="1.7" fill="var(--ink)"/><circle class="lp-fade" style="--d:0.68s" cx="61.0" cy="96.0" r="1.7" fill="var(--ink)"/><circle class="lp-fade" style="--d:0.70s" cx="25.9" cy="90.4" r="1.7" fill="var(--ink)"/><circle class="lp-fade" style="--d:0.72s" cx="60.7" cy="83.0" r="1.7" fill="var(--ink)"/><circle class="lp-fade" style="--d:0.74s" cx="45.0" cy="100.2" r="1.7" fill="var(--ink)"/><circle class="lp-fade" style="--d:0.76s" cx="32.0" cy="82.0" r="1.7" fill="var(--ink)"/><circle class="lp-fade" style="--d:0.78s" cx="68.1" cy="91.4" r="1.7" fill="var(--ink)"/><circle class="lp-fade" style="--d:0.80s" cx="27.3" cy="96.2" r="1.7" fill="var(--ink)"/><circle class="lp-fade" style="--d:0.82s" cx="51.1" cy="79.1" r="1.7" fill="var(--ink)"/><circle class="lp-fade" style="--d:0.84s" cx="57.8" cy="99.9" r="1.7" fill="var(--ink)"/><circle class="lp-fade" style="--d:0.86s" cx="22.9" cy="86.5" r="1.7" fill="var(--ink)"/><path class="ln dim" d="M74 90 H100"/><g class="nd sys lp-fade" style="--d:.6s" data-tip="Five central servers hold the data for 1,200 locations. Larger operators want their own database and server."><rect class="bx" x="100" y="76" width="60" height="28" rx="8"/><text x="130" y="95" text-anchor="middle" style="font-size:12px">S2</text></g><path class="ln lp-line" style="--d:0.98s" pathLength="1" d="M160 90 C215 90 215 138 266 138"/><circle class="lp-fade" style="--d:0.88s" cx="49.7" cy="140.0" r="1.7" fill="var(--ink)"/><circle class="lp-fade" style="--d:0.90s" cx="41.5" cy="142.0" r="1.7" fill="var(--ink)"/><circle class="lp-fade" style="--d:0.92s" cx="46.7" cy="136.3" r="1.7" fill="var(--ink)"/><circle class="lp-fade" style="--d:0.94s" cx="51.5" cy="143.5" r="1.7" fill="var(--ink)"/><circle class="lp-fade" style="--d:0.96s" cx="35.9" cy="139.1" r="1.7" fill="var(--ink)"/><circle class="lp-fade" style="--d:0.98s" cx="55.6" cy="137.1" r="1.7" fill="var(--ink)"/><circle class="lp-fade" style="--d:1.00s" cx="42.8" cy="145.7" r="1.7" fill="var(--ink)"/><circle class="lp-fade" style="--d:1.02s" cx="39.9" cy="134.4" r="1.7" fill="var(--ink)"/><circle class="lp-fade" style="--d:1.04s" cx="59.2" cy="142.3" r="1.7" fill="var(--ink)"/><circle class="lp-fade" style="--d:1.06s" cx="32.3" cy="142.7" r="1.7" fill="var(--ink)"/><circle class="lp-fade" style="--d:1.08s" cx="52.6" cy="133.2" r="1.7" fill="var(--ink)"/><circle class="lp-fade" style="--d:1.10s" cx="50.9" cy="147.5" r="1.7" fill="var(--ink)"/><circle class="lp-fade" style="--d:1.12s" cx="31.3" cy="135.9" r="1.7" fill="var(--ink)"/><circle class="lp-fade" style="--d:1.14s" cx="63.3" cy="138.2" r="1.7" fill="var(--ink)"/><circle class="lp-fade" style="--d:1.16s" cx="35.5" cy="147.2" r="1.7" fill="var(--ink)"/><circle class="lp-fade" style="--d:1.18s" cx="43.6" cy="131.0" r="1.7" fill="var(--ink)"/><circle class="lp-fade" style="--d:1.20s" cx="61.0" cy="146.0" r="1.7" fill="var(--ink)"/><circle class="lp-fade" style="--d:1.22s" cx="25.9" cy="140.4" r="1.7" fill="var(--ink)"/><circle class="lp-fade" style="--d:1.24s" cx="60.7" cy="133.0" r="1.7" fill="var(--ink)"/><circle class="lp-fade" style="--d:1.26s" cx="45.0" cy="150.2" r="1.7" fill="var(--ink)"/><circle class="lp-fade" style="--d:1.28s" cx="32.0" cy="132.0" r="1.7" fill="var(--ink)"/><circle class="lp-fade" style="--d:1.30s" cx="68.1" cy="141.4" r="1.7" fill="var(--ink)"/><path class="ln dim" d="M74 140 H100"/><g class="nd sys lp-fade" style="--d:.6s" data-tip="Five central servers hold the data for 1,200 locations. Larger operators want their own database and server."><rect class="bx" x="100" y="126" width="60" height="28" rx="8"/><text x="130" y="145" text-anchor="middle" style="font-size:12px">S3</text></g><path class="ln lp-line" style="--d:1.06s" pathLength="1" d="M160 140 C215 140 215 138 266 138"/><circle class="lp-fade" style="--d:1.32s" cx="49.7" cy="190.0" r="1.7" fill="var(--ink)"/><circle class="lp-fade" style="--d:1.34s" cx="41.5" cy="192.0" r="1.7" fill="var(--ink)"/><circle class="lp-fade" style="--d:1.36s" cx="46.7" cy="186.3" r="1.7" fill="var(--ink)"/><circle class="lp-fade" style="--d:1.38s" cx="51.5" cy="193.5" r="1.7" fill="var(--ink)"/><circle class="lp-fade" style="--d:1.40s" cx="35.9" cy="189.1" r="1.7" fill="var(--ink)"/><circle class="lp-fade" style="--d:1.42s" cx="55.6" cy="187.1" r="1.7" fill="var(--ink)"/><circle class="lp-fade" style="--d:1.44s" cx="42.8" cy="195.7" r="1.7" fill="var(--ink)"/><circle class="lp-fade" style="--d:1.46s" cx="39.9" cy="184.4" r="1.7" fill="var(--ink)"/><circle class="lp-fade" style="--d:1.48s" cx="59.2" cy="192.3" r="1.7" fill="var(--ink)"/><circle class="lp-fade" style="--d:1.50s" cx="32.3" cy="192.7" r="1.7" fill="var(--ink)"/><circle class="lp-fade" style="--d:1.52s" cx="52.6" cy="183.2" r="1.7" fill="var(--ink)"/><circle class="lp-fade" style="--d:1.54s" cx="50.9" cy="197.5" r="1.7" fill="var(--ink)"/><circle class="lp-fade" style="--d:1.56s" cx="31.3" cy="185.9" r="1.7" fill="var(--ink)"/><circle class="lp-fade" style="--d:1.58s" cx="63.3" cy="188.2" r="1.7" fill="var(--ink)"/><path class="ln dim" d="M74 190 H100"/><g class="nd sys lp-fade" style="--d:.6s" data-tip="Five central servers hold the data for 1,200 locations. Larger operators want their own database and server."><rect class="bx" x="100" y="176" width="60" height="28" rx="8"/><text x="130" y="195" text-anchor="middle" style="font-size:12px">S4</text></g><path class="ln lp-line" style="--d:1.14s" pathLength="1" d="M160 190 C215 190 215 138 266 138"/><circle class="lp-fade" style="--d:1.60s" cx="49.7" cy="240.0" r="1.7" fill="var(--ink)"/><circle class="lp-fade" style="--d:1.62s" cx="41.5" cy="242.0" r="1.7" fill="var(--ink)"/><circle class="lp-fade" style="--d:1.64s" cx="46.7" cy="236.3" r="1.7" fill="var(--ink)"/><circle class="lp-fade" style="--d:1.66s" cx="51.5" cy="243.5" r="1.7" fill="var(--ink)"/><circle class="lp-fade" style="--d:1.68s" cx="35.9" cy="239.1" r="1.7" fill="var(--ink)"/><circle class="lp-fade" style="--d:1.70s" cx="55.6" cy="237.1" r="1.7" fill="var(--ink)"/><circle class="lp-fade" style="--d:1.72s" cx="42.8" cy="245.7" r="1.7" fill="var(--ink)"/><circle class="lp-fade" style="--d:1.74s" cx="39.9" cy="234.4" r="1.7" fill="var(--ink)"/><circle class="lp-fade" style="--d:1.76s" cx="59.2" cy="242.3" r="1.7" fill="var(--ink)"/><circle class="lp-fade" style="--d:1.78s" cx="32.3" cy="242.7" r="1.7" fill="var(--ink)"/><circle class="lp-fade" style="--d:1.80s" cx="52.6" cy="233.2" r="1.7" fill="var(--ink)"/><circle class="lp-fade" style="--d:1.82s" cx="50.9" cy="247.5" r="1.7" fill="var(--ink)"/><circle class="lp-fade" style="--d:1.84s" cx="31.3" cy="235.9" r="1.7" fill="var(--ink)"/><circle class="lp-fade" style="--d:1.86s" cx="63.3" cy="238.2" r="1.7" fill="var(--ink)"/><circle class="lp-fade" style="--d:1.88s" cx="35.5" cy="247.2" r="1.7" fill="var(--ink)"/><circle class="lp-fade" style="--d:1.90s" cx="43.6" cy="231.0" r="1.7" fill="var(--ink)"/><circle class="lp-fade" style="--d:1.92s" cx="61.0" cy="246.0" r="1.7" fill="var(--ink)"/><circle class="lp-fade" style="--d:1.94s" cx="25.9" cy="240.4" r="1.7" fill="var(--ink)"/><circle class="lp-fade" style="--d:1.96s" cx="60.7" cy="233.0" r="1.7" fill="var(--ink)"/><circle class="lp-fade" style="--d:1.98s" cx="45.0" cy="250.2" r="1.7" fill="var(--ink)"/><circle class="lp-fade" style="--d:2.00s" cx="32.0" cy="232.0" r="1.7" fill="var(--ink)"/><circle class="lp-fade" style="--d:2.02s" cx="68.1" cy="241.4" r="1.7" fill="var(--ink)"/><circle class="lp-fade" style="--d:2.04s" cx="27.3" cy="246.2" r="1.7" fill="var(--ink)"/><circle class="lp-fade" style="--d:2.06s" cx="51.1" cy="229.1" r="1.7" fill="var(--ink)"/><path class="ln dim" d="M74 240 H100"/><g class="nd sys lp-fade" style="--d:.6s" data-tip="Five central servers hold the data for 1,200 locations. Larger operators want their own database and server."><rect class="bx" x="100" y="226" width="60" height="28" rx="8"/><text x="130" y="245" text-anchor="middle" style="font-size:12px">S5</text></g><path class="ln lp-line" style="--d:1.22s" pathLength="1" d="M160 240 C215 240 215 138 266 138"/><text class="cap" x="130" y="270" text-anchor="middle">5 servers</text><text class="cap halo" x="214" y="18" text-anchor="middle">every 5 min</text><g class="lp-fade" style="--d:1.5s"><use href="#ah" transform="translate(268 138)" fill="var(--ink)"/></g><g class="nd sys lp-fade" style="--d:1.4s" data-tip="Telemetry lands in five-minute batches and alerts fire in under 200 ms after ingest, so a failure is flagged within about five minutes plus processing."><rect class="bx" x="268" y="106" width="114" height="64" rx="12"/><text x="325" y="134" text-anchor="middle" style="font-size:19px">Atlas</text><text class="sub" x="325" y="152" text-anchor="middle">ingest + alert</text></g><path class="ln lp-line" style="--d:1.9s" pathLength="1" d="M382 138 C432 138 432 74 476 74"/><path class="ln lp-line" style="--d:2s" pathLength="1" d="M382 138 C432 138 432 186 476 186"/><g class="lp-fade" style="--d:2.4s"><use href="#ah" transform="translate(480 74)" fill="var(--ink)"/></g><g class="lp-fade" style="--d:2.5s"><use href="#ah" transform="translate(480 186)" fill="var(--ink)"/></g><text class="cap halo lp-fade" style="--d:2.2s" x="440" y="130" text-anchor="middle">&lt; 200 ms</text><g class="nd sys lp-fade" style="--d:2.2s" data-tip="Alerts go to Teams and email."><rect class="bx" x="480" y="56" width="124" height="38" rx="10"/><text x="542" y="80" text-anchor="middle">Teams</text></g><g class="nd sys lp-fade" style="--d:2.3s" data-tip="Alerts go to Teams and email."><rect class="bx" x="480" y="168" width="124" height="38" rx="10"/><text x="542" y="192" text-anchor="middle">Email</text></g><path class="ln dim lp-line" style="--d:2.6s" pathLength="1" d="M325 170 C325 236 440 244 484 244"/><g class="nd sys lp-fade" style="--d:2.8s" data-tip="Severity escalates automatically, around the clock."><rect class="hit" x="486" y="206" width="124" height="64" fill="transparent"/><rect class="grow" style="--d:2.9s" x="496" y="236" width="24" height="14" rx="3" fill="var(--moss)"/><rect class="grow" style="--d:3.05s" x="530" y="224" width="24" height="26" rx="3" fill="var(--muted)"/><rect class="grow" style="--d:3.2s" x="564" y="210" width="24" height="40" rx="3" fill="var(--clay)"/><text class="cap" x="548" y="266" text-anchor="middle">auto-escalates</text></g></svg></div>
+        <div class="dg-scroll mx-auto mt-3 max-w-[720px]"><svg class="dgsvg" viewBox="0 0 640 274" role="img" aria-label="Five central servers, which hold data for 1,200 locations, send telemetry to Atlas every five minutes. Alerts reach Teams and email in under 200 milliseconds after ingest, and severity escalates automatically."><text class="cap" x="46" y="14" text-anchor="middle">1,200 locations</text><circle class="lp-fade" style="--d:0.00s" cx="49.7" cy="40.0" r="1.7" fill="var(--ink)"/><circle class="lp-fade" style="--d:0.02s" cx="41.5" cy="42.0" r="1.7" fill="var(--ink)"/><circle class="lp-fade" style="--d:0.04s" cx="46.7" cy="36.3" r="1.7" fill="var(--ink)"/><circle class="lp-fade" style="--d:0.06s" cx="51.5" cy="43.5" r="1.7" fill="var(--ink)"/><circle class="lp-fade" style="--d:0.08s" cx="35.9" cy="39.1" r="1.7" fill="var(--ink)"/><circle class="lp-fade" style="--d:0.10s" cx="55.6" cy="37.1" r="1.7" fill="var(--ink)"/><circle class="lp-fade" style="--d:0.12s" cx="42.8" cy="45.7" r="1.7" fill="var(--ink)"/><circle class="lp-fade" style="--d:0.14s" cx="39.9" cy="34.4" r="1.7" fill="var(--ink)"/><circle class="lp-fade" style="--d:0.16s" cx="59.2" cy="42.3" r="1.7" fill="var(--ink)"/><circle class="lp-fade" style="--d:0.18s" cx="32.3" cy="42.7" r="1.7" fill="var(--ink)"/><circle class="lp-fade" style="--d:0.20s" cx="52.6" cy="33.2" r="1.7" fill="var(--ink)"/><circle class="lp-fade" style="--d:0.22s" cx="50.9" cy="47.5" r="1.7" fill="var(--ink)"/><circle class="lp-fade" style="--d:0.24s" cx="31.3" cy="35.9" r="1.7" fill="var(--ink)"/><circle class="lp-fade" style="--d:0.26s" cx="63.3" cy="38.2" r="1.7" fill="var(--ink)"/><circle class="lp-fade" style="--d:0.28s" cx="35.5" cy="47.2" r="1.7" fill="var(--ink)"/><circle class="lp-fade" style="--d:0.30s" cx="43.6" cy="31.0" r="1.7" fill="var(--ink)"/><circle class="lp-fade" style="--d:0.32s" cx="61.0" cy="46.0" r="1.7" fill="var(--ink)"/><circle class="lp-fade" style="--d:0.34s" cx="25.9" cy="40.4" r="1.7" fill="var(--ink)"/><path class="ln dim" d="M74 40 H100"/><g class="nd sys lp-fade" style="--d:.6s" data-tip="Five central servers hold the data for 1,200 locations. Larger operators want their own database and server."><rect class="bx" x="100" y="26" width="60" height="28" rx="2"/><text x="130" y="45" text-anchor="middle" style="font-size:12px">S1</text></g><path class="ln lp-line" style="--d:0.90s" pathLength="1" d="M160 40 C215 40 215 138 266 138"/><circle class="lp-fade" style="--d:0.36s" cx="49.7" cy="90.0" r="1.7" fill="var(--ink)"/><circle class="lp-fade" style="--d:0.38s" cx="41.5" cy="92.0" r="1.7" fill="var(--ink)"/><circle class="lp-fade" style="--d:0.40s" cx="46.7" cy="86.3" r="1.7" fill="var(--ink)"/><circle class="lp-fade" style="--d:0.42s" cx="51.5" cy="93.5" r="1.7" fill="var(--ink)"/><circle class="lp-fade" style="--d:0.44s" cx="35.9" cy="89.1" r="1.7" fill="var(--ink)"/><circle class="lp-fade" style="--d:0.46s" cx="55.6" cy="87.1" r="1.7" fill="var(--ink)"/><circle class="lp-fade" style="--d:0.48s" cx="42.8" cy="95.7" r="1.7" fill="var(--ink)"/><circle class="lp-fade" style="--d:0.50s" cx="39.9" cy="84.4" r="1.7" fill="var(--ink)"/><circle class="lp-fade" style="--d:0.52s" cx="59.2" cy="92.3" r="1.7" fill="var(--ink)"/><circle class="lp-fade" style="--d:0.54s" cx="32.3" cy="92.7" r="1.7" fill="var(--ink)"/><circle class="lp-fade" style="--d:0.56s" cx="52.6" cy="83.2" r="1.7" fill="var(--ink)"/><circle class="lp-fade" style="--d:0.58s" cx="50.9" cy="97.5" r="1.7" fill="var(--ink)"/><circle class="lp-fade" style="--d:0.60s" cx="31.3" cy="85.9" r="1.7" fill="var(--ink)"/><circle class="lp-fade" style="--d:0.62s" cx="63.3" cy="88.2" r="1.7" fill="var(--ink)"/><circle class="lp-fade" style="--d:0.64s" cx="35.5" cy="97.2" r="1.7" fill="var(--ink)"/><circle class="lp-fade" style="--d:0.66s" cx="43.6" cy="81.0" r="1.7" fill="var(--ink)"/><circle class="lp-fade" style="--d:0.68s" cx="61.0" cy="96.0" r="1.7" fill="var(--ink)"/><circle class="lp-fade" style="--d:0.70s" cx="25.9" cy="90.4" r="1.7" fill="var(--ink)"/><circle class="lp-fade" style="--d:0.72s" cx="60.7" cy="83.0" r="1.7" fill="var(--ink)"/><circle class="lp-fade" style="--d:0.74s" cx="45.0" cy="100.2" r="1.7" fill="var(--ink)"/><circle class="lp-fade" style="--d:0.76s" cx="32.0" cy="82.0" r="1.7" fill="var(--ink)"/><circle class="lp-fade" style="--d:0.78s" cx="68.1" cy="91.4" r="1.7" fill="var(--ink)"/><circle class="lp-fade" style="--d:0.80s" cx="27.3" cy="96.2" r="1.7" fill="var(--ink)"/><circle class="lp-fade" style="--d:0.82s" cx="51.1" cy="79.1" r="1.7" fill="var(--ink)"/><circle class="lp-fade" style="--d:0.84s" cx="57.8" cy="99.9" r="1.7" fill="var(--ink)"/><circle class="lp-fade" style="--d:0.86s" cx="22.9" cy="86.5" r="1.7" fill="var(--ink)"/><path class="ln dim" d="M74 90 H100"/><g class="nd sys lp-fade" style="--d:.6s" data-tip="Five central servers hold the data for 1,200 locations. Larger operators want their own database and server."><rect class="bx" x="100" y="76" width="60" height="28" rx="2"/><text x="130" y="95" text-anchor="middle" style="font-size:12px">S2</text></g><path class="ln lp-line" style="--d:0.98s" pathLength="1" d="M160 90 C215 90 215 138 266 138"/><circle class="lp-fade" style="--d:0.88s" cx="49.7" cy="140.0" r="1.7" fill="var(--ink)"/><circle class="lp-fade" style="--d:0.90s" cx="41.5" cy="142.0" r="1.7" fill="var(--ink)"/><circle class="lp-fade" style="--d:0.92s" cx="46.7" cy="136.3" r="1.7" fill="var(--ink)"/><circle class="lp-fade" style="--d:0.94s" cx="51.5" cy="143.5" r="1.7" fill="var(--ink)"/><circle class="lp-fade" style="--d:0.96s" cx="35.9" cy="139.1" r="1.7" fill="var(--ink)"/><circle class="lp-fade" style="--d:0.98s" cx="55.6" cy="137.1" r="1.7" fill="var(--ink)"/><circle class="lp-fade" style="--d:1.00s" cx="42.8" cy="145.7" r="1.7" fill="var(--ink)"/><circle class="lp-fade" style="--d:1.02s" cx="39.9" cy="134.4" r="1.7" fill="var(--ink)"/><circle class="lp-fade" style="--d:1.04s" cx="59.2" cy="142.3" r="1.7" fill="var(--ink)"/><circle class="lp-fade" style="--d:1.06s" cx="32.3" cy="142.7" r="1.7" fill="var(--ink)"/><circle class="lp-fade" style="--d:1.08s" cx="52.6" cy="133.2" r="1.7" fill="var(--ink)"/><circle class="lp-fade" style="--d:1.10s" cx="50.9" cy="147.5" r="1.7" fill="var(--ink)"/><circle class="lp-fade" style="--d:1.12s" cx="31.3" cy="135.9" r="1.7" fill="var(--ink)"/><circle class="lp-fade" style="--d:1.14s" cx="63.3" cy="138.2" r="1.7" fill="var(--ink)"/><circle class="lp-fade" style="--d:1.16s" cx="35.5" cy="147.2" r="1.7" fill="var(--ink)"/><circle class="lp-fade" style="--d:1.18s" cx="43.6" cy="131.0" r="1.7" fill="var(--ink)"/><circle class="lp-fade" style="--d:1.20s" cx="61.0" cy="146.0" r="1.7" fill="var(--ink)"/><circle class="lp-fade" style="--d:1.22s" cx="25.9" cy="140.4" r="1.7" fill="var(--ink)"/><circle class="lp-fade" style="--d:1.24s" cx="60.7" cy="133.0" r="1.7" fill="var(--ink)"/><circle class="lp-fade" style="--d:1.26s" cx="45.0" cy="150.2" r="1.7" fill="var(--ink)"/><circle class="lp-fade" style="--d:1.28s" cx="32.0" cy="132.0" r="1.7" fill="var(--ink)"/><circle class="lp-fade" style="--d:1.30s" cx="68.1" cy="141.4" r="1.7" fill="var(--ink)"/><path class="ln dim" d="M74 140 H100"/><g class="nd sys lp-fade" style="--d:.6s" data-tip="Five central servers hold the data for 1,200 locations. Larger operators want their own database and server."><rect class="bx" x="100" y="126" width="60" height="28" rx="2"/><text x="130" y="145" text-anchor="middle" style="font-size:12px">S3</text></g><path class="ln lp-line" style="--d:1.06s" pathLength="1" d="M160 140 C215 140 215 138 266 138"/><circle class="lp-fade" style="--d:1.32s" cx="49.7" cy="190.0" r="1.7" fill="var(--ink)"/><circle class="lp-fade" style="--d:1.34s" cx="41.5" cy="192.0" r="1.7" fill="var(--ink)"/><circle class="lp-fade" style="--d:1.36s" cx="46.7" cy="186.3" r="1.7" fill="var(--ink)"/><circle class="lp-fade" style="--d:1.38s" cx="51.5" cy="193.5" r="1.7" fill="var(--ink)"/><circle class="lp-fade" style="--d:1.40s" cx="35.9" cy="189.1" r="1.7" fill="var(--ink)"/><circle class="lp-fade" style="--d:1.42s" cx="55.6" cy="187.1" r="1.7" fill="var(--ink)"/><circle class="lp-fade" style="--d:1.44s" cx="42.8" cy="195.7" r="1.7" fill="var(--ink)"/><circle class="lp-fade" style="--d:1.46s" cx="39.9" cy="184.4" r="1.7" fill="var(--ink)"/><circle class="lp-fade" style="--d:1.48s" cx="59.2" cy="192.3" r="1.7" fill="var(--ink)"/><circle class="lp-fade" style="--d:1.50s" cx="32.3" cy="192.7" r="1.7" fill="var(--ink)"/><circle class="lp-fade" style="--d:1.52s" cx="52.6" cy="183.2" r="1.7" fill="var(--ink)"/><circle class="lp-fade" style="--d:1.54s" cx="50.9" cy="197.5" r="1.7" fill="var(--ink)"/><circle class="lp-fade" style="--d:1.56s" cx="31.3" cy="185.9" r="1.7" fill="var(--ink)"/><circle class="lp-fade" style="--d:1.58s" cx="63.3" cy="188.2" r="1.7" fill="var(--ink)"/><path class="ln dim" d="M74 190 H100"/><g class="nd sys lp-fade" style="--d:.6s" data-tip="Five central servers hold the data for 1,200 locations. Larger operators want their own database and server."><rect class="bx" x="100" y="176" width="60" height="28" rx="2"/><text x="130" y="195" text-anchor="middle" style="font-size:12px">S4</text></g><path class="ln lp-line" style="--d:1.14s" pathLength="1" d="M160 190 C215 190 215 138 266 138"/><circle class="lp-fade" style="--d:1.60s" cx="49.7" cy="240.0" r="1.7" fill="var(--ink)"/><circle class="lp-fade" style="--d:1.62s" cx="41.5" cy="242.0" r="1.7" fill="var(--ink)"/><circle class="lp-fade" style="--d:1.64s" cx="46.7" cy="236.3" r="1.7" fill="var(--ink)"/><circle class="lp-fade" style="--d:1.66s" cx="51.5" cy="243.5" r="1.7" fill="var(--ink)"/><circle class="lp-fade" style="--d:1.68s" cx="35.9" cy="239.1" r="1.7" fill="var(--ink)"/><circle class="lp-fade" style="--d:1.70s" cx="55.6" cy="237.1" r="1.7" fill="var(--ink)"/><circle class="lp-fade" style="--d:1.72s" cx="42.8" cy="245.7" r="1.7" fill="var(--ink)"/><circle class="lp-fade" style="--d:1.74s" cx="39.9" cy="234.4" r="1.7" fill="var(--ink)"/><circle class="lp-fade" style="--d:1.76s" cx="59.2" cy="242.3" r="1.7" fill="var(--ink)"/><circle class="lp-fade" style="--d:1.78s" cx="32.3" cy="242.7" r="1.7" fill="var(--ink)"/><circle class="lp-fade" style="--d:1.80s" cx="52.6" cy="233.2" r="1.7" fill="var(--ink)"/><circle class="lp-fade" style="--d:1.82s" cx="50.9" cy="247.5" r="1.7" fill="var(--ink)"/><circle class="lp-fade" style="--d:1.84s" cx="31.3" cy="235.9" r="1.7" fill="var(--ink)"/><circle class="lp-fade" style="--d:1.86s" cx="63.3" cy="238.2" r="1.7" fill="var(--ink)"/><circle class="lp-fade" style="--d:1.88s" cx="35.5" cy="247.2" r="1.7" fill="var(--ink)"/><circle class="lp-fade" style="--d:1.90s" cx="43.6" cy="231.0" r="1.7" fill="var(--ink)"/><circle class="lp-fade" style="--d:1.92s" cx="61.0" cy="246.0" r="1.7" fill="var(--ink)"/><circle class="lp-fade" style="--d:1.94s" cx="25.9" cy="240.4" r="1.7" fill="var(--ink)"/><circle class="lp-fade" style="--d:1.96s" cx="60.7" cy="233.0" r="1.7" fill="var(--ink)"/><circle class="lp-fade" style="--d:1.98s" cx="45.0" cy="250.2" r="1.7" fill="var(--ink)"/><circle class="lp-fade" style="--d:2.00s" cx="32.0" cy="232.0" r="1.7" fill="var(--ink)"/><circle class="lp-fade" style="--d:2.02s" cx="68.1" cy="241.4" r="1.7" fill="var(--ink)"/><circle class="lp-fade" style="--d:2.04s" cx="27.3" cy="246.2" r="1.7" fill="var(--ink)"/><circle class="lp-fade" style="--d:2.06s" cx="51.1" cy="229.1" r="1.7" fill="var(--ink)"/><path class="ln dim" d="M74 240 H100"/><g class="nd sys lp-fade" style="--d:.6s" data-tip="Five central servers hold the data for 1,200 locations. Larger operators want their own database and server."><rect class="bx" x="100" y="226" width="60" height="28" rx="2"/><text x="130" y="245" text-anchor="middle" style="font-size:12px">S5</text></g><path class="ln lp-line" style="--d:1.22s" pathLength="1" d="M160 240 C215 240 215 138 266 138"/><text class="cap" x="130" y="270" text-anchor="middle">5 servers</text><text class="cap halo" x="214" y="18" text-anchor="middle">every 5 min</text><g class="lp-fade" style="--d:1.5s"><use href="#ah" transform="translate(268 138)" fill="var(--ink)"/></g><g class="nd sys lp-fade" style="--d:1.4s" data-tip="Telemetry lands in five-minute batches and alerts fire in under 200 ms after ingest, so a failure is flagged within about five minutes plus processing."><rect class="bx" x="268" y="106" width="114" height="64" rx="2"/><text x="325" y="134" text-anchor="middle" style="font-size:19px">Atlas</text><text class="sub" x="325" y="152" text-anchor="middle">ingest + alert</text></g><path class="ln lp-line" style="--d:1.9s" pathLength="1" d="M382 138 C432 138 432 74 476 74"/><path class="ln lp-line" style="--d:2s" pathLength="1" d="M382 138 C432 138 432 186 476 186"/><g class="lp-fade" style="--d:2.4s"><use href="#ah" transform="translate(480 74)" fill="var(--ink)"/></g><g class="lp-fade" style="--d:2.5s"><use href="#ah" transform="translate(480 186)" fill="var(--ink)"/></g><text class="cap halo lp-fade" style="--d:2.2s" x="440" y="130" text-anchor="middle">&lt; 200 ms</text><g class="nd sys lp-fade" style="--d:2.2s" data-tip="Alerts go to Teams and email."><rect class="bx" x="480" y="56" width="124" height="38" rx="2"/><text x="542" y="80" text-anchor="middle">Teams</text></g><g class="nd sys lp-fade" style="--d:2.3s" data-tip="Alerts go to Teams and email."><rect class="bx" x="480" y="168" width="124" height="38" rx="2"/><text x="542" y="192" text-anchor="middle">Email</text></g><path class="ln dim lp-line" style="--d:2.6s" pathLength="1" d="M325 170 C325 236 440 244 484 244"/><g class="nd sys lp-fade" style="--d:2.8s" data-tip="Severity escalates automatically, around the clock."><rect class="hit" x="486" y="206" width="124" height="64" fill="transparent"/><rect class="grow" style="--d:2.9s" x="496" y="236" width="24" height="14" rx="2" fill="var(--moss)"/><rect class="grow" style="--d:3.05s" x="530" y="224" width="24" height="26" rx="2" fill="var(--muted)"/><rect class="grow" style="--d:3.2s" x="564" y="210" width="24" height="40" rx="2" fill="var(--clay)"/><text class="cap" x="548" y="266" text-anchor="middle">auto-escalates</text></g></svg></div>
         <p class="swipe-hint">Swipe the diagram →</p>
         <p class="tip">Tap a box.</p>
         <p class="mt-3"><span class="tbc">add: alerts in the last 90 days, and incidents caught before a customer noticed</span></p>
@@ -324,7 +324,7 @@
         <ul class="mt-5 grid grid-cols-1 gap-2 md:grid-cols-3">
           <li class="cn ok" data-tip="Ops use Atlas weekly.">Ops <small>weekly</small></li>
           <li class="cn ok" data-tip="Support use Atlas weekly.">Support <small>weekly</small></li>
-          <li class="cn" data-tip="Usage varies in the development team; many mainly use the employee hub for expenses and holidays.">Dev team <small>varies · mostly the employee hub</small></li>
+          <li class="cn" data-tip="Usage varies in the development team; many mainly use the employee hub for expenses and holidays.">Dev team <small>varies, mostly the employee hub</small></li>
         </ul>
         <p class="tip">Tap a row.</p>
         <p class="mt-3 flex flex-wrap gap-2"><span class="tbc">add: weekly users out of staff</span><span class="tbc">add: one case where feedback changed the build</span></p>
@@ -649,215 +649,6 @@
   });
   const year = $('#year');
   if (year) year.textContent = new Date().getFullYear();
-})();
-
-/* ───────── Hero: the greeting types itself ───────── */
-(() => {
-  'use strict';
-  const h1 = document.getElementById('heroTitle');
-  if (!h1) return;
-  const lines = Array.from(h1.querySelectorAll('[data-type]'));
-  const reduce = window.matchMedia && window.matchMedia('(prefers-reduced-motion: reduce)').matches;
-  if (reduce || !lines.length) return;
-
-  const chars = [];
-  lines.forEach((line, li) => {
-    const words = line.textContent.split(' ');
-    line.textContent = '';
-    words.forEach((w, wi) => {
-      const ws = document.createElement('span');
-      ws.className = 'tw-w';
-      Array.from(w).forEach(ch => {
-        const c = document.createElement('span');
-        c.className = 'tw-c'; c.textContent = ch;
-        ws.appendChild(c); chars.push({ el: c, li });
-      });
-      line.appendChild(ws);
-      if (wi < words.length - 1) line.appendChild(document.createTextNode(' '));
-    });
-  });
-
-  const caret = document.createElement('span');
-  caret.className = 'tw-caret'; caret.setAttribute('aria-hidden', 'true');
-  h1.appendChild(caret);
-  const place = (el, atStart) => {
-    const r = el.getBoundingClientRect(), p = h1.getBoundingClientRect();
-    caret.style.left = ((atStart ? r.left : r.right) - p.left + 2) + 'px';
-    caret.style.top = (r.top - p.top + r.height * 0.06) + 'px';
-    caret.style.height = (r.height * 0.88) + 'px';
-  };
-  place(chars[0].el, true);
-
-  let i = 0;
-  const step = () => {
-    if (i >= chars.length) { setTimeout(() => caret.classList.add('done'), 2600); return; }
-    const { el, li } = chars[i];
-    el.classList.add('on');
-    place(el, false);
-    i++;
-    const next = chars[i];
-    let delay = (li === 0 ? 85 : 38) + Math.random() * 25;
-    if (next && next.li !== li) delay = 750;
-    setTimeout(step, delay);
-  };
-  setTimeout(step, 450);
-})();
-
-/* ───────── The thread: loops down the page, drawn as you scroll ───────── */
-(() => {
-  'use strict';
-  const wrap = document.getElementById('threadWrap'), svg = document.getElementById('thread');
-  if (!wrap || !svg) return;
-  const $ = (s, r = document) => r.querySelector(s), $$ = (s, r = document) => Array.from(r.querySelectorAll(s));
-  const reduce = window.matchMedia && window.matchMedia('(prefers-reduced-motion: reduce)').matches;
-  const NS = 'http://www.w3.org/2000/svg';
-  const ghost = $('.th-ghost', svg), live = $('.th-live', svg), bead = $('.th-bead', svg), ringG = $('.th-nodes', svg);
-  let CUM = [], MAXY = [], TOTAL = 0, NODES = [], wrapTop = 0, raf = 0, rt = 0;
-
-  const rel = el => { const r = el.getBoundingClientRect(), w = wrap.getBoundingClientRect(); return { x: r.left - w.left, y: r.top - w.top, w: r.width, h: r.height }; };
-  const ease = u => u * u * (3 - 2 * u);
-
-  function swoop(x0, y0, x1, y1, o = {}) {
-    const S = o.swing || 0, R = o.loop || 0, dir = o.dir || 1, ua = o.ua ?? .4, ub = o.ub ?? .7;
-    const n = Math.max(60, Math.round(Math.hypot(x1 - x0, y1 - y0) / 3)), out = [];
-    for (let k = 0; k <= n; k++) {
-      const u = k / n;
-      let x = x0 + (x1 - x0) * ease(u) + S * Math.sin(Math.PI * u), y = y0 + (y1 - y0) * u;
-      if (R && u > ua && u < ub) {
-        const t = (u - ua) / (ub - ua), th = 2 * Math.PI * t;
-        x += dir * R * Math.sin(th); y += R * (1 - Math.cos(th));
-      }
-      out.push([x, y]);
-    }
-    return out;
-  }
-  function run(x, y0, y1, nodeYs, amp = 7) {
-    const n = Math.max(2, Math.round(Math.abs(y1 - y0) / 4)), out = [];
-    for (let k = 0; k <= n; k++) {
-      const y = y0 + (y1 - y0) * k / n;
-      let d = 1e9; for (const ny of nodeYs) d = Math.min(d, Math.abs(y - ny));
-      const w = Math.min(1, d / 70, (y - y0) / 60, (y1 - y) / 60);
-      out.push([x + amp * Math.max(0, w) * Math.sin((y - y0) / 80), y]);
-    }
-    return out;
-  }
-  function arc(cx, cy, rx, ry, a0, a1, grow) {
-    const n = Math.max(8, Math.round(Math.abs(a1 - a0) / 3)), out = [];
-    for (let k = 0; k <= n; k++) {
-      const t = k / n, a = (a0 + (a1 - a0) * t) * Math.PI / 180, s = 1 + (grow || 0) * t;
-      out.push([cx + rx * s * Math.cos(a), cy + ry * s * Math.sin(a)]);
-    }
-    return out;
-  }
-  function smooth(p, w) {
-    const n = p.length, out = [];
-    for (let i = 0; i < n; i++) {
-      let sx = 0, sy = 0, c = 0;
-      for (let j = -w; j <= w; j++) { const q = p[Math.min(n - 1, Math.max(0, i + j))]; sx += q[0]; sy += q[1]; c++; }
-      out.push([sx / c, sy / c]);
-    }
-    out[0] = p[0]; out[n - 1] = p[n - 1];
-    return out;
-  }
-  function resample(p, step) {
-    const out = [p[0]]; let acc = 0, prev = p[0];
-    for (let i = 1; i < p.length; i++) {
-      const cur = p[i]; let d = Math.hypot(cur[0] - prev[0], cur[1] - prev[1]);
-      while (acc + d >= step) {
-        const t = (step - acc) / d, nx = prev[0] + (cur[0] - prev[0]) * t, ny = prev[1] + (cur[1] - prev[1]) * t;
-        out.push([nx, ny]); prev = [nx, ny]; d = Math.hypot(cur[0] - prev[0], cur[1] - prev[1]); acc = 0;
-      }
-      acc += d; prev = cur;
-    }
-    out.push(p[p.length - 1]);
-    return out;
-  }
-
-  function build() {
-    const W = wrap.clientWidth, H = wrap.clientHeight, narrow = W < 700;
-    svg.setAttribute('viewBox', `0 0 ${W} ${H}`); svg.setAttribute('width', W); svg.setAttribute('height', H);
-    wrapTop = wrap.getBoundingClientRect().top + window.scrollY;
-
-    const av = rel($('#avatar')), cx = av.x + av.w / 2, cy = av.y + av.h / 2, r = av.w / 2 + 14;
-    const nodeEls = $$('[data-thread-node]'), first = rel(nodeEls[0]);
-    const xL = Math.max(14, first.x - (narrow ? 26 : 54));
-    const xR = narrow ? W - 14 : Math.min(W - 22, cx + r + 46);
-    const gaps = $$('.tgap').map(rel);
-    const nodeYs = nodeEls.map(el => { const b = rel(el); return b.y + Math.min(b.h / 2, 30); });
-    const R = narrow ? 20 : 40, swingMax = narrow ? W * 0.5 : Math.min(W * 0.52, 640);
-    const plan = [null, { s: .85, loop: 1, dir: 1 }, { s: 1, loop: 0, dir: 1 }, { s: .8, loop: 1, dir: -1 }, { s: .9, loop: 0, dir: 1 }, { s: .7, loop: 1, dir: 1 }, { s: .95, loop: 1, dir: -1 }];
-
-    let pts = [];
-    const add = seg => { pts.push(...(pts.length ? seg.slice(1) : seg)); };
-    const last = () => pts[pts.length - 1];
-
-    add(arc(cx, cy, r, r, 235, 430, .05));
-    add(swoop(last()[0], last()[1], xR, gaps[0].y, {}));
-    add(swoop(xR, gaps[0].y, xL, gaps[0].y + gaps[0].h, { loop: R, dir: -1 }));
-    for (let i = 1; i < gaps.length; i++) {
-      const p = plan[i] || plan[1];
-      add(run(xL, last()[1], gaps[i].y, nodeYs));
-      add(swoop(xL, gaps[i].y, xL, gaps[i].y + gaps[i].h, { swing: swingMax * p.s, loop: p.loop ? R : 0, dir: p.dir }));
-    }
-    const end = rel($('[data-thread-end]')), ecy = end.y + end.h / 2;
-    const rx = Math.min(end.w / 2 + 34, (W - 28) / 2), ry = end.h / 2 + 26;
-    const ecx = Math.min(W - rx - 14, Math.max(rx + 14, end.x + end.w / 2));
-    add(run(xL, last()[1], ecy - 150, nodeYs));
-    add(swoop(xL, ecy - 150, ecx - rx, ecy, {}));
-    add(arc(ecx, ecy, rx, ry, 180, 575, .06));
-
-    pts = resample(smooth(pts, 5), 4);
-    CUM = [0]; MAXY = [pts[0][1]];
-    for (let i = 1; i < pts.length; i++) {
-      CUM[i] = CUM[i - 1] + Math.hypot(pts[i][0] - pts[i - 1][0], pts[i][1] - pts[i - 1][1]);
-      MAXY[i] = Math.max(MAXY[i - 1], pts[i][1]);
-    }
-    TOTAL = CUM[CUM.length - 1];
-    const d = 'M' + pts.map(p => p[0].toFixed(1) + ' ' + p[1].toFixed(1)).join(' L');
-    ghost.setAttribute('d', d); live.setAttribute('d', d);
-    live.style.strokeDasharray = `${TOTAL} ${TOTAL}`;
-
-    ringG.textContent = ''; NODES = [];
-    nodeYs.forEach(y => {
-      const c = document.createElementNS(NS, 'circle');
-      c.setAttribute('class', 'th-node'); c.setAttribute('cx', xL); c.setAttribute('cy', y); c.setAttribute('r', 7);
-      ringG.appendChild(c);
-      let i = 0; while (i < MAXY.length - 1 && MAXY[i] < y) i++;
-      NODES.push({ el: c, len: CUM[i] });
-    });
-    update();
-  }
-
-  function update() {
-    raf = 0;
-    if (!TOTAL) return;
-    let L;
-    if (reduce) { L = TOTAL; }
-    else {
-      const vh = window.innerHeight, sy = window.scrollY, max = document.documentElement.scrollHeight - vh;
-      const frac = max > 0 ? Math.min(1, sy / max) : 1;
-      const tipY = sy + vh * (0.52 + 0.4 * frac) - wrapTop;
-      let lo = 0, hi = MAXY.length - 1;
-      while (lo < hi) { const m = (lo + hi) >> 1; if (MAXY[m] >= tipY) hi = m; else lo = m + 1; }
-      L = MAXY[lo] >= tipY ? CUM[lo] : TOTAL;
-    }
-    live.style.strokeDashoffset = String(TOTAL - L);
-    if (!reduce) {
-      const p = live.getPointAtLength(Math.max(.1, L));
-      bead.setAttribute('cx', p.x); bead.setAttribute('cy', p.y);
-      bead.style.opacity = L > 4 && L < TOTAL - 2 ? 1 : 0;
-    }
-    NODES.forEach(n => n.el.classList.toggle('reached', L >= n.len));
-  }
-  const schedule = () => { if (!raf) raf = requestAnimationFrame(update); };
-  const rebuild = () => { clearTimeout(rt); rt = setTimeout(build, 120); };
-
-  window.addEventListener('scroll', schedule, { passive: true });
-  window.addEventListener('resize', rebuild);
-  window.addEventListener('load', build);
-  if (document.fonts && document.fonts.ready) document.fonts.ready.then(build);
-  if ('ResizeObserver' in window) new ResizeObserver(rebuild).observe(wrap);
-  build();
 })();
 
 </script>

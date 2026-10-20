@@ -113,13 +113,6 @@ html.js .hero-static{ display:none; }
   html.js .atlas-panel:not(.is-lit) .at-hub-label{ fill:var(--ink); }
 }
 
-.stats{ display:grid; grid-template-columns:minmax(0,1fr); gap:1.5rem; margin-top:2rem; }
-@media (min-width:768px){ .stats{ grid-template-columns:minmax(0,7fr) minmax(0,5fr); gap:3rem; align-items:start; } .stat-sm{ padding-top:3.5rem; } }
-.stat-num{ margin:0; min-width:3.1ch; display:inline-block; }
-.stat-sm .stat-num{ font-size:clamp(2.75rem,6.5vw,5rem); line-height:1; }
-.stat-cap{ margin:.5rem 0 0; font-size:1.0625rem; color:var(--ink); }
-.stat-cap time{ white-space:nowrap; }
-
 /* ───────── How I work: a true sequence on the thread ───────── */
 .steps2{ display:grid; grid-template-columns:minmax(0,1fr); gap:1.5rem; margin:2.25rem 0 0; padding:0; list-style:none; }
 @media (min-width:768px){ .steps2{ grid-template-columns:repeat(4,minmax(0,1fr)); gap:1.5rem; } }
