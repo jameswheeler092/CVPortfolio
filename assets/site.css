@@ -262,7 +262,9 @@ body.hide-tbc .tbc{ display:none!important; }
 .nd text{ font-size:15px; font-weight:600; }
 .nd.big text{ font-size:17px; font-weight:500; }
 .nd .sub{ font-size:12px; font-weight:400; fill:var(--muted); }
-.nd:hover rect.bx, .nd:focus-visible rect.bx{ stroke-width:2.5; }
+.nd:hover rect.bx{ stroke-width:2.5; }
+.nd:focus-visible{ outline:var(--focus); outline-offset:3px; }
+.nd:focus-visible rect.bx{ stroke:var(--moss); stroke-width:3; }
 .nd.is-sel rect.bx{ stroke:var(--moss); stroke-width:2.5; }
 .nd.static:hover rect.bx{ stroke-width:1; }
 .ln{ fill:none; stroke:var(--ink); stroke-width:1.8; stroke-linecap:round; }
@@ -440,7 +442,7 @@ body.hide-tbc .tbc{ display:none!important; }
 .pl li span{ display:block; margin-top:.2rem; font-size:.9375rem; color:var(--muted); }
 .pl li.per span{ color:var(--ink); }
 .pl li::before{ counter-increment:pl; content:counter(pl); display:grid; place-items:center; width:1.6rem; height:1.6rem; margin-bottom:.7rem; border-radius:50%; font-size:.8125rem; font-weight:700; color:var(--paper); background:var(--ink); }
-.pl li.per::before{ color:var(--amber); background:var(--ink); }
+.pl li.per::before{ color:var(--ink); background:var(--amber); }
 .pl li:not(:last-child)::after{ content:""; position:absolute; background:var(--ink); left:100%; top:2.1rem; width:1.6rem; height:2px; }
 @media (max-width:767px){
   .pl li:not(:last-child)::after{ left:2rem; top:100%; width:2px; height:.75rem; }

@@ -598,7 +598,7 @@ html.js .hero-static{ display:none; }
   const NS = 'http://www.w3.org/2000/svg';
   const ghost = $('.th-ghost', svg), live = $('.th-live', svg), nodeG = $('.th-nodes', svg);
   const STEP = 2, MAX_RATIO = 3.2, LERP = 0.18, HERO_MS = 1600, LOOP_MS = 900, MAX_SEGS = 60;
-  const T = { total: 0, xs: null, ys: null, knots: [], hits: [], nodes: [], heroNodes: [], heroLens: [], Lh: 0, Lloop: 0, wrapTop: 0,
+  const T = { total: 0, scale: 1, ls: null, sig: '', xs: null, ys: null, knots: [], hits: [], nodes: [], heroNodes: [], heroLens: [], Lh: 0, Lloop: 0, wrapTop: 0,
               tgt: 0, cur: 0, litN: 0, heroT0: 0, heroDone: reduce, loopT0: 0, typed: reduce || !!window.__heroTyped, raf: 0, rt: 0, segs: 0 };
   const ease = u => u < .5 ? 2 * u * u : 1 - Math.pow(-2 * u + 2, 2) / 2;
   const easeOut = u => 1 - Math.pow(1 - u, 3);
@@ -625,19 +625,19 @@ html.js .hero-static{ display:none; }
   }
   const fmt = n => n.toFixed(1);
   const cubic = s => 'C' + s.map(fmt).join(' ');
-  const line = (a, b) => cubic([a[0] + (b[0] - a[0]) / 3, a[1] + (b[1] - a[1]) / 3, a[0] + 2 * (b[0] - a[0]) / 3, a[1] + 2 * (b[1] - a[1]) / 3, b[0], b[1]]);
+  const lineN = (a, b) => [a[0] + (b[0] - a[0]) / 3, a[1] + (b[1] - a[1]) / 3, a[0] + 2 * (b[0] - a[0]) / 3, a[1] + 2 * (b[1] - a[1]) / 3, b[0], b[1]];
 
   /* Rounded rectangle, clockwise on screen from the bottom edge, so it closes on its own start */
   function loopSegs(l, t, r, b, rad) {
     const k = .5523 * rad, cxR = r - rad, cxL = l + rad, cyT = t + rad, cyB = b - rad, out = [];
-    out.push(line([cxL, b], [cxR, b]));
-    out.push(cubic([cxR + k, b, r, cyB + k, r, cyB]));
-    if (cyB - cyT > 1) out.push(line([r, cyB], [r, cyT]));
-    out.push(cubic([r, cyT - k, cxR + k, t, cxR, t]));
-    out.push(line([cxR, t], [cxL, t]));
-    out.push(cubic([cxL - k, t, l, cyT - k, l, cyT]));
-    if (cyB - cyT > 1) out.push(line([l, cyT], [l, cyB]));
-    out.push(cubic([l, cyB + k, cxL - k, b, cxL, b]));
+    out.push(lineN([cxL, b], [cxR, b]));
+    out.push([cxR + k, b, r, cyB + k, r, cyB]);
+    if (cyB - cyT > 1) out.push(lineN([r, cyB], [r, cyT]));
+    out.push([r, cyT - k, cxR + k, t, cxR, t]);
+    out.push(lineN([cxR, t], [cxL, t]));
+    out.push([cxL - k, t, l, cyT - k, l, cyT]);
+    if (cyB - cyT > 1) out.push(lineN([l, cyT], [l, cyB]));
+    out.push([l, cyB + k, cxL - k, b, cxL, b]);
     return out;
   }
 
@@ -648,6 +648,10 @@ html.js .hero-static{ display:none; }
     const heroEls = $$('.hn');
     const railEls = $$('[data-thread-node]');
     if (heroEls.length < 6 || !railEls.length) return;
+    const sigEls = [...railEls, heroEls[5], $('[data-atlas-panel]'), $('.step-node'), $('[data-steps-after]'), $('[data-thread-end]')].filter(Boolean);
+    const sig = [W, H, window.innerHeight, ...sigEls.map(e => { const r = rel(e); return Math.round(r.x) + ',' + Math.round(r.y) + ',' + Math.round(r.w) + ',' + Math.round(r.h); })].join('|');
+    if (sig === T.sig) return;
+    T.sig = sig;
     const ctr = el => { const r = rel(el); return [r.x + r.w / 2, r.y + r.h / 2]; };
 
     const H6 = heroEls.map(ctr);
@@ -717,22 +721,33 @@ html.js .hero-static{ display:none; }
     const { pts, knotsSpec, arrive, loopD } = A;
     T.segs = sp.length + loopD.length;
     const head = 'M' + fmt(pts[0][0]) + ' ' + fmt(pts[0][1]) + ' ';
-    const mainD = head + sp.map(cubic).join(' ');
-    const d = mainD + ' ' + loopD.join(' ');
+    const d = head + sp.concat(loopD).map(cubic).join(' ');
     ghost.setAttribute('d', d); live.setAttribute('d', d);
-    const probe = document.createElementNS(NS, 'path'); probe.setAttribute('d', mainD); svg.appendChild(probe);
-    T.Lloop = probe.getTotalLength(); svg.removeChild(probe);
-    T.total = live.getTotalLength();
-    live.style.strokeDasharray = `${T.total} ${T.total}`;
 
-    /* sample once: positions every STEP px */
-    const n = Math.ceil(T.total / STEP) + 1;
-    T.xs = new Float32Array(n); T.ys = new Float32Array(n);
-    for (let i = 0; i < n; i++) { const p = live.getPointAtLength(Math.min(T.total, i * STEP)); T.xs[i] = p.x; T.ys[i] = p.y; }
+    /* sample every STEP px straight from the Béziers: no DOM calls, positions and running length */
+    const xs = [pts[0][0]], ys = [pts[0][1]], ls = [0];
+    let px = pts[0][0], py = pts[0][1], acc = 0, Lloop = -1;
+    sp.concat(loopD).forEach((sg, k) => {
+      if (k === sp.length) Lloop = acc;
+      const poly = Math.hypot(sg[0] - px, sg[1] - py) + Math.hypot(sg[2] - sg[0], sg[3] - sg[1]) + Math.hypot(sg[4] - sg[2], sg[5] - sg[3]);
+      const m = Math.max(4, Math.ceil(poly / STEP));
+      for (let i = 1; i <= m; i++) {
+        const t = i / m, u = 1 - t, a0 = u * u * u, a1 = 3 * u * u * t, a2 = 3 * u * t * t, a3 = t * t * t;
+        const x = a0 * px + a1 * sg[0] + a2 * sg[2] + a3 * sg[4], y = a0 * py + a1 * sg[1] + a2 * sg[3] + a3 * sg[5];
+        acc += Math.hypot(x - xs[xs.length - 1], y - ys[ys.length - 1]); xs.push(x); ys.push(y); ls.push(acc);
+      }
+      px = sg[4]; py = sg[5];
+    });
+    if (Lloop < 0) Lloop = acc;
+    const n = xs.length;
+    T.xs = Float32Array.from(xs); T.ys = Float32Array.from(ys); T.ls = Float32Array.from(ls);
+    T.total = acc; T.Lloop = Lloop;
+    T.scale = live.getTotalLength() / acc;     /* one DOM read per build; maps sampled length onto the drawn path */
+    live.style.strokeDasharray = `${acc * T.scale} ${acc * T.scale}`;
     const lenNear = (x, y) => {
       let best = 0, bd = 1e12;
       for (let i = 0; i < n; i++) { const dx = T.xs[i] - x, dy = T.ys[i] - y, dd = dx * dx + dy * dy; if (dd < bd) { bd = dd; best = i; } }
-      return best * STEP;
+      return T.ls[best];
     };
 
     /* rail nodes */
@@ -752,7 +767,7 @@ html.js .hero-static{ display:none; }
       let idx = -1;
       for (let i = 0; i < n; i++) if (T.xs[i] >= x0 && T.xs[i] <= x1 && T.ys[i] >= y0 && T.ys[i] <= y1) { idx = i; break; }
       if (idx < 0) for (let i = 0; i < n; i++) if (T.ys[i] >= r.y) { idx = i; break; }
-      return { el, len: (idx < 0 ? n - 1 : idx) * STEP };
+      return { el, len: T.ls[idx < 0 ? n - 1 : idx] };
     }).sort((a, b) => a.len - b.len);
     T.litN = 0;
     T.hits.forEach(h => { h.el.classList.remove('is-lit'); });
@@ -763,16 +778,15 @@ html.js .hero-static{ display:none; }
     let K = [[0, T.Lh]];
     knotsSpec.forEach(k => K.push([sY(k.y), lenNear(k.at[0], k.at[1])]));
     if (endEl && arrive) K.push([sY(arrive[1]), T.Lloop]);
-    K[K.length - 1][0] = Math.min(K[K.length - 1][0], maxS - 2);
     for (let i = 1; i < K.length; i++) { K[i][1] = Math.max(K[i][1], K[i - 1][1]); K[i][0] = Math.max(K[i][0], K[i - 1][0] + 1); }
+    /* the loop must be reachable: nothing may sit beyond the last scroll position */
+    for (let i = K.length - 1; i >= 0; i--) K[i][0] = Math.min(K[i][0], maxS - 2 - (K.length - 1 - i));
     /* pacing: no stretch may draw more than MAX_RATIO px of line per px of scroll; borrow scroll from earlier knots */
     for (let i = K.length - 1; i > 0; i--) {
       const need = (K[i][1] - K[i - 1][1]) / MAX_RATIO;
       if (K[i][0] - K[i - 1][0] < need) K[i - 1][0] = Math.max(0, K[i][0] - need);
     }
-    for (let i = 1; i < K.length; i++) K[i][0] = Math.max(K[i][0], K[i - 1][0] + 1);
-    /* the loop must be reachable: nothing may sit beyond the last scroll position */
-    for (let i = K.length - 1; i >= 0; i--) K[i][0] = Math.min(K[i][0], maxS - 2 - (K.length - 1 - i));
+    for (let i = 1; i < K.length; i++) K[i][0] = Math.max(K[i][0], K[i - 1][0] + 0.5);
     T.knots = K;
     T.cur = T.tgt = mapScroll(window.scrollY);
     if (T.segs > MAX_SEGS) console.warn('thread: ' + T.segs + ' segments (limit ' + MAX_SEGS + ')');
@@ -827,7 +841,7 @@ html.js .hero-static{ display:none; }
         if (u < 1) busy = true;
       } else T.loopT0 = 0;
     }
-    live.style.strokeDashoffset = String(T.total - L);
+    live.style.strokeDashoffset = String((T.total - L) * T.scale);
     T.nodes.forEach(n => n.el.classList.toggle('reached', L >= n.len));
     T.heroNodes.forEach((el, i) => {
       el.classList.toggle('is-near', reduce || L >= T.heroLens[i] - 36);
