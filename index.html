@@ -281,6 +281,7 @@ html.js .hero-static{ display:none; }
     <div class="ad-window">
       <div class="ad-chrome"><span class="ad-dots" aria-hidden="true"><i></i><i></i><i></i></span><span class="ad-url"></span></div>
       <div class="ad-stage"></div>
+      <div class="ad-intro"><button type="button" class="ad-begin">Begin the demonstration</button></div>
       <aside class="ad-how" id="ad-how" hidden><div class="ad-how-h"><b>How it works</b><button type="button" class="ad-how-x" aria-label="Close">&times;</button></div><div class="ad-how-body"></div></aside>
       </div>
     <span class="ad-pin" aria-hidden="true" hidden></span>
@@ -332,6 +333,10 @@ html.js .hero-static{ display:none; }
 #atlas-demo tr.ad-hl{outline:none!important}
 #atlas-demo tr.ad-hl td{background:#FEF9C3!important}
 #atlas-demo tr.ad-hl td:first-child{box-shadow:inset 3px 0 0 var(--hl)}
+#atlas-demo .ad-intro{position:absolute;inset:0;z-index:40;display:grid;place-items:center;background:rgba(110,114,124,.5);padding:16px}
+#atlas-demo .ad-intro[hidden]{display:none}
+#atlas-demo .ad-begin{height:46px;padding:0 24px;border-radius:10px;background:var(--ink);color:#fff;font-size:15px;font-weight:600;box-shadow:0 10px 30px -8px rgba(0,0,0,.5);transition:transform .15s,background .15s}
+#atlas-demo .ad-begin:hover{background:#000;transform:translateY(-1px)}
 #atlas-demo .ad-pin{position:absolute;z-index:30;width:22px;height:22px;border-radius:50%;background:var(--hl);border:2px solid #fff;box-shadow:0 2px 8px rgba(0,0,0,.25);pointer-events:none;transition:left .2s,top .2s}
 #atlas-demo .ad-pin::after{content:"";position:absolute;inset:-9px;border-radius:50%;border:3px solid var(--hl);animation:adpulse 1.4s ease-out infinite}
 @keyframes adpulse{0%{transform:scale(.55);opacity:1}100%{transform:scale(1.5);opacity:0}}
@@ -946,6 +951,7 @@ html.js .hero-static{ display:none; }
   });
   root.addEventListener('keydown',function(e){if((e.key==='Enter'||e.key===' ')&&e.target===S.hl&&e.target.tagName==='TR'){e.preventDefault();e.target.click()}});
   $('.ad-restart').onclick=function(){go(0)};
+  $('.ad-begin').onclick=function(){$('.ad-intro').hidden=true;go(0)};
   var hb=$('.ad-how-btn'),hp=$('.ad-how');
   function setHow(o){hb.setAttribute('aria-expanded',o);hp.hidden=!o}
   hb.onclick=function(){setHow(hp.hidden)};
